@@ -256,7 +256,7 @@ function head(C, tilt, h, c, load = 0) {
 /**
  * st: gait state (from simulate().at(t)); c: CAST entry; h: head height px
  * opts: { load, arms: { near:'swing'|'phone'|'pocket'|'reach', far:'swing'|'cleats'|'carry' }, bag:'mom'|'dad'|null,
- *         tilt (head look, deg), lag: state at t-0.07 s (cloth/props), handTarget }
+ *         tilt (head look, deg), lag: state at t-0.07 s (cloth/props), handTarget, nearMix (phone → pocket blend, CP4) }
  */
 export function drawFigure(st, c, h, opts = {}) {
   const lag = opts.lag || st;
@@ -289,6 +289,12 @@ export function drawFigure(st, c, h, opts = {}) {
     if (mode === 'phone') {
       // forearm raised, phone at chest height in front of the body, looked at
       const target = add(TP(0.98, 1.5), P(0, -shrug * 0.6));
+      // nearMix (0..1, additive, CP4): lowers the phone hand into the coat pocket (rig blend; both end poses unchanged)
+      if (which === 'near' && opts.nearMix > 0) {
+        const pk = add(TP(0.2, 0.25), P(0, 0)), q = opts.nearMix;
+        const wrist = P(target.x + (pk.x - target.x) * q, target.y + (pk.y - target.y) * q);
+        return { elbow: ik2(sh, wrist, U, F, -1), wrist, handDir: (300 - lean) + (60 - (300 - lean) + 360) * q, handMode: 'grip' };
+      }
       const elbow = ik2(sh, target, U, F, -1);
       return { elbow, wrist: target, handDir: 300 - lean, handMode: 'grip' };
     }

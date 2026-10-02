@@ -4,7 +4,7 @@
 |---|---|
 | **Checkpoint** | CP3 |
 | **Runtime covered** | 12.00–20.00 s (the hero fold at 12.6–14.4 s, then the first put-downs) |
-| **Approval status** | Pending. No approval is recorded in this workspace. |
+| **Approval status** | **LOCKED** (2026-10-02). The concept was approved. The two polish notes below were applied and verified frame by frame, and the user's instruction was to lock CP3 once they were clean. |
 
 > **Location note.** The CP3 renders were produced in **`film02/production/film/out/`**, not in this folder. They were left in place rather than moved, so the paths below point there. The scene source is `film02/production/film/scene.mjs`.
 
@@ -20,8 +20,25 @@
 
 There are no dedicated close-up or zoomed stills of the hero fold. The fold is covered by the full-frame timed stills listed above.
 
+## Polish applied (v2, 2026-10-02)
+1. **What to bring registration (~16.0–16.75 s).** There is one copy of the text on every frame.
+   - The marker line hands off at the exact frame the flight leaves it.
+   - The flight takes a clean route: in 16:9 it drops beside the card, then slides along the row's own baseline, and no longer crosses "Dad drop-off". In 9:16 it's a short hop up.
+   - " · " becomes the product's ", " in flight.
+   - The real row copy appears at the landing frame. `0/2`, `Prep 0 of 2` and the row chevron wait until landing.
+2. **Cleats (~17.0–18.4 s).** The long blue dotted trajectory is removed.
+   - Mom lowers the cleats into the bag, and her posture releases.
+   - What to bring gives one soft tint acknowledgement as the cleats go in.
+   - No path is drawn from the cleats to the UI.
+
+**Unchanged:** the fold geometry, Game Plan scale and hierarchy, the orange Pickup thread (still unresolved), Maya receding, Dad's handoff timing, all product copy and data, and the character art.
+- **Lossless check:** comparing scene output with clip-path IDs normalized, frames 12.00–15.83 s are identical to the approved version.
+- **The only change before 16.0 s:** the What to bring chevron now appears at landing rather than at 15.85 s.
+
+**Note:** the previously committed timed stills for 13–15 s came from an earlier scene revision and did not match the approved MP4 (RMSE 0.073 at 13.2 s). The regenerated stills match the MP4.
+
 ## Known nits
-_Not recorded in the workspace. Add them during review._
+_None open._
 
 ## Decisions needed
-_Not recorded in the workspace. Add them during review._
+_None._
