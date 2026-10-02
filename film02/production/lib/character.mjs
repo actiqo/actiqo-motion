@@ -300,11 +300,24 @@ export function drawFigure(st, c, h, opts = {}) {
     }
     if (mode === 'pocket') {
       const target = add(TP(0.2, 0.25), P(0, 0));
+      // pocketOut (0..1, additive, CP5): the hand leaves the pocket and joins the free arm swing (rig blend; both end poses unchanged)
+      const q = which === 'near' ? (opts.pocketOut || 0) : 0;
+      if (q > 0) {
+        const sp = swingPose(sh, which, 'swing'); if (q >= 1) return sp;
+        const wrist = lerpP(target, sp.wrist, q), elbow = lerpP(ik2(sh, wrist, U, F, -1), sp.elbow, q * q);
+        return { elbow, wrist, handDir: 60 + (sp.handDir - 60) * q, handMode: q > 0.1 ? 'relaxed' : 'hidden' };
+      }
       return { elbow: ik2(sh, target, U, F, -1), wrist: target, handDir: 60, handMode: 'hidden' };
     }
     if (mode === 'reach' && opts.handTarget) {
-      return { elbow: ik2(sh, opts.handTarget, U, F, -1), wrist: opts.handTarget, handDir: opts.handDir ?? 20, handMode: opts.reachHand || 'open' };
+      // reachBlend (0..1, additive, CP5): as the hand returns to the free swing, the elbow eases onto the swing pose's elbow
+      const ikE = ik2(sh, opts.handTarget, U, F, -1), rb = which === 'near' ? (opts.reachBlend || 0) : 0;
+      return { elbow: rb > 0 ? lerpP(ikE, swingPose(sh, which, 'swing').elbow, rb * rb) : ikE, wrist: opts.handTarget, handDir: opts.handDir ?? 20, handMode: opts.reachHand || 'open' };
     }
+    return swingPose(sh, which, mode);
+  };
+  function swingPose(sh, which, mode) {
+    const U = B.thigh * 0.78 * h, F = 1.22 * h;
     // farMix (0..1) blends the far arm from the free swing to the approved cleats carry (rig blend; poses unchanged)
     const m = which === 'far' && opts.farMix != null ? opts.farMix : (mode === 'cleats' ? 1 : 0);
     const sw = (which === 'near' ? swingOf(1) : swingOf(0)) * (mode === 'carry' ? 0.2 : 1 - 0.65 * m);
@@ -313,7 +326,7 @@ export function drawFigure(st, c, h, opts = {}) {
     const foreA = upperA + 8 + Math.max(0, sw) * 0.9 + 10 * m;
     const wrist = add(elbow, rot(P(0, F), -foreA));
     return { elbow, wrist, handDir: 90 - foreA - 6, handMode: m >= 0.5 || mode === 'carry' ? 'grip' : 'relaxed' };
-  };
+  }
   const armN = arm(shN, 'near'), armF = arm(shF, 'far');
 
   const o = [];
@@ -404,7 +417,7 @@ export function drawFigure(st, c, h, opts = {}) {
   if (opts.arms?.near === 'phone') g(phoneHand(armN.wrist, h, lean, c));
   else if (armN.handMode !== 'hidden') g(hand(armN.wrist, armN.handDir, h, c.skin, c.skinShade, armN.handMode));
   const phoneC = add(armN.wrist, rot(P(0.33 * h, 0), -64 - lean));
-  return { svg: o.join(''), anchors: { hip, headC, handN: armN.wrist, handF: armF.wrist, shN, neckBase, phone: phoneC, bag: bagCenter(hip, h, st, lag), gripN: handPoint(armN.wrist, armN.handDir, h, 0.36, 0.0), gripF: handPoint(armF.wrist, armF.handDir, h, 0.44, 0.0) } };
+  return { svg: o.join(''), anchors: { hip, headC, handN: armN.wrist, handDirN: armN.handDir, handF: armF.wrist, shN, neckBase, phone: phoneC, bag: bagCenter(hip, h, st, lag), gripN: handPoint(armN.wrist, armN.handDir, h, 0.36, 0.0), gripF: handPoint(armF.wrist, armF.handDir, h, 0.44, 0.0) } };
 }
 
 function farInFrontMode(opts) { return opts.arms?.far === 'cleats' || (opts.farMix ?? 0) >= 0.5; }

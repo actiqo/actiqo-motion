@@ -110,9 +110,12 @@ export function simulate(spec) {
     const key = Math.round(t * 240);
     if (hipCache.has(key)) return hipCache.get(key);
     // gaussian smoothing over ±60 ms keeps the bob organic without breaking reach
-    let acc = 0, wsum = 0;
-    for (let j = -8; j <= 8; j++) { const w = Math.exp(-(j * j) / 18); acc += hipRaw(t + j / 120) * w; wsum += w; }
-    const sm = acc / wsum, raw = hipRaw(t);
+    const kern = (n, s2) => { let acc = 0, wsum = 0; for (let j = -n; j <= n; j++) { const w = Math.exp(-(j * j) / s2); acc += hipRaw(t + j / 120) * w; wsum += w; } return acc / wsum; };
+    let sm = kern(8, 18);
+    // restart (CP5): the first rise out of the wide standing stance is eased over a wider window (the hip may sit lower, never higher, than reach allows)
+    const tG = spec.restartAt;
+    if (tG != null) { const b = smooth((t - tG + 0.1) / 0.1) * (1 - smooth((t - tG - 0.9) / 0.4)); if (b > 0) sm = sm + (kern(40, 450) - sm) * b; }
+    const raw = hipRaw(t);
     const v = Math.max(sm, raw); // never higher than reach allows
     hipCache.set(key, v); return v;
   };
@@ -132,13 +135,52 @@ export function simulate(spec) {
   };
   const sampleAtRaw = sampleAt;
   sampleAt = (t) => sampleAtRaw(Math.min(t, tStop));
+
+  // optional restart from the settled stand (CP5): spec.restartAt = tGo, with speedScale(tGo) = 0 ramping up.
+  // Body and phase stay frozen until tGo, then integrate on from the frozen state. Strikes up to the stop are kept,
+  // so both planted feet start from their exact plants. The first stance after tGo starts FLAT (as the settle left it)
+  // and rises heel-first to the normal toe-off angle, so the trailing foot leaves the floor with no pop.
+  const tGo = spec.restartAt;
+  if (tGo != null && tGo > tStop) {
+    const iStop = idx(tStop), sStop = samples[iStop];
+    samples.length = iStop + 1;
+    let xr = sStop.x, pr = sStop.phi;
+    for (let i = 1; sStop.t + i * dt <= t1; i++) {
+      const t = sStop.t + i * dt;
+      samples.push({ t, x: xr, phi: pr });
+      // gait initiation: the step rhythm leads the body speed (phase ∝ √speed), so the first steps are shorter, not slower
+      if (t >= tGo) { const sc = spec.speedScale(t), { v } = step(t); xr += v * dt; pr += spec.cadence(t) * Math.sqrt(sc) * dt; }
+    }
+    for (let k = 0; k < 2; k++) strikes[k] = strikes[k].filter((e) => e.t <= tStop);
+    for (let i = idx(tGo) + 1; i < samples.length; i++) for (let k = 0; k < 2; k++) {
+      const off = k * 0.5;
+      if (Math.floor(samples[i].phi + off) > Math.floor(samples[i - 1].phi + off)) {
+        const t = samples[i].t, stepLen = spec.stride(t) * h * Math.sqrt(spec.speedScale(t));
+        strikes[k].push({ t, n: Math.floor(samples[i].phi + off), plant: samples[i].x + 0.5 * stepLen + 0.18 * h });
+      }
+    }
+    const pGo = [0, 1].map((k) => ((sStop.phi + k * 0.5) % 1 + 1) % 1);
+    const footSettled = footAt;
+    footAt = (k, t) => {
+      if (t <= tGo) return footSettled(k, t);
+      const fr = footAtRaw(k, t);
+      if (!fr.contact || fr.plant == null) return fr;
+      const list = strikes[k]; let i = list.length - 1; while (i > 0 && list[i].t > t + 1e-9) i--;
+      if (list[i].t > tStop) return fr;                              // a stance that began after the restart: normal
+      const p = ((sampleAtRaw(t).phi + k * 0.5) % 1 + 1) % 1, p0 = Math.max(0.34, pGo[k]);
+      if (p < p0) return { ankle: ankleFromBallPivot(fr.plant, 0), angle: 0, contact: true, plant: fr.plant };
+      const a = TOEOFF * Math.pow(clamp((p - p0) / (STANCE - p0), 0, 1), 1.6);
+      return { ankle: ankleFromBallPivot(fr.plant, a), angle: -a, contact: true, plant: fr.plant };
+    };
+    sampleAt = (t) => sampleAtRaw(t);
+  }
   return {
     h, spec, tStop,
     at(t) {
       const s = sampleAt(t);
       const feet = [footAt(0, t), footAt(1, t)];
       const mvRaw = spec.speedScale ? spec.speedScale(Math.min(t, tStop)) : 1;
-      const mv = t > tStop ? mvRaw * (1 - smooth((t - tStop) / SETTLE)) : mvRaw;
+      const mv = tGo != null && t > tGo ? spec.speedScale(t) : t > tStop ? mvRaw * (1 - smooth((t - tStop) / SETTLE)) : mvRaw;
       return { t, x: s.x, phi: s.phi, hipY: hipY(t), feet, load: spec.load ? spec.load(t) : 0, moving: mv, step: spec.stride(t) * h * Math.max(mv, 0.05) };
     },
   };

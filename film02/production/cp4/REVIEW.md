@@ -4,7 +4,7 @@
 |---|---|
 | **Checkpoint** | CP4 |
 | **Runtime covered** | 20.00–26.00 s (storyboard beats 17–21) |
-| **Approval status** | Pending review |
+| **Approval status** | **APPROVED** (2026-10-02) |
 
 ## What happens
 | Time | Beat |
@@ -37,6 +37,6 @@
 ## Known nits
 _None recorded yet._
 
-## Decisions needed
-1. Accept Grandma's frame-left entrance, or require the storyboard's right-side entrance?
-2. Should Dad and Grandma's neutral links persist into CP5, or fade at the payoff?
+## Decisions (resolved 2026-10-02)
+1. Grandma's frame-left entrance: **approved, keep**.
+2. Dad and Grandma's neutral links: **do not persist into CP5**. They hold briefly, then fade over 0.4–0.7 s once Mom begins her free walk (implemented in CP5: 26.25–26.8 s).

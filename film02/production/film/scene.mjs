@@ -15,15 +15,19 @@ export const T = {
   prepFly: 0.75, cleatsReg: 17.0, cleatsDown: 17.5, dadIn: 18.2, reach: 18.95, bagLift: 19.45, ack: 19.65, cp3End: 20.0,
   // CP4 · 20–26 s: Who's doing what → Assignments → Assign → Grandma takes the pickup
   look: 22.25, tapWho: 22.6, asOut: 22.75, asIn: 23.0, threadRe: 23.0, tapAssign: 23.6, gEnter: 23.4, catch: 24.55, resolve: 25.4, pocket: 25.55, cp4End: 26.0,
+  // CP5 · 26–30 s: Mom walks on free; the links let go; the world quiets into the brand field; end card
+  gGo: 26.05, go: 26.15, ramp: 0.6, handOut: 26.25, linksOut: 26.25, gLower: 26.35, mayaOut: 26.6, routesOut: 26.9, cardOut: 27.0, peopleOut: 27.1,
+  floorOut: 27.3, momOut: 27.35, card: 27.8, cardFAI: 28.1, cardL1: 28.45, cardL2: 28.57, still: 29.2, end30: 30.0,
 };
+const smooth01 = (u) => { u = clamp01(u); return u * u * (3 - 2 * u); };
 const bump = (t, t0, d = 0.6) => EASE.std(clamp01((t - t0) / d));
 /** Mom's load: bag + phone at the start; each new responsibility adds a little; cleats add the most; the stop settles at 1 */
 export const load = (t) => Math.min(1, 0.42 + 0.06 * (bump(t, T.leave) + bump(t, T.dad) + bump(t, T.leo) + bump(t, T.maya)) + 0.2 * bump(t, T.cleatsLand - 0.3, 0.5) + 0.1 * bump(t, 9.2, 1.2))
   + (t > T.hold - 0.6 ? 0.018 * Math.sin(((t - (T.hold - 0.6)) / 3.0) * Math.PI * 2) : 0)
-  - 0.22 * bump(t, T.cleatsDown + 0.1, 0.7) - 0.25 * bump(t, T.bagLift, 0.6) - 0.1 * bump(t, T.resolve + 0.1, 0.6);
+  - 0.22 * bump(t, T.cleatsDown + 0.1, 0.7) - 0.25 * bump(t, T.bagLift, 0.6) - 0.1 * bump(t, T.resolve + 0.1, 0.6) - 0.3 * bump(t, T.go, 1.0);
 /** head: reading → glancing up at the world as it builds → down at the phone as the question becomes the thread → the weight */
-const tilt = (t) => lerp(lerp(lerp(lerp(lerp(lerp(14, 3, span(t, 3.0, 0.6, EASE.breath)), 11, span(t, 7.95, 0.5, EASE.breath)), 16, span(t, 9.3, 1.0, EASE.breath)), 5, span(t, 14.2, 1.0, EASE.breath)),
-  13, span(t, T.look, 0.35, EASE.breath)), 2, span(t, T.tapAssign + 0.3, 0.55, EASE.breath));
+const tilt = (t) => lerp(lerp(lerp(lerp(lerp(lerp(lerp(14, 3, span(t, 3.0, 0.6, EASE.breath)), 11, span(t, 7.95, 0.5, EASE.breath)), 16, span(t, 9.3, 1.0, EASE.breath)), 5, span(t, 14.2, 1.0, EASE.breath)),
+  13, span(t, T.look, 0.35, EASE.breath)), 2, span(t, T.tapAssign + 0.3, 0.55, EASE.breath)), -1, span(t, T.go, 0.8, EASE.breath));
 
 // ── per-format composition ──
 export const FMT = {
@@ -70,15 +74,36 @@ export const STRINGS = [
   ['Dad drop-off', 500], ['Grandma pickup', 500], ['Dad', 600], ['Grandma', 600], ['No one on pickup', 500], ['Maya — Dance', 600], ['Thu 5:15 PM', 400], ['Thu ', 400], ['5:30', 500],
 ];
 
+/** wrap in a group only while fading, so earlier frames stay byte-identical */
+const op = (svg, k) => (!svg || k >= 1 ? svg : k <= 0 ? '' : `<g opacity="${r(k * 1000) / 1000}">${svg}</g>`);
+
+// ── end card: official raster wordmark (flat teal Q), then the descriptor, then the two lines. Opacity only — nothing moves. ──
+const WORDMARK = new URL('../../../brand/logo/current/actiqo-wordmark-navy-teal_trimmed.png', import.meta.url).pathname;
+const WM_AR = 329 / 1525;
+const END = {
+  wide: { cx: 960, wmW: 560, top: 318, faiSize: 30, lineSize: 54, gapFai: 58, gapLines: 118, lineGap: 70 },
+  tall: { cx: 540, wmW: 620, top: 700, faiSize: 34, lineSize: 50, gapFai: 64, gapLines: 128, lineGap: 66 },
+};
+export function endCard(f, t) {
+  const E = f.W > f.H ? END.wide : END.tall, k = (t0, d = 0.6) => (t === 1 ? 1 : span(t, t0, d, EASE.breath));
+  const wmH = E.wmW * WM_AR, yFai = E.top + wmH + E.gapFai, y1 = yFai + E.gapLines, y2 = y1 + E.lineGap;
+  const o = (v) => r(v * 1000) / 1000;
+  return `<image href="file://${WORDMARK}" x="${r(E.cx - E.wmW / 2)}" y="${E.top}" width="${E.wmW}" height="${r(wmH * 10) / 10}" opacity="${o(k(T.card))}"/>`
+    + `<text x="${E.cx}" y="${r(yFai)}" text-anchor="middle" font-family="Inter" font-weight="500" font-size="${E.faiSize}" fill="${C.ink2}" letter-spacing="-0.01em" opacity="${o(k(T.cardFAI, 0.5))}">Family Activity Intelligence</text>`
+    + `<text x="${E.cx}" y="${r(y1)}" text-anchor="middle" font-family="Fraunces" font-weight="600" font-size="${E.lineSize}" fill="${C.ink}" letter-spacing="-0.5px" opacity="${o(k(T.cardL1))}">The activity lasts an hour.</text>`
+    + `<text x="${E.cx}" y="${r(y2)}" text-anchor="middle" font-family="Fraunces" font-weight="600" font-size="${E.lineSize}" fill="${C.ink}" letter-spacing="-0.5px" opacity="${o(k(T.cardL2))}">The coordination lasts all week.</text>`;
+}
+
 export function makeScene(fmtName) {
   const f = FMT[fmtName];
   const L = f.L;
   const Xf = (hr) => X(hr) * f.hx;
   const hW = (f.momH * L.mom) / f.cam0.F;                    // Mom's head height in world units
   const sim = simulate({
-    h: hW, x0: 0, groundY: 0, t0: -2, t1: 14,
-    cadence: (t) => lerp(1.02, 1.07, load(t)), stride: (t) => lerp(2.45, 2.16, load(t)),
-    speedScale: (t) => lerp(1, 0.3, span(t, T.pullback, 1.0, EASE.std)), stopAfter: 9.95,
+    h: hW, x0: 0, groundY: 0, t0: -2, t1: 31,
+    // CP5: the free gait — calmer cadence, the film's longest stride (+16% on the loaded walk)
+    cadence: (t) => (t < T.go ? lerp(1.02, 1.07, load(t)) : 0.95), stride: (t) => (t < T.go ? lerp(2.45, 2.16, load(t)) : 2.5),
+    speedScale: (t) => (t < T.go ? lerp(1, 0.3, span(t, T.pullback, 1.0, EASE.std)) : smooth01((t - T.go) / T.ramp)), stopAfter: 9.95, restartAt: T.go,
   });
   // Dad: walks in on Mom's path (slightly behind her), stops behind her left where the bag hangs
   const dadSim = simulate({ h: hW, x0: 0, groundY: 0, t0: 16, t1: 24, cadence: () => 0.95, stride: () => 2.66,
@@ -87,9 +112,10 @@ export function makeScene(fmtName) {
   const GPL = gpLayout(f.gp.x, f.gp.y, f.gp.U);
   const ASL = asLayout(f.gp.x, f.gp.y, f.gp.U);
   // Grandma: walks in from frame-left on a lane just in front of Mom's, steps into the pickup thread's line, stops facing the plan
-  const gSim = simulate({ h: hW, x0: 0, groundY: 0, t0: 21, t1: 32, cadence: () => 0.9, stride: () => 2.25,
-    speedScale: (t) => lerp(1, 0.35, span(t, 24.7, 0.45, EASE.std)), stopAfter: 24.95 });
-  const gEndX = gSim.at(31).x;
+  // CP5: she sets off first, toward 6:30 (her leg), at her own slower cadence — always ahead of Mom, so the two never cross
+  const gSim = simulate({ h: hW, x0: 0, groundY: 0, t0: 21, t1: 32, cadence: () => 0.9, stride: (t) => (t < T.gGo ? 2.25 : 2.35),
+    speedScale: (t) => (t < T.gGo ? lerp(1, 0.35, span(t, 24.7, 0.45, EASE.std)) : smooth01((t - T.gGo) / 0.7)), stopAfter: 24.95, restartAt: T.gGo });
+  const gEndX = gSim.at(T.gGo).x;                          // where she stands (before her CP5 walk-on)
   const resample = (pts, n) => { const d = [0]; for (let i = 1; i < pts.length; i++) d.push(d[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y));
     const out = []; for (let j = 0; j < n; j++) { const L0 = (d[d.length - 1] * j) / (n - 1); let i = 1; while (i < d.length - 1 && d[i] < L0) i++; const u = (L0 - d[i - 1]) / Math.max(1e-6, d[i] - d[i - 1]);
       out.push({ x: lerp(pts[i - 1].x, pts[i].x, u), y: lerp(pts[i - 1].y, pts[i].y, u) }); } return out; };
@@ -98,7 +124,8 @@ export function makeScene(fmtName) {
     const c = camAt(f, t);
     const kM = c.F / L.mom, gy = c.horizon + (c.camH * c.F) / L.mom;
     const st = sim.at(t), lag = sim.at(t - 0.07);
-    const x0P = st.x - (key(f.momX, t) - c.sx) / kM;
+    // CP5: the camera does not truck with her free walk — she walks on through a world that holds still
+    const x0P = sim.at(Math.min(t, T.go)).x - (key(f.momX, t) - c.sx) / kM;
     const cP = cam({ ...c, x0: x0P });
     const sLeo = c.F / L.leo;
     const cL0 = cam({ ...c, x0: Xf(16.8) - (key(f.leaveX, t) - c.sx) / sLeo });
@@ -110,14 +137,18 @@ export function makeScene(fmtName) {
     const toScr = (p) => ({ x: c.sx + (p.x - x0P) * kM, y: gy + p.y * kM });
 
     // floor: faint ghost at the start, full from ~4 s; hour labels arrive with the first marker
-    const floorO = lerp(0.4, 1, span(t, T.floorUp, 1.2, EASE.breath));
+    // CP5 · the world quiets in order: links → Maya → routes → the Assignments card → Dad + Grandma → floor → Mom; then the end card
+    const q = { links: 1 - span(t, T.linksOut, 0.55, EASE.std), maya: 1 - span(t, T.mayaOut, 0.5, EASE.std), routes: 1 - span(t, T.routesOut, 0.5, EASE.std),
+      card: 1 - span(t, T.cardOut, 0.6, EASE.breath), people: 1 - span(t, T.peopleOut, 0.55, EASE.std), floor: 1 - span(t, T.floorOut, 0.7, EASE.breath), mom: 1 - span(t, T.momOut, 0.6, EASE.std) };
+    const floorO = lerp(0.4, 1, span(t, T.floorUp, 1.2, EASE.breath)) * q.floor;
     let s = `<rect width="${f.W}" height="${f.H}" fill="${C.ivory}"/>`;
+    if (t >= T.still - 1 / 60) return s + endCard(f, 1);                          // the held end card: identical every frame
     s += pathFloor(cP, { W: f.W, L, opacity: floorO });
     s += planFloor(cL, { W: f.W, H: f.H, L, Xf, opacity: floorO, labels: span(t, T.leave + 0.2, 0.6), lanes: span(t, T.floorUp, 1.0), labelSize: f.labelSize, grid: kAlign, planDim: 1 - 0.55 * gpK });
 
     // routes
     s += route(cL, Xf(16.8), Xf(17.5), L.leo, span(t, T.leo - 0.25, 0.7), { color: C.green, opacity: 0.85 * (1 - span(t, T.regLeave, 0.5)) });
-    s += route(cL, Xf(17.5), Xf(18.5), L.leo, span(t, T.leo + 0.2, 0.8), { color: C.leo, opacity: 0.5 });
+    s += route(cL, Xf(17.5), Xf(18.5), L.leo, span(t, T.leo + 0.2, 0.8), { color: C.leo, opacity: 0.5 * q.routes });
     s += route(cL, Xf(17.25), Xf(18.25), L.maya, span(t, T.maya + 0.15, 0.8), { color: C.maya, opacity: 0.45 * (1 - span(t, T.regMaya, 0.5)) });
 
     // markers
@@ -132,7 +163,7 @@ export function makeScene(fmtName) {
     const mMaya = marker(cL, { x: Xf(17.25), z: L.maya, tone: 'maya', glyph: 'solid-compact-disc', title: 'Maya · Dance', size: M.size, min: M.min, ...M.maya, rise: M.maya.rise + (f.foldRise?.maya || 0) * kF, a: { ...A(T.maya), titleK: gone(T.regMaya), wellK: gone(T.regMaya + 0.1) }, riseK: flat, lines: [{ text: '5:15', k: gone(T.regMaya + 0.08) }] });
     const mPick = marker(cL, { x: Xf(18.5), z: L.leo, tone: 'orange', glyph: 'solid-person-walking', title: 'Pickup · 6:30 · ?', titleInk: C.orange, size: M.size, min: M.min, ...M.pick, a: { ...A(T.pickup), keepTick: true, titleK: f.foldRise ? 1 - span(t, 13.1, 0.3) + span(t, 14.15, 0.35) : 1, wellK: f.foldRise ? 1 - span(t, 13.1, 0.3) + span(t, 14.15, 0.35) : 1 }, riseK: f.foldRise ? lerp(1, f.foldRise.pickK, span(t, 13.4, 0.75, EASE.std)) : 1, lines: [] });
     const pickO = 1 - span(t, T.threadRe, 0.35, EASE.std);
-    s += mLeave.svg + mMaya.svg + mLeo.svg + (pickO < 1 ? `<g opacity="${r(pickO * 1000) / 1000}">${mPick.svg}</g>` : mPick.svg);
+    s += op(mLeave.svg + mMaya.svg + mLeo.svg + (pickO < 1 ? `<g opacity="${r(pickO * 1000) / 1000}">${mPick.svg}</g>` : mPick.svg), q.routes);
 
     // Leo's sub-line "5:30 · " + "Field 7" (Field 7 arrives from the message)
     const leoLabelK = span(t, T.field7 + 0.5, 0.45, EASE.enter);
@@ -150,7 +181,8 @@ export function makeScene(fmtName) {
     const farMix = t < T.cleatsDown ? span(t, T.cleatsFly, T.cleatsLand - T.cleatsFly, EASE.std) : 1 - span(t, T.cleatsDown, 0.6, EASE.std);
     const holdingCleats = t >= T.cleatsLand && t < T.cleatsDown;
     const pocketK = span(t, T.pocket, 0.45, EASE.std);
-    const fig = drawFigure(a0, CAST.mom, hW, { load: load(t), arms: { near: pocketK >= 0.95 ? 'pocket' : 'phone', far: holdingCleats ? 'cleats' : 'swing' }, nearMix: pocketK < 0.95 ? pocketK : 0, farMix, bag: t < T.bagLift ? 'mom' : null, tilt: tilt(t), lag });
+    const fig = drawFigure(a0, CAST.mom, hW, { load: load(t), arms: { near: pocketK >= 0.95 ? 'pocket' : 'phone', far: holdingCleats ? 'cleats' : 'swing' }, nearMix: pocketK < 0.95 ? pocketK : 0, pocketOut: span(t, T.handOut, 0.6, EASE.std),
+      leanAdd: -1.4 * span(t, T.go, 1.0, EASE.std), farMix, bag: t < T.bagLift ? 'mom' : null, tilt: tilt(t), lag });
     const phone = toScr(fig.anchors.phone);
     const ms = f.msg.size;
     // buzz: two short restrained tick pairs beside the phone
@@ -217,7 +249,7 @@ export function makeScene(fmtName) {
     }
 
     // ══ CP3 ══
-    let cp3Under = '', cp3Over = '', cleatsBehind = '', cleatsFront = '', dadSvg = '', bagSvg = '';
+    let cp3Under = '', cp3Over = '', cleatsBehind = '', cleatsFront = '', dadSvg = '', bagSvg = '', mayaSvg = '', linkSvg = '';
     if (t >= T.gp - 0.05) {
       // ── the Game Plan resolves on the folded surface; marker text registers into its real destinations ──
       const fl = (t0, d = 0.6) => span(t, t0, d, EASE.std);
@@ -251,7 +283,7 @@ export function makeScene(fmtName) {
       // Maya: her own event, set apart from Leo's Game Plan; it recedes once it has registered
       const MS = mayaSlots(f.maya.x, f.maya.y, f.maya.U);
       const mayaK = span(t, T.regMaya + 0.45, 0.4) * (1 - 0.42 * span(t, T.regMaya + 1.2, 0.6, EASE.breath));
-      cp3Under += mayaCard(f.maya.x, f.maya.y, f.maya.U, mayaK, { nameK: show(T.regMaya + 0.65), timeK: show(T.regMaya + 0.72) });
+      mayaSvg = mayaCard(f.maya.x, f.maya.y, f.maya.U, mayaK, { nameK: show(T.regMaya + 0.65), timeK: show(T.regMaya + 0.72) });
       // registration flights: same words, real destinations
       const fly = (str, from, to, t0, d = 0.6) => {
         const u = fl(t0, d); if (u <= 0 || !from) return '';
@@ -336,7 +368,7 @@ export function makeScene(fmtName) {
           const a1 = { x: sh0.x + 0.2 * hW * kD, y: sh0.y - 0.75 * hW * kD }, b1 = { x: GPL.x - 4, y: lerp(GPL.who.well.cy, ASL.dad.well.cy, asK) };
           const over = { x: momHead.x + 0.2 * hW * kM, y: momHead.y - 1.5 * hW * kM };     // the link arcs over Mom's head, never across her
           const via = over.y < Math.min(a1.y, b1.y) ? [a1, over, { x: lerp(over.x, b1.x, 0.55), y: lerp(over.y, b1.y, 0.6) - 10 }, b1] : [a1, { x: lerp(a1.x, b1.x, 0.5), y: Math.min(a1.y, b1.y) - 40 }, b1];
-          cp3Over += thread(catmull(via, 64), ak, { color: '#0B1F3B', width: 3, dash: '1 0', opacity: 0.3, knot: false })
+          linkSvg += thread(catmull(via, 64), ak, { color: '#0B1F3B', width: 3, dash: '1 0', opacity: 0.3, knot: false })
             + (ak >= 1 ? `<circle cx="${r(b1.x)}" cy="${r(b1.y)}" r="5" fill="#0B1F3B" fill-opacity=".3"/>` : ''); }
       }
     }
@@ -351,10 +383,13 @@ export function makeScene(fmtName) {
       const toSG = (p) => ({ x: c.sx + (p.x - x0P) * kG, y: gyG + p.y * kG });
       const base = drawFigure(gs, CAST.grandma, hW, { load: 0, arms: {}, lag: gl });
       // her near hand rises to chest height in front of her: the open hand that takes the thread
+      // CP5: once the link has let go, the hand returns to her free swing (from the chest straight onto the swinging wrist)
       catchK = span(t, T.catch, 0.6, EASE.std);
+      const lowerK = span(t, T.gLower, 0.6, EASE.std);
       const nat = base.anchors.handN, chest = { x: base.anchors.hip.x + 0.95 * hW, y: base.anchors.hip.y - 1.35 * hW };
-      const handW = { x: lerp(nat.x, chest.x, catchK), y: lerp(nat.y, chest.y, catchK) };
-      const gFig = catchK > 0 ? drawFigure(gs, CAST.grandma, hW, { load: 0, arms: { near: 'reach' }, handTarget: handW, handDir: lerp(20, 70, catchK), reachHand: catchK > 0.85 ? 'grip' : 'open', lag: gl }) : base;
+      const handW = lowerK > 0 ? { x: lerp(chest.x, nat.x, lowerK), y: lerp(chest.y, nat.y, lowerK) } : { x: lerp(nat.x, chest.x, catchK), y: lerp(nat.y, chest.y, catchK) };
+      const gFig = catchK > 0 && lowerK < 1 ? drawFigure(gs, CAST.grandma, hW, { load: 0, arms: { near: 'reach' }, handTarget: handW, reachBlend: lowerK,
+        handDir: lowerK > 0 ? lerp(70, base.anchors.handDirN, lowerK) : lerp(20, 70, catchK), reachHand: lowerK > 0.5 ? 'relaxed' : catchK > 0.85 ? 'grip' : 'open', lag: gl }) : base;
       gSvg = `<g transform="translate(${r(c.sx - x0P * kG)},${r(gyG)}) scale(${r(kG * 10000) / 10000})">${gFig.svg}</g>`;
       gHand = toSG(handW);
     }
@@ -375,9 +410,10 @@ export function makeScene(fmtName) {
     }
 
     // Mom (world → screen: exact projection at her lane depth, so her feet stay planted on the path)
-    s += cp3Under + dadSvg + bagSvg + cleatsBehind;
-    s += `<g transform="translate(${r(c.sx - x0P * kM)},${r(gy)}) scale(${r(kM * 10000) / 10000})">${fig.svg}</g>`;
-    s += cleatsFront + gSvg + threadSvg + flySvg + cp3Over;
+    s += op(cp3Under, q.card) + op(mayaSvg, q.maya) + op(dadSvg + bagSvg, q.people) + cleatsBehind;
+    s += op(`<g transform="translate(${r(c.sx - x0P * kM)},${r(gy)}) scale(${r(kM * 10000) / 10000})">${fig.svg}</g>`, q.mom);
+    s += cleatsFront + op(gSvg, q.people) + op(threadSvg, q.links) + flySvg + cp3Over + op(linkSvg, q.links);
+    if (t >= T.card) s += endCard(f, t);
     return s;
   };
 }
