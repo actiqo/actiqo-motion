@@ -1,0 +1,654 @@
+{
+ "fps": 30,
+ "duration": 30,
+ "frames": 900,
+ "cues": [
+  {
+   "t": 0,
+   "frame": 0,
+   "tc": "00:00:00:00",
+   "stem": "ambience",
+   "cue": "Room tone / exterior late-afternoon bed in",
+   "note": "quiet, real-world; under Mom walking from frame 0"
+  },
+  {
+   "t": 0.4,
+   "frame": 12,
+   "tc": "00:00:00:12",
+   "stem": "ui",
+   "cue": "Phone buzz 1 · \"Practice moved to Field 7\"",
+   "note": "one subtle buzz; message appears at 0.48 s"
+  },
+  {
+   "t": 1.5,
+   "frame": 45,
+   "tc": "00:00:01:15",
+   "stem": "ui",
+   "cue": "Notification 2 (quieter) · \"Who has pickup?\"",
+   "note": "message appears at 1.58 s"
+  },
+  {
+   "t": 3,
+   "frame": 90,
+   "tc": "00:00:03:00",
+   "stem": "music",
+   "cue": "Score: first pulse, almost subconscious",
+   "note": "floor strengthens, camera starts trucking"
+  },
+  {
+   "t": 3,
+   "frame": 90,
+   "tc": "00:00:03:00",
+   "stem": "ui",
+   "cue": "Register (very soft) · Leave by 4:48 PM",
+   "note": "shared restrained register voice; not a beep per item"
+  },
+  {
+   "t": 4.2,
+   "frame": 126,
+   "tc": "00:00:04:06",
+   "stem": "ui",
+   "cue": "Register · Dad drop-off",
+   "note": "optional; can sit inside the score"
+  },
+  {
+   "t": 5.2,
+   "frame": 156,
+   "tc": "00:00:05:06",
+   "stem": "ui",
+   "cue": "Register · Leo · Soccer Practice",
+   "note": ""
+  },
+  {
+   "t": 5.25,
+   "frame": 158,
+   "tc": "00:00:05:08",
+   "stem": "ui",
+   "cue": "\"Field 7\" leaves the message",
+   "note": "lands in Leo’s marker ~5.87 s"
+  },
+  {
+   "t": 6.4,
+   "frame": 192,
+   "tc": "00:00:06:12",
+   "stem": "ui",
+   "cue": "Register · Maya · Dance",
+   "note": "Mom glances up and back"
+  },
+  {
+   "t": 7.4,
+   "frame": 222,
+   "tc": "00:00:07:12",
+   "stem": "ui",
+   "cue": "Register · Cleats · Shin guards",
+   "note": ""
+  },
+  {
+   "t": 7.58,
+   "frame": 227,
+   "tc": "00:00:07:17",
+   "stem": "foley",
+   "cue": "Cleats lift (start)",
+   "note": "physical: faint cleat clack + lace"
+  },
+  {
+   "t": 8.1,
+   "frame": 243,
+   "tc": "00:00:08:03",
+   "stem": "foley",
+   "cue": "Cleats land in Mom’s far hand",
+   "note": "carried from here; faint knock on each step"
+  },
+  {
+   "t": 7.95,
+   "frame": 239,
+   "tc": "00:00:07:29",
+   "stem": "ui",
+   "cue": "\"Who has pickup?\" collapses into the phone",
+   "note": ""
+  },
+  {
+   "t": 8.25,
+   "frame": 248,
+   "tc": "00:00:08:08",
+   "stem": "music",
+   "cue": "Orange thread spools → unresolved tension layer begins",
+   "note": "this layer runs until the resolve at 25.4 s"
+  },
+  {
+   "t": 9,
+   "frame": 270,
+   "tc": "00:00:09:00",
+   "stem": "music",
+   "cue": "Camera pull-back; Mom slows",
+   "note": "reduce musical movement"
+  },
+  {
+   "t": 9.55,
+   "frame": 287,
+   "tc": "00:00:09:17",
+   "stem": "ui",
+   "cue": "Pickup · 6:30 · ? lands (orange)",
+   "note": "no boom, no bass hit"
+  },
+  {
+   "t": 10.6,
+   "frame": 318,
+   "tc": "00:00:10:18",
+   "stem": "music",
+   "cue": "THE WEIGHT · held still",
+   "note": "space; tension sits. Mom’s breath (1 px shoulder) only"
+  },
+  {
+   "t": 12,
+   "frame": 360,
+   "tc": "00:00:12:00",
+   "stem": "ui",
+   "cue": "Alignment: grid snaps",
+   "note": "precise, tiny"
+  },
+  {
+   "t": 12.6,
+   "frame": 378,
+   "tc": "00:00:12:18",
+   "stem": "foley",
+   "cue": "THE FOLD begins (hero) · structural fold/register",
+   "note": "spatial movement, tonal alignment; ends 14.4 s"
+  },
+  {
+   "t": 14.1,
+   "frame": 423,
+   "tc": "00:00:14:03",
+   "stem": "ui",
+   "cue": "Register · Maya’s card",
+   "note": "information settling into place"
+  },
+  {
+   "t": 14.35,
+   "frame": 431,
+   "tc": "00:00:14:11",
+   "stem": "ui",
+   "cue": "Game Plan surface resolves",
+   "note": "tactile UI register, no ding"
+  },
+  {
+   "t": 14.45,
+   "frame": 434,
+   "tc": "00:00:14:14",
+   "stem": "ui",
+   "cue": "Register · Leo — Soccer Practice / Thu 5:30 PM / Field 7",
+   "note": ""
+  },
+  {
+   "t": 15.25,
+   "frame": 458,
+   "tc": "00:00:15:08",
+   "stem": "ui",
+   "cue": "Register · Leave by 4:48 PM band",
+   "note": ""
+  },
+  {
+   "t": 15.6,
+   "frame": 468,
+   "tc": "00:00:15:18",
+   "stem": "ui",
+   "cue": "Register · Who’s doing what · Dad drop-off",
+   "note": ""
+  },
+  {
+   "t": 16,
+   "frame": 480,
+   "tc": "00:00:16:00",
+   "stem": "ui",
+   "cue": "Register · What to bring · Cleats, Shin guards (lands 16.75 s)",
+   "note": ""
+  },
+  {
+   "t": 17.5,
+   "frame": 525,
+   "tc": "00:00:17:15",
+   "stem": "foley",
+   "cue": "Mom lowers the cleats into the bag",
+   "note": "into bag ~17.80–18.22 s"
+  },
+  {
+   "t": 17.95,
+   "frame": 539,
+   "tc": "00:00:17:29",
+   "stem": "music",
+   "cue": "What to bring acknowledges · a little weight leaves",
+   "note": "row tint 17.95–18.85 s"
+  },
+  {
+   "t": 18.2,
+   "frame": 546,
+   "tc": "00:00:18:06",
+   "stem": "foley",
+   "cue": "Dad walks in (footsteps below)",
+   "note": ""
+  },
+  {
+   "t": 18.95,
+   "frame": 569,
+   "tc": "00:00:18:29",
+   "stem": "foley",
+   "cue": "Dad reaches for the bag",
+   "note": ""
+  },
+  {
+   "t": 19.45,
+   "frame": 584,
+   "tc": "00:00:19:14",
+   "stem": "foley",
+   "cue": "BAG HANDOFF · cloth + strap",
+   "note": "real handoff; almost no musical emphasis"
+  },
+  {
+   "t": 19.65,
+   "frame": 590,
+   "tc": "00:00:19:20",
+   "stem": "ui",
+   "cue": "Dad drop-off acknowledged (neutral link)",
+   "note": "barely there"
+  },
+  {
+   "t": 22.25,
+   "frame": 668,
+   "tc": "00:00:22:08",
+   "stem": "foley",
+   "cue": "Mom looks down at the phone",
+   "note": ""
+  },
+  {
+   "t": 22.6,
+   "frame": 678,
+   "tc": "00:00:22:18",
+   "stem": "ui",
+   "cue": "Tap · Who’s doing what",
+   "note": "subtle"
+  },
+  {
+   "t": 22.75,
+   "frame": 683,
+   "tc": "00:00:22:23",
+   "stem": "ui",
+   "cue": "Overview → Assignments (view change)",
+   "note": "Assignments in from 23 s"
+  },
+  {
+   "t": 23,
+   "frame": 690,
+   "tc": "00:00:23:00",
+   "stem": "ui",
+   "cue": "Thread re-anchors to “No one on pickup”",
+   "note": ""
+  },
+  {
+   "t": 23.4,
+   "frame": 702,
+   "tc": "00:00:23:12",
+   "stem": "foley",
+   "cue": "Grandma walks in from frame-left (footsteps below)",
+   "note": "slower pace, softer loafers"
+  },
+  {
+   "t": 23.6,
+   "frame": 708,
+   "tc": "00:00:23:18",
+   "stem": "ui",
+   "cue": "Tap · Assign",
+   "note": ""
+  },
+  {
+   "t": 24.55,
+   "frame": 737,
+   "tc": "00:00:24:17",
+   "stem": "foley",
+   "cue": "Grandma’s hand takes the thread",
+   "note": ""
+  },
+  {
+   "t": 25.4,
+   "frame": 762,
+   "tc": "00:00:25:12",
+   "stem": "music",
+   "cue": "RESOLVED · Grandma pickup · At 6:30 PM",
+   "note": "PAYOFF BY SUBTRACTION: the unresolved layer drops out. No chime."
+  },
+  {
+   "t": 25.55,
+   "frame": 767,
+   "tc": "00:00:25:17",
+   "stem": "foley",
+   "cue": "Phone into coat pocket",
+   "note": "small cloth/phone"
+  },
+  {
+   "t": 26.05,
+   "frame": 782,
+   "tc": "00:00:26:02",
+   "stem": "foley",
+   "cue": "Grandma sets off toward 6:30",
+   "note": ""
+  },
+  {
+   "t": 26.15,
+   "frame": 785,
+   "tc": "00:00:26:05",
+   "stem": "foley",
+   "cue": "Mom walks on (free gait)",
+   "note": "more space around footsteps; music opens slightly"
+  },
+  {
+   "t": 26.25,
+   "frame": 788,
+   "tc": "00:00:26:08",
+   "stem": "ui",
+   "cue": "Responsibility links fade (0.55 s)",
+   "note": ""
+  },
+  {
+   "t": 27,
+   "frame": 810,
+   "tc": "00:00:27:00",
+   "stem": "music",
+   "cue": "World quiets (card recedes 26.85 s in 16:9, 27.0 s in 9:16)",
+   "note": "world gone by ~28.00 s"
+  },
+  {
+   "t": 27.8,
+   "frame": 834,
+   "tc": "00:00:27:24",
+   "stem": "music",
+   "cue": "ACTIQO wordmark fades in",
+   "note": "NO logo sting; music settles underneath"
+  },
+  {
+   "t": 28.1,
+   "frame": 843,
+   "tc": "00:00:28:03",
+   "stem": "music",
+   "cue": "Family Activity Intelligence",
+   "note": ""
+  },
+  {
+   "t": 28.45,
+   "frame": 854,
+   "tc": "00:00:28:14",
+   "stem": "music",
+   "cue": "The activity lasts an hour. / The coordination lasts all week. (28.57 s)",
+   "note": ""
+  },
+  {
+   "t": 29.2,
+   "frame": 876,
+   "tc": "00:00:29:06",
+   "stem": "music",
+   "cue": "Picture holds (final 24 frames)",
+   "note": "stable audio tail allowed"
+  },
+  {
+   "t": 30,
+   "frame": 900,
+   "tc": "00:00:30:00",
+   "stem": "all",
+   "cue": "End (frame 900)",
+   "note": "tail may ring out to here; nothing after"
+  }
+ ],
+ "footfalls": [
+  {
+   "t": 0.481,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 14,
+   "tc": "00:00:00:14"
+  },
+  {
+   "t": 0.962,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 29,
+   "tc": "00:00:00:29"
+  },
+  {
+   "t": 1.442,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 43,
+   "tc": "00:00:01:13"
+  },
+  {
+   "t": 1.923,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 58,
+   "tc": "00:00:01:28"
+  },
+  {
+   "t": 2.402,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 72,
+   "tc": "00:00:02:12"
+  },
+  {
+   "t": 2.883,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 86,
+   "tc": "00:00:02:26"
+  },
+  {
+   "t": 3.362,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 101,
+   "tc": "00:00:03:11"
+  },
+  {
+   "t": 3.842,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 115,
+   "tc": "00:00:03:25"
+  },
+  {
+   "t": 4.321,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 130,
+   "tc": "00:00:04:10"
+  },
+  {
+   "t": 4.798,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 144,
+   "tc": "00:00:04:24"
+  },
+  {
+   "t": 5.275,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 158,
+   "tc": "00:00:05:08"
+  },
+  {
+   "t": 5.752,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 173,
+   "tc": "00:00:05:23"
+  },
+  {
+   "t": 6.229,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 187,
+   "tc": "00:00:06:07"
+  },
+  {
+   "t": 6.704,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 201,
+   "tc": "00:00:06:21"
+  },
+  {
+   "t": 7.179,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 215,
+   "tc": "00:00:07:05"
+  },
+  {
+   "t": 7.654,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 230,
+   "tc": "00:00:07:20"
+  },
+  {
+   "t": 8.127,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 244,
+   "tc": "00:00:08:04"
+  },
+  {
+   "t": 8.598,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 258,
+   "tc": "00:00:08:18"
+  },
+  {
+   "t": 9.069,
+   "foot": "far",
+   "moving": 0.96,
+   "who": "Mom",
+   "frame": 272,
+   "tc": "00:00:09:02"
+  },
+  {
+   "t": 10.177,
+   "foot": "near",
+   "moving": 0.3,
+   "who": "Mom",
+   "frame": 305,
+   "tc": "00:00:10:05"
+  },
+  {
+   "t": 18.423,
+   "foot": "far",
+   "moving": 1,
+   "who": "Dad",
+   "frame": 553,
+   "tc": "00:00:18:13"
+  },
+  {
+   "t": 19.213,
+   "foot": "near",
+   "moving": 0.35,
+   "who": "Dad",
+   "frame": 576,
+   "tc": "00:00:19:06"
+  },
+  {
+   "t": 23.335,
+   "foot": "near",
+   "moving": 1,
+   "who": "Grandma",
+   "frame": 700,
+   "tc": "00:00:23:10"
+  },
+  {
+   "t": 23.89,
+   "foot": "far",
+   "moving": 1,
+   "who": "Grandma",
+   "frame": 717,
+   "tc": "00:00:23:27"
+  },
+  {
+   "t": 24.446,
+   "foot": "near",
+   "moving": 1,
+   "who": "Grandma",
+   "frame": 733,
+   "tc": "00:00:24:13"
+  },
+  {
+   "t": 25.34,
+   "foot": "far",
+   "moving": 0.35,
+   "who": "Grandma",
+   "frame": 760,
+   "tc": "00:00:25:10"
+  },
+  {
+   "t": 26.86,
+   "foot": "near",
+   "moving": 1,
+   "who": "Grandma",
+   "frame": 806,
+   "tc": "00:00:26:26"
+  },
+  {
+   "t": 26.894,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 807,
+   "tc": "00:00:26:27"
+  },
+  {
+   "t": 27.415,
+   "foot": "far",
+   "moving": 1,
+   "who": "Grandma",
+   "frame": 822,
+   "tc": "00:00:27:12"
+  },
+  {
+   "t": 27.421,
+   "foot": "near",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 823,
+   "tc": "00:00:27:13"
+  },
+  {
+   "t": 27.948,
+   "foot": "far",
+   "moving": 1,
+   "who": "Mom",
+   "frame": 838,
+   "tc": "00:00:27:28"
+  }
+ ],
+ "stops": {
+  "mom": 10.177083333332916,
+  "dad": 19.212500000001807,
+  "grandma": 25.339583333340016
+ }
+}

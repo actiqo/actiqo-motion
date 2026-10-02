@@ -4,7 +4,7 @@
 |---|---|
 | **Checkpoint** | CP5 |
 | **Runtime covered** | 26.00–30.00 s (storyboard beats 22–23) |
-| **Approval status** | Pending review |
+| **Approval status** | **APPROVED · PICTURE LOCKED** (2026-10-02) |
 
 ## What happens
 | Time | Beat |
@@ -50,8 +50,9 @@ The end card is opacity only: no logo zoom, bounce, flourish, wipe, fly-out or f
 - **Grandma walks on** (toward 6:30) instead of standing. Otherwise Mom would have to pass behind her while Grandma fades, and the two semi-transparent figures would overlap.
 - **End-card timing:** the wordmark is at 27.8 s (storyboard 27.6) and the lines are at 28.45/28.57 s (storyboard 28.6/29.1). This lets the world finish quieting first and makes every element settle before frame 876, so the last 24 frames hold true stillness.
 
-## Known nits
-- **16:9, about 26.8–27.2 s:** Grandma walks in front of the receding Assignments card, and her head briefly crosses the start of **Grandma pickup** while the card begins to fade (27.0 s). The resolved state is fully readable and unobstructed from 25.7 to about 26.8 s. If you want it clear for longer, the card's recede can start at 26.85 s.
+## Picture-lock micro-fix (2026-10-02)
+- **16:9 only:** the Assignments card now begins its recede 0.15 s earlier (26.85 s instead of 27.0 s), so it is already going as Grandma's head reaches the start of **Grandma pickup**. Grandma, both walks, the 9:16 version, CP1–CP4 and the end-card timing are unchanged.
+- Verified at the SVG level, frame by frame, against the approved masters: only 16:9 frames 806–827 (26.87–27.57 s) differ, and 9:16 is identical. The 16:9 CP5 preview, stills, contact sheet and 30 s master were re-rendered.
 
 ## Decisions needed
-_None._ Sound and music are not started; they wait for review of the complete silent film.
+_None._ Picture is locked. Audio is tracked in `../audio/`.

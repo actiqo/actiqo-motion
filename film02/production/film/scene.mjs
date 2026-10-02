@@ -41,6 +41,7 @@ export const FMT = {
     mk: { size: 44, min: 34, leave: { side: 'right', rise: 150 }, leo: { side: 'right', rise: 480 }, maya: { side: 'left', rise: 170 }, pick: { side: 'left', rise: 150 } },
     labelSize: 24, threadW: 4.5, sag: 150,
     tiltY: 40, gp: { x: 650, y: 88, U: 1.72 }, clip: 'card', maya: { x: 300, y: 122, U: 1.6 }, pickRiseEnd: 0.08, dadDz: 140, dadStopX: 175, gDz: 130, gStopX: 535,
+    cardOutDt: -0.15, // picture-lock micro-fix: the Assignments card recedes 0.15 s earlier, clear of Grandma's head (16:9 only)
   },
   tall: {
     // derived so that (final) Mom's feet ≈ y 1700, Leo's lane ≈ y 900, Maya's lane ≈ y 600, fold ≈ y 1100
@@ -74,6 +75,21 @@ export const STRINGS = [
   ['Dad drop-off', 500], ['Grandma pickup', 500], ['Dad', 600], ['Grandma', 600], ['No one on pickup', 500], ['Maya — Dance', 600], ['Thu 5:15 PM', 400], ['Thu ', 400], ['5:30', 500],
 ];
 
+// ── the three walkers' gait specs (shared by the picture and the audio cue sheet, so footfalls match the feet exactly) ──
+export const GAIT = {
+  mom: (h) => ({
+    h, x0: 0, groundY: 0, t0: -2, t1: 31,
+    // CP5: the free gait — calmer cadence, the film's longest stride (+16% on the loaded walk)
+    cadence: (t) => (t < T.go ? lerp(1.02, 1.07, load(t)) : 0.95), stride: (t) => (t < T.go ? lerp(2.45, 2.16, load(t)) : 2.5),
+    speedScale: (t) => (t < T.go ? lerp(1, 0.3, span(t, T.pullback, 1.0, EASE.std)) : smooth01((t - T.go) / T.ramp)), stopAfter: 9.95, restartAt: T.go,
+  }),
+  dad: (h) => ({ h, x0: 0, groundY: 0, t0: 16, t1: 24, cadence: () => 0.95, stride: () => 2.66,
+    speedScale: (t) => lerp(1, 0.35, span(t, 18.7, 0.4, EASE.std)), stopAfter: 18.98 }),
+  // CP5: she sets off first, toward 6:30 (her leg), at her own slower cadence — always ahead of Mom, so the two never cross
+  grandma: (h) => ({ h, x0: 0, groundY: 0, t0: 21, t1: 32, cadence: () => 0.9, stride: (t) => (t < T.gGo ? 2.25 : 2.35),
+    speedScale: (t) => (t < T.gGo ? lerp(1, 0.35, span(t, 24.7, 0.45, EASE.std)) : smooth01((t - T.gGo) / 0.7)), stopAfter: 24.95, restartAt: T.gGo }),
+};
+
 /** wrap in a group only while fading, so earlier frames stay byte-identical */
 const op = (svg, k) => (!svg || k >= 1 ? svg : k <= 0 ? '' : `<g opacity="${r(k * 1000) / 1000}">${svg}</g>`);
 
@@ -99,22 +115,14 @@ export function makeScene(fmtName) {
   const L = f.L;
   const Xf = (hr) => X(hr) * f.hx;
   const hW = (f.momH * L.mom) / f.cam0.F;                    // Mom's head height in world units
-  const sim = simulate({
-    h: hW, x0: 0, groundY: 0, t0: -2, t1: 31,
-    // CP5: the free gait — calmer cadence, the film's longest stride (+16% on the loaded walk)
-    cadence: (t) => (t < T.go ? lerp(1.02, 1.07, load(t)) : 0.95), stride: (t) => (t < T.go ? lerp(2.45, 2.16, load(t)) : 2.5),
-    speedScale: (t) => (t < T.go ? lerp(1, 0.3, span(t, T.pullback, 1.0, EASE.std)) : smooth01((t - T.go) / T.ramp)), stopAfter: 9.95, restartAt: T.go,
-  });
+  const sim = simulate(GAIT.mom(hW));
   // Dad: walks in on Mom's path (slightly behind her), stops behind her left where the bag hangs
-  const dadSim = simulate({ h: hW, x0: 0, groundY: 0, t0: 16, t1: 24, cadence: () => 0.95, stride: () => 2.66,
-    speedScale: (t) => lerp(1, 0.35, span(t, 18.7, 0.4, EASE.std)), stopAfter: 18.98 });
+  const dadSim = simulate(GAIT.dad(hW));
   const dadEndX = dadSim.at(21).x;
   const GPL = gpLayout(f.gp.x, f.gp.y, f.gp.U);
   const ASL = asLayout(f.gp.x, f.gp.y, f.gp.U);
   // Grandma: walks in from frame-left on a lane just in front of Mom's, steps into the pickup thread's line, stops facing the plan
-  // CP5: she sets off first, toward 6:30 (her leg), at her own slower cadence — always ahead of Mom, so the two never cross
-  const gSim = simulate({ h: hW, x0: 0, groundY: 0, t0: 21, t1: 32, cadence: () => 0.9, stride: (t) => (t < T.gGo ? 2.25 : 2.35),
-    speedScale: (t) => (t < T.gGo ? lerp(1, 0.35, span(t, 24.7, 0.45, EASE.std)) : smooth01((t - T.gGo) / 0.7)), stopAfter: 24.95, restartAt: T.gGo });
+  const gSim = simulate(GAIT.grandma(hW));
   const gEndX = gSim.at(T.gGo).x;                          // where she stands (before her CP5 walk-on)
   const resample = (pts, n) => { const d = [0]; for (let i = 1; i < pts.length; i++) d.push(d[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y));
     const out = []; for (let j = 0; j < n; j++) { const L0 = (d[d.length - 1] * j) / (n - 1); let i = 1; while (i < d.length - 1 && d[i] < L0) i++; const u = (L0 - d[i - 1]) / Math.max(1e-6, d[i] - d[i - 1]);
@@ -139,7 +147,7 @@ export function makeScene(fmtName) {
     // floor: faint ghost at the start, full from ~4 s; hour labels arrive with the first marker
     // CP5 · the world quiets in order: links → Maya → routes → the Assignments card → Dad + Grandma → floor → Mom; then the end card
     const q = { links: 1 - span(t, T.linksOut, 0.55, EASE.std), maya: 1 - span(t, T.mayaOut, 0.5, EASE.std), routes: 1 - span(t, T.routesOut, 0.5, EASE.std),
-      card: 1 - span(t, T.cardOut, 0.6, EASE.breath), people: 1 - span(t, T.peopleOut, 0.55, EASE.std), floor: 1 - span(t, T.floorOut, 0.7, EASE.breath), mom: 1 - span(t, T.momOut, 0.6, EASE.std) };
+      card: 1 - span(t, T.cardOut + (f.cardOutDt || 0), 0.6, EASE.breath), people: 1 - span(t, T.peopleOut, 0.55, EASE.std), floor: 1 - span(t, T.floorOut, 0.7, EASE.breath), mom: 1 - span(t, T.momOut, 0.6, EASE.std) };
     const floorO = lerp(0.4, 1, span(t, T.floorUp, 1.2, EASE.breath)) * q.floor;
     let s = `<rect width="${f.W}" height="${f.H}" fill="${C.ivory}"/>`;
     if (t >= T.still - 1 / 60) return s + endCard(f, 1);                          // the held end card: identical every frame

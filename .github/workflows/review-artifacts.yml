@@ -45,6 +45,8 @@ jobs:
             film02/production/film/out/stills/*.png
             film02/production/film/out/ACTIQO_*.mp4
             film02/production/cp*/out/*.mp4
+            film02/production/audio/*.md
+            film02/production/audio/out/*.wav
             film01/**/*.png film01/**/*.jpg film01/**/*.mp4 film01/**/*.md
             styleframes/film01/**/*.png styleframes/film01/**/*.jpg styleframes/film01/**/*.md
             videos/actiqo-the-hour/stills/**/*.png
@@ -67,6 +69,8 @@ jobs:
             film02/production/film/out/stills/*.png
             film02/production/film/out/ACTIQO_*.mp4
             film02/production/cp*/out/*.mp4
+            film02/production/audio/*.md
+            film02/production/audio/out/*.wav
             film01/**/*.png
             film01/**/*.jpg
             film01/**/*.mp4
