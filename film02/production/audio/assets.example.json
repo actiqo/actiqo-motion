@@ -1,0 +1,41 @@
+{
+ "_note": "Template for audio/assets.json. File names follow ASSETS.md; replace grid.bpm / grid.downbeat with the chosen track's values. Times: seconds, '@timelineKey(+/-s)', optionally prefixed 'beat:' or 'bar:' to snap to the music grid. Music stems share one offset (or align_end) so they stay in sync; layers are arranged with dB automation (-80 = out).",
+ "grid": { "bpm": 105, "downbeat": 0.0, "beatsPerBar": 4 },
+ "music": [
+  { "cue": "drums (core groove)", "file": "music/stem_drums.wav", "at": 0, "align_end": true,
+    "automation": [[0, -3], ["bar:@pickup", 0], ["bar:@align", -2], ["beat:@ack", -2], ["beat:@ack|+0.6", -5], ["bar:@go", -4], [30, -4]], "_why": "Dad takes drop-off: a small release" },
+  { "cue": "bass (core groove)", "file": "music/stem_bass.wav", "at": 0, "align_end": true, "automation": [[0, -2], [30, -2]] },
+  { "cue": "keys / plucks (core groove)", "file": "music/stem_keys.wav", "at": 0, "align_end": true, "automation": [[0, -4], ["beat:@cleatsDown+0.45", -4], ["beat:@cleatsDown+0.45|+0.6", -8], ["bar:@go", -7], [30, -7]], "_why": "What to bring resolves: this layer simplifies" },
+  { "cue": "perc: joins as the day fills; drops at the alignment; Dad's release", "file": "music/stem_perc.wav", "at": 0, "align_end": true,
+    "automation": [[0, -80], ["beat:@leave", -80], ["beat:@leave|+0.3", -10], ["beat:@leo", -10], ["beat:@leo|+0.3", -7], ["beat:@prep", -7], ["beat:@prep|+0.3", -4], ["bar:@align", -4], ["bar:@align|+0.5", -80], [30, -80]] },
+  { "cue": "synth pulse: Maya joins; the open pickup; removed at the resolve", "file": "music/stem_synth.wav", "at": 0, "align_end": true,
+    "automation": [[0, -80], ["beat:@maya", -80], ["beat:@maya|+0.4", -8], ["beat:@pickup", -5], ["bar:@align", -9], ["beat:@resolve", -9], ["beat:@resolve|+0.35", -80], [30, -80]] }
+ ],
+ "events": [
+  { "stem": "ambience", "cue": "afternoon exterior bed", "file": "ambience/amb_afternoon.wav", "at": 0, "offset": 0, "gain_db": -6,
+    "automation": [[0, 0], ["@floorOut", 0], ["@floorOut+0.7", -10], [30, -14]] },
+  { "stem": "ui", "cue": "Phone buzz · Practice moved to Field 7", "file": "ui/phone_buzz.wav", "at": "@buzz1" },
+  { "stem": "ui", "cue": "Quieter cue · Who has pickup?", "file": "ui/notify_soft.wav", "at": "@buzz2", "gain_db": -6 },
+  { "stem": "ui", "cue": "Alignment snap", "file": "ui/align_snap.wav", "at": "@align", "gain_db": -10 },
+  { "stem": "foley", "cue": "THE FOLD (hero)", "file": "ui/fold_structural.wav", "at": "@fold", "lead": 0.05 },
+  { "stem": "ui", "cue": "Register · Maya's card", "file": "ui/register_01.wav", "at": "@regMaya+0.45", "gain_db": -14 },
+  { "stem": "ui", "cue": "Register · Game Plan resolves", "file": "ui/register_02.wav", "at": "@gp", "gain_db": -12 },
+  { "stem": "ui", "cue": "Register · Leo session", "file": "ui/register_03.wav", "at": "@regLeo+0.5", "gain_db": -14 },
+  { "stem": "ui", "cue": "Register · Leave by band", "file": "ui/register_04.wav", "at": "@regLeave+0.5", "gain_db": -14 },
+  { "stem": "ui", "cue": "Register · Dad drop-off row", "file": "ui/register_05.wav", "at": "@regDad+0.5", "gain_db": -15 },
+  { "stem": "ui", "cue": "Register · What to bring lands", "file": "ui/register_01.wav", "at": 16.75, "gain_db": -15 },
+  { "stem": "foley", "cue": "Cleats lifted", "file": "foley/cleats_handle.wav", "at": "@cleatsFly", "gain_db": -8 },
+  { "stem": "foley", "cue": "Cleats into the bag", "file": "foley/cleats_into_bag.wav", "at": "@cleatsDown+0.3", "gain_db": -6 },
+  { "stem": "foley", "cue": "Bag handoff (lift)", "file": "foley/bag_handoff.wav", "at": "@bagLift", "lead": 0.4 },
+  { "stem": "ui", "cue": "Tap · Who's doing what", "file": "ui/tap.wav", "at": "@tapWho", "gain_db": -12 },
+  { "stem": "ui", "cue": "Overview → Assignments", "file": "ui/view_change.wav", "at": "@asOut", "gain_db": -14 },
+  { "stem": "ui", "cue": "Tap · Assign", "file": "ui/tap.wav", "at": "@tapAssign", "gain_db": -12 },
+  { "stem": "foley", "cue": "Phone into pocket", "file": "foley/phone_pocket.wav", "at": "@pocket", "gain_db": -6 },
+  { "stem": "foley", "cue": "Coat · Mom walks on", "file": "foley/cloth_coat_01.wav", "at": "@go", "gain_db": -12 }
+ ],
+ "footsteps": {
+  "Mom": { "files": ["foley/steps_mom_01.wav", "foley/steps_mom_02.wav", "foley/steps_mom_03.wav", "foley/steps_mom_04.wav", "foley/steps_mom_05.wav", "foley/steps_mom_06.wav"], "gain_db": -10, "pan": -0.1 },
+  "Dad": { "files": ["foley/steps_dad_01.wav", "foley/steps_dad_02.wav", "foley/steps_dad_03.wav"], "gain_db": -12, "pan": -0.4 },
+  "Grandma": { "files": ["foley/steps_grandma_01.wav", "foley/steps_grandma_02.wav", "foley/steps_grandma_03.wav", "foley/steps_grandma_04.wav", "foley/steps_grandma_05.wav"], "gain_db": -13, "pan": 0.1 }
+ }
+}

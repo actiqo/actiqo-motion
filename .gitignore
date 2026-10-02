@@ -41,3 +41,7 @@ Thumbs.db
 .idea/
 *.swp
 *~
+
+# ── licensed library audio (Artlist etc.): raw downloads stay local, never committed; only our mixes are ──
+film02/production/audio/assets/
+film02/production/audio/stems/

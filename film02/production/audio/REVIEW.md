@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Phase** | Final sound design + music, against locked picture |
-| **Status** | **Sourcing decision needed.** No audio is rendered yet. |
+| **Status** | **Waiting for licensed assets** (Artlist Pro, decided 2026-10-02). No audio rendered yet; no code-generated sound will be used in the final. |
 
 ## Ready
 - **`CUES.md` / `cues.json`:** a frame-accurate spotting list generated from the locked picture's own timeline (`node audio/cues.mjs`).
@@ -16,15 +16,12 @@
   - Muxes the mix into copies of the silent masters, `../film/out/ACTIQO_WhatYouCarry_30s_mix_{16x9,9x16}.mp4`. The video stream is copied, never re-encoded, and the silent masters are left untouched.
   - The pipeline has been tested end to end (with test noise only; nothing is committed).
 
-## Why no audio yet
+## Sourcing (decided)
+- **Music:** one licensed Artlist track, chosen by you; **with stems**, so the arrangement can build, align and subtract on cue. The brief and the arrangement plan are in `ASSETS.md`.
+- **SFX / foley / ambience:** Artlist library assets (the list and file names are in `ASSETS.md`). A cue the library can't cover (most likely the fold or the alignment snap) is flagged individually for possible AI SFX, never the whole soundtrack.
+- **Pipeline:** `audio/assets/` (raw licensed files, git-ignored) → `node audio/place.mjs` (places everything frame-accurately on the timeline / heel strikes, arranges the music stems on the track's bar and beat grid) → `audio/stems/` → `node audio/mix.mjs` → WAVs + review masters. `assets.example.json` is the starting manifest; it's been dry-run end to end.
+
+## Why the audio is licensed rather than code-built
 The brief asks for the score to be judged by the same premium standard as the picture, and to stop rather than force procedural audio in. Two facts decide this:
 1. **There's no recorded source material on this machine:** no music, foley or ambience library, and no samples or sound fonts. The only available synthesis is ffmpeg's oscillators and noise generators. A score and foley built from those (footsteps, cloth, a bag handoff, a phone in a pocket, a warm organic/electronic bed) would sound procedural, which is exactly the outcome the brief rules out.
 2. **I can't listen to audio.** I can measure loudness, peaks, sync and spectra, but I can't judge whether something sounds natural, warm or premium. Signing off a score I can't hear would not be an honest quality judgement.
-
-## Options
-1. **Recorded/licensed sources, cut and mixed here (recommended for picture-locked premium quality).**
-   - **Music:** a licensed track or stems (for example Musicbed, Artlist or Epidemic), or a composer working to `CUES.md`.
-   - **Foley and ambience:** a recorded library (for example Soundly or BOOM), or a sound designer.
-   - I place everything frame-accurately against the cue sheet and footfalls, build the four stems, mix and deliver through the review workflow.
-2. **AI-generated audio** through a connected generation service. This uses that service's credits and licence terms, and you would still be the judge of how it sounds.
-3. **A code-built temp track,** clearly labelled as a timing guide only, never as the final mix.
