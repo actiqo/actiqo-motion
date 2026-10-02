@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- ACTIQO Film 01 "The Hour": S1–S5 (8.0 s). Libraries/tokens are loaded by the host index.html. -->
+  </head>
+  <body>
+    <template>
+      <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      #root {
+        position: absolute; inset: 0; overflow: hidden;
+        background: var(--aq-paper);
+        font-family: var(--aq-font);
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "tnum" 1, "cv11" 1;
+      }
+      #th-stage { position: absolute; inset: 0; }
+      .layer { position: absolute; inset: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      svg.layer { overflow: visible; }
+
+      /* world geometry */
+      .aq-grid-col, .aq-grid-hour { stroke: var(--aq-grid); stroke-width: 1.5; }
+      .aq-block--muted { fill: var(--aq-eventFill); }
+      .aq-thread { stroke: var(--aq-hairline); stroke-width: 2; stroke-linecap: round; }
+      .aq-thread-pin { fill: var(--aq-ink2); }
+      .aq-leave-line { stroke: var(--aq-ink); stroke-width: 3; stroke-linecap: round; }
+
+      /* text owned by the bubble / Hour Block (clipped to the object's silhouette) */
+      .aq-bubble-text {
+        position: absolute; left: 0; top: 0; transform-origin: 0 0;
+        font-size: 64px; line-height: 1.18; font-weight: 400; letter-spacing: -0.015em;
+        color: var(--aq-ink); white-space: nowrap;
+      }
+      .aq-block-label { position: absolute; left: 0; top: 0; transform-origin: 0 0; white-space: nowrap; }
+      .aq-block-title {
+        font-size: 44px; line-height: 1.1; font-weight: 700;
+        letter-spacing: var(--aq-tracking-display); color: var(--aq-onInk);
+      }
+      .aq-block-time {
+        margin-top: 10px; font-size: 32px; line-height: 1.15; font-weight: 400;
+        letter-spacing: var(--aq-tracking); color: var(--aq-onInk2);
+      }
+
+      /* time ruler (sticky left rail) */
+      .aq-ruler { position: absolute; left: 0; top: 0; height: 1920px; background: var(--aq-paper); }
+      .aq-ruler-line { position: absolute; top: 0; width: 2px; height: 1920px; background: var(--aq-grid); }
+      .aq-ruler-label {
+        position: absolute; top: 0; font-size: 24px; line-height: 1.2; font-weight: 400;
+        color: var(--aq-ink3); white-space: nowrap; letter-spacing: -0.005em;
+      }
+      .aq-ruler-tick { position: absolute; top: -1px; width: 14px; height: 2px; background: var(--aq-hairline); }
+      .aq-ruler-tick--minor { width: 9px; }
+      .aq-leave-dot {
+        position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%;
+        background: var(--aq-ink);
+      }
+      .aq-leave-label {
+        position: absolute; left: 0; top: 0; transform-origin: 0% 50%;
+        font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: var(--aq-tracking);
+        color: var(--aq-ink); white-space: nowrap;
+      }
+
+      /* chips */
+      .aq-chip {
+        position: absolute; left: 0; top: 0;
+        display: inline-flex; align-items: center; gap: 12px;
+        padding: 12px 20px; border: 2px solid var(--aq-hairline); border-radius: 14px;
+        background: var(--aq-surface); color: var(--aq-ink2);
+        font-size: 30px; line-height: 1.2; font-weight: 400; letter-spacing: var(--aq-tracking);
+        white-space: nowrap;
+      }
+      .aq-monogram {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--aq-ink2);
+        font-size: 18px; font-weight: 700; color: var(--aq-ink2);
+      }
+      .aq-monogram--open { border-style: dashed; }
+
+      .aq-day-header {
+        position: absolute; left: 0; top: 0; font-size: 24px; line-height: 1.2; font-weight: 400;
+        color: var(--aq-ink3); white-space: nowrap;
+      }
+      .aq-day-header.is-focus { color: var(--aq-ink); font-weight: 700; }
+    </style>
+      <div id="root" data-composition-id="the-hour-s1-s5" data-width="1080" data-height="1920">
+        <div id="th-stage">
+          <svg class="layer" id="th-world" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+            <g id="th-g-grid"></g>
+            <g id="th-g-muted"></g>
+            <g id="th-g-threads"></g>
+            <g id="th-g-hero"></g>
+          </svg>
+          <div class="layer" id="th-shape-text"></div>
+          <div class="layer" id="th-overlay"></div>
+          <div class="layer" id="th-ruler"></div>
+          <div class="layer" id="th-headers"></div>
+        </div>
+      </div>
+      <script>
+        document.fonts.ready.then(() => {
+          const q = (id) => document.getElementById(id);
+          const film = window.AQ.buildTheHour({
+            gGrid: q("th-g-grid"), gMuted: q("th-g-muted"), gThreads: q("th-g-threads"), gHero: q("th-g-hero"),
+            shapeText: q("th-shape-text"), overlay: q("th-overlay"), ruler: q("th-ruler"), headers: q("th-headers"),
+          });
+          window.__timelines["the-hour-s1-s5"] = film.tl; // registered only after the build completes
+          if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
+        });
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Film 01 · Styleframe A</title>
+<link rel="stylesheet" href="../../brand/actiqo-motion-tokens.css">
+<style>
+  html,body{margin:0;padding:0}
+  body{width:1080px;height:1920px;overflow:hidden;background:var(--acti-app-canvas);
+       font-family:var(--acti-font-ui);color:var(--acti-ink);-webkit-font-smoothing:antialiased;
+       position:relative}
+  .abs{position:absolute}
+  .fa{display:block}
+  /* Page title: ACTI_TYPE_ROLE.pageTitle, Fraunces 28/34 600 -0.5px, ×k=2.5 → 70/85 */
+  .page-title{font-family:var(--acti-font-editorial);font-weight:600;font-size:76px;line-height:84px;
+              letter-spacing:-1.4px;font-variation-settings:"opsz" 72, "SOFT" 0, "WONK" 0}
+  .page-sub{font-size:34px;line-height:44px;font-weight:400;color:var(--acti-ink-2)}
+  .hour{font-size:26px;font-weight:500;color:var(--acti-ink-3);text-align:right;width:92px;
+        transform:translateY(-50%)}
+  .hline{height:2px;background:var(--acti-hairline)}
+  .hline.half{background:rgba(11,31,59,0.045)}
+  /* Chip: ACTIQO Row / pill language (white surface, hairline, soft shadow, circular tint well) */
+  .chip{display:flex;align-items:center;gap:18px;background:var(--acti-surface);
+        border:2px solid var(--acti-hairline);border-radius:var(--acti-r-surface);
+        box-shadow:var(--acti-shadow-surface);padding:16px 26px 16px 16px;white-space:nowrap}
+  .well{flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .chip .t{font-size:32px;line-height:38px;font-weight:600;letter-spacing:-0.3px;color:var(--acti-ink)}
+  .chip .s{font-size:25px;line-height:31px;font-weight:500;color:var(--acti-ink-2)}
+  .chip.green{background:var(--acti-green-surface);border-color:transparent;box-shadow:none}
+  .chip.orange{background:var(--acti-orange-surface);border-color:transparent;box-shadow:none}
+  .w-green{background:var(--acti-green-surface);color:var(--acti-green-ink)}
+  .w-white-green{background:#fff;color:var(--acti-green-ink)}
+  .w-white-orange{background:#fff;color:var(--acti-orange-ink)}
+  .w-blue{background:var(--acti-blue-surface);color:var(--acti-blue-ink)}
+  .w-neutral{background:var(--acti-ink-tint);color:var(--acti-ink)}
+  .w-lilac{background:var(--acti-lilac-surface);color:var(--acti-lilac-ink)}
+  svg.threads{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+  
+  .bubble{background:var(--acti-surface);border:2px solid var(--acti-hairline);
+          border-radius:56px 56px 56px 16px;box-shadow:var(--acti-shadow-overlay);
+          padding:52px 64px 60px;font-size:98px;line-height:110px;font-weight:600;
+          letter-spacing:-2.6px;color:var(--acti-ink);display:inline-block}
+
+</style></head>
+<body>
+
+  <div class="abs hline" style="left:196px;width:884px;top:470px;background:rgba(11,31,59,0.035)"></div><div class="abs hline" style="left:196px;width:884px;top:790px;background:rgba(11,31,59,0.035)"></div><div class="abs hline" style="left:196px;width:884px;top:1110px;background:rgba(11,31,59,0.035)"></div><div class="abs hline" style="left:196px;width:884px;top:1430px;background:rgba(11,31,59,0.035)"></div>
+  <div class="abs" style="left:84px;top:660px">
+    <div style="display:flex;align-items:baseline;gap:16px;margin:0 0 22px 8px">
+      <span style="font-size:32px;font-weight:600;color:var(--acti-ink)">Dana</span>
+      <span style="font-size:28px;font-weight:500;color:var(--acti-ink-3)">3:12 PM</span>
+    </div>
+    <div class="bubble">who’s got pickup<br>today?</div>
+  </div>
+
+</body></html>

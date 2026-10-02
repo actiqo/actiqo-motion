@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- ACTIQO Film 01 "The Hour": S1–S5 (8.0 s), v02 on the real ACTIQO system. Libraries load in index.html. -->
+  </head>
+  <body>
+    <template>
+      <style>
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Variable.ttf') format('truetype'); font-weight: 100 900; }
+      @font-face { font-family: 'Fraunces'; src: url('assets/fonts/Fraunces-Variable.ttf') format('truetype'); font-weight: 100 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      #root {
+        position: absolute; inset: 0; overflow: hidden; background: #FCFAF7;
+        font-family: 'Inter', system-ui, sans-serif; color: #0B1F3B; -webkit-font-smoothing: antialiased;
+      }
+      .layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      svg.layer { overflow: visible; }
+      .layer > * { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+      svg.layer > * { position: static; }
+
+      /* grid (hairline = rgba(11,31,59,0.08)) */
+      .hline { width: 884px; height: 2px; background: rgba(11,31,59,0.08); }
+      .hline.half { background: rgba(11,31,59,0.045); }
+      .vline { width: 2px; height: 880px; background: rgba(11,31,59,0.045); }
+      .thu-tint { height: 880px; background: rgba(11,31,59,0.03); }
+      .hour { width: 92px; text-align: right; font-size: 26px; line-height: 32px; font-weight: 500; color: #7A869A; }
+
+      /* page titles: ACTI_TYPE_ROLE.pageTitle (Fraunces 600, −0.5px) ×k */
+      .page-title { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 76px; line-height: 84px; letter-spacing: -1.4px; white-space: nowrap; }
+      .page-sub { margin-top: 6px; font-size: 34px; line-height: 44px; font-weight: 400; color: #3F4C63; white-space: nowrap; }
+
+      /* week headers (calendar: selected date = navy circle) */
+      .dayhead { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      .dayhead .dl { font-size: 26px; line-height: 32px; font-weight: 600; color: #7A869A; }
+      .dayhead .dn { width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 600; color: #7A869A; }
+      .dayhead.is-thu .dl { color: #0B1F3B; }
+      .dayhead.is-thu .dn { background: #0B1F3B; color: #FFFFFF; }
+
+      /* other events: production calendar block (fill/rail colours set in JS from CHILD_COLORS) */
+      .cblock { border-radius: 12.5px; padding: 12px 2px 8px 8px; overflow: hidden; }
+      .cblock .cl { font-size: 21px; line-height: 27px; font-weight: 600; letter-spacing: -0.3px; color: #0B1F3B; white-space: nowrap; }
+      .cblock .ct { font-size: 21px; line-height: 26px; font-weight: 500; color: #3F4C63; margin-top: 2px; }
+
+      /* leave-by bracket (semantic green ink) */
+      .bracket { width: 6px; border-radius: 3px; background: #0F7A4B; }
+      .bracket-tick { width: 22px; height: 6px; border-radius: 3px; background: #0F7A4B; }
+
+      /* the one object */
+      .hero-shape { stroke: rgba(11,31,59,0.08); stroke-width: 2;
+        filter: drop-shadow(0px 5px 5px rgba(11,31,59,0.05)) drop-shadow(0px 30px 35px rgba(11,31,59,0.08)); }
+      .question { font-size: 98px; line-height: 110px; font-weight: 600; letter-spacing: -2.6px; color: #0B1F3B; white-space: nowrap; }
+      .hero-label { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .hero-label > * { position: absolute; left: 0; top: 0; transform-origin: 0 0; white-space: nowrap; }
+      .hero-well { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; }
+      .hero-who { font-size: 26px; line-height: 32px; font-weight: 600; }
+      .hero-title { font-size: 48px; line-height: 54px; font-weight: 600; letter-spacing: -0.9px; }
+      .hero-time { font-size: 28px; line-height: 36px; font-weight: 500; }
+
+      /* chips: white surface + hairline + soft shadow, or semantic tint surface (no border/shadow) */
+      .chip { display: flex; align-items: center; gap: 18px; padding: 16px 28px 16px 16px; white-space: nowrap;
+        background: #FFFFFF; border: 2px solid rgba(11,31,59,0.08); border-radius: 40px;
+        box-shadow: 0 2.5px 5px rgba(11,31,59,0.04), 0 10px 30px rgba(11,31,59,0.04); }
+      .chip--big { padding: 18px 34px 18px 18px; }
+      .chip--green { background: #DCEFE3; border-color: transparent; box-shadow: none; }
+      .chip--orange { background: #FBEAD9; border-color: transparent; box-shadow: none; }
+      .well { flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+      .well--green { background: #DCEFE3; color: #0F7A4B; }
+      .well--blue { background: #E6EEFE; color: #1D4ED8; }
+      .well--neutral { background: rgba(11,31,59,0.06); color: #0B1F3B; }
+      .well--white-green { background: #FFFFFF; color: #0F7A4B; }
+      .well--white-orange { background: #FFFFFF; color: #C2410C; }
+      .chip .t { font-size: 32px; line-height: 38px; font-weight: 600; letter-spacing: -0.3px; color: #0B1F3B; }
+      .chip--big .t { font-size: 38px; line-height: 44px; }
+      .chip--green .t { color: #0F7A4B; }
+      .chip .subs { position: relative; }
+      .chip .s { font-size: 26px; line-height: 32px; font-weight: 500; color: #3F4C63; }
+      .chip--big .s { font-size: 27px; line-height: 33px; }
+      .chip .s2 { position: absolute; left: 0; top: 0; opacity: 0; }
+      .chip--orange .s { color: #C2410C; font-weight: 600; }
+
+      /* threads */
+      .th { fill: none; stroke: rgba(11,31,59,0.30); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .th-dot { fill: rgba(11,31,59,0.30); }
+      .th-open { fill: none; stroke: #C2410C; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 2 12; }
+      .th-open-dot { fill: #C2410C; }
+    </style>
+      <div id="root" data-composition-id="the-hour-s1-s5" data-width="1080" data-height="1920">
+        <div class="layer" id="th-grid"></div>
+        <div class="layer" id="th-blocks"></div>
+        <svg class="layer" id="th-shape" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="layer" id="th-shape-text"></div>
+        <svg class="layer" id="th-threads" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="layer" id="th-chips"></div>
+        <div class="layer" id="th-top"></div>
+      </div>
+      <script>
+        document.fonts.load("600 98px Inter").then(() => document.fonts.load("600 76px Fraunces")).then(() => document.fonts.ready).then(() => {
+          const q = (id) => document.getElementById(id);
+          const film = window.AQ.buildTheHour({
+            grid: q("th-grid"), blocks: q("th-blocks"), shape: q("th-shape"), shapeText: q("th-shape-text"),
+            threads: q("th-threads"), chips: q("th-chips"), top: q("th-top"),
+          });
+          window.__timelines["the-hour-s1-s5"] = film.tl; // registered only after the build completes
+          if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
+        });
+      </script>
+    </template>
+  </body>
+</html>

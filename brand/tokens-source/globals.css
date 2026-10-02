@@ -1,0 +1,268 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  /* ACTIQO page canvas — FOUNDER RULING 2026-08-31: the light warm ivory
+     sampled from the approved mocks (tokens.ts colors.appCanvas) is the
+     ground behind every customer screen except Home, including the
+     safe-area / overscroll regions the body paints on iOS. Home keeps its
+     released ground via body[data-canvas="home"] (set by the dashboard
+     shell). Screens that paint their own canvas use ACTI_COLOR.appCanvas. */
+  background: #FCFAF7;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* HOME FIREWALL — the founder excluded Home from the ivory ruling. The
+   dashboard shell marks the Home route; the body ground behind Home is
+   Home's OWN released page ground (ACTI_COLOR.pageCanvas, #FAF8F4 — the
+   colour the Home root paints). POST-TESTFLIGHT FIX #4: this rule used to
+   paint the retired cream (#F4F1EC) while the Home root painted #FAF8F4,
+   so the shell's tab-bar clearance strip below the Home root read as a
+   second, darker canvas band above the bottom nav. ONE continuous ground. */
+body[data-canvas="home"] {
+  background: #FAF8F4;
+}
+
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root {
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+
+  /* Total visible height of the fixed mobile tab nav, including its
+   * own safe-area inset for the home indicator. Single source of truth
+   * for every "clear the tab bar" calc — scrollable page content, the
+   * Weekly view's floating action strip, and any future fixed-bottom
+   * overlays should derive their bottom clearance from this so the
+   * safe-area inset is accounted for exactly once. */
+  --tab-bar-height: calc(62px + var(--safe-bottom));
+
+  /* ── ACTIQO base design tokens (redesign foundation) ──────────────────────
+   * Typography, spacing, and radius primitives for the upcoming screen
+   * redesign. ADDITIVE + NAMESPACED (`--acti-*`): nothing in the current app
+   * references these, so they have zero visual effect on existing screens.
+   * The legacy token system (src/styles/tokens.ts / typography.ts /
+   * spacing.ts) is unchanged and still drives every shipped surface.
+   *
+   * The TS mirror of these values lives in src/styles/base-tokens.ts — keep
+   * the two in sync. Colors / navigation / component styling are out of scope
+   * and intentionally NOT defined here. */
+
+  /* Families — headings = SF Pro (iOS system font, via -apple-system);
+   * body / UI = Inter (the --font-inter face already wired in layout.tsx). */
+  --acti-font-heading: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', sans-serif;
+  --acti-font-body:    var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Weights */
+  --acti-weight-regular:  400;
+  --acti-weight-medium:   500;
+  --acti-weight-semibold: 600;
+  --acti-weight-bold:     700;
+
+  /* Type scale — size paired with line-height (keyed by px size). */
+  --acti-text-34: 34px;  --acti-leading-34: 41px;
+  --acti-text-28: 28px;  --acti-leading-28: 34px;
+  --acti-text-24: 24px;  --acti-leading-24: 30px;
+  --acti-text-22: 22px;  --acti-leading-22: 28px;
+  --acti-text-20: 20px;  --acti-leading-20: 25px;
+  --acti-text-18: 18px;  --acti-leading-18: 22px;
+  --acti-text-16: 16px;  --acti-leading-16: 20px;
+  --acti-text-14: 14px;  --acti-leading-14: 18px;
+  --acti-text-12: 12px;  --acti-leading-12: 15px;
+
+  /* Spacing — full 4px grid, 4 → 64. */
+  --acti-space-4:  4px;
+  --acti-space-8:  8px;
+  --acti-space-12: 12px;
+  --acti-space-16: 16px;
+  --acti-space-20: 20px;
+  --acti-space-24: 24px;
+  --acti-space-28: 28px;
+  --acti-space-32: 32px;
+  --acti-space-36: 36px;
+  --acti-space-40: 40px;
+  --acti-space-44: 44px;
+  --acti-space-48: 48px;
+  --acti-space-52: 52px;
+  --acti-space-56: 56px;
+  --acti-space-60: 60px;
+  --acti-space-64: 64px;
+
+  /* Radius */
+  --acti-radius-12:  12px;
+  --acti-radius-15:  15px;
+  --acti-radius-24:  24px;
+  --acti-radius-50:  50px;
+  --acti-radius-100: 100px;
+}
+
+/* Orientation lock — failsafe for the PWA path.
+ *
+ * Native Capacitor builds are locked to portrait in Info.plist
+ * (UISupportedInterfaceOrientations) and AndroidManifest.xml
+ * (screenOrientation="portrait"), so this CSS never fires on those
+ * surfaces. It exists for the web build (actiqo.app in a phone
+ * browser) where there's no native lock, plus any edge case where a
+ * desktop browser is force-resized to a short landscape window. The
+ * rule keeps horizontal content from sliding into a scrollable
+ * viewport when the layout was never designed for that aspect ratio.
+ */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Pass 48 — Notifications tray motion. Spec:
+   docs/design-system/29_notifications_tray.md (Motion Spec). */
+@keyframes v2-row-done {
+  0%   { background: rgba(16,185,129,0.18); transform: scale(1); }
+  40%  { background: rgba(16,185,129,0.18); transform: scale(0.985); }
+  100% { background: #FAFBFC; transform: scale(1); }
+}
+@keyframes v2-header-rewrite {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes v2-complete-pop {
+  0%   { opacity: 0; transform: scale(0.94); }
+  70%  { transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1.0); }
+}
+@keyframes v2-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes actiqoSkeletonShift {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Spec §W3 — "breath" reveal motion. 600ms cubic-bezier(0.4, 0, 0.2, 1).
+   Used for "The Read" sentence reveals (weekly verdict, MoT punchline,
+   any single-sentence editorial moment). Reduce-motion clients fall
+   back to the cross-fade portion of the animation only. */
+@keyframes actiqoBreathIn {
+  0%   { opacity: 0; transform: translateY(8px); filter: blur(2px); }
+  60%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes actiqoBreathIn {
+    0%   { opacity: 0; transform: none; filter: none; }
+    100% { opacity: 1; transform: none; filter: none; }
+  }
+}
+
+/* Sprint 3 polish — View Transitions API choreography.
+ *
+ * The default browser cross-fade is fine for `activity-${id}` and
+ * `insights-hero` morphs (handled per-element via viewTransitionName).
+ * For the root surface we slow the default page cross-fade to 300ms
+ * so signup→onboarding feels deliberate, not a snap.
+ *
+ * prefers-reduced-motion: reduce — disable all animations on
+ * ::view-transition-old(*) / ::view-transition-new(*) so the
+ * hand-off becomes an instant cut. The useViewTransition() hook
+ * already declines to call startViewTransition in that mode, but
+ * this is the belt-and-braces version for any direct call sites. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Sprint 4 polish — native scroll posture.
+ *
+ * Every modal / sheet / slide-panel surface inherits the same scroll
+ * physics as the rest of the app: iOS WKWebView momentum scrolling on
+ * inner scroll containers, and `overscroll-behavior: contain` so an
+ * overscroll inside a sheet doesn't kick the body underneath into a
+ * sympathetic rubber-band. Per-component overrides still win — this
+ * is the global default, not a hard cap.
+ *
+ * The `[role="dialog"]` selector covers V3Sheet, V3RightPane, the
+ * QuickCheckinModal sheet, EventDetailModal, AddActivityModal, and
+ * every other surface that follows the ARIA dialog pattern. Plain
+ * <details> popovers and inline disclosures are excluded.
+ */
+[role="dialog"] {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Horizontal scroll-snap utility — opt-in via the .actiqo-snap-x
+ * class on a horizontal scroll container plus .actiqo-snap-page on
+ * each child that should snap. Sized for full-width slide pages
+ * (one per viewport). */
+.actiqo-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.actiqo-snap-page {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* ── Accessibility: always-visible keyboard focus ring ──────────────────
+ * Many interactive elements set inline `outline: none`, which removes the
+ * default focus ring in ALL states and leaves keyboard users with no visible
+ * focus. This restores a clear ring for KEYBOARD navigation only
+ * (:focus-visible — pointer/touch taps are unaffected) and uses !important so
+ * it wins over those inline `outline: none` styles. No change to the resting
+ * visual; the ring only appears while an element is keyboard-focused. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #2563EB !important;
+  outline-offset: 2px !important;
+  border-radius: 3px;
+}
+
+/* DQ-1 — iOS WKWebView zooms the viewport when a focused editable control's
+ * effective font-size is below 16px, and the parent can be left unable to
+ * comfortably zoom back out. This is a NON-DESTRUCTIVE default (0-specificity
+ * :where, no !important): it gives 16px to any editable control that has NO
+ * explicit font-size, and NEVER overrides a component/inline font-size — so an
+ * intentional 18px input stays 18px. The <16px offenders are fixed at their
+ * own source (shared input styles / field authorities); this rule only floors
+ * otherwise-unstyled controls. It targets ONLY editable controls (never labels
+ * or body text) and is NOT a user-scalable / maximum-scale lock. Non-text
+ * input types (checkbox/radio/range/color/file/button/submit) are excluded. */
+:where(
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file']):not([type='button']):not([type='submit']),
+  textarea,
+  select
+) {
+  font-size: 16px;
+}

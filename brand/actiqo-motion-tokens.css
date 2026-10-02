@@ -1,0 +1,70 @@
+/*
+ * ACTIQO motion tokens: production values, scaled for 1080×1920 video.
+ *
+ * Every value below is copied from the production repo (READ-ONLY source:
+ * /workspaces/actiqo). Source files are cited per group. The only derived
+ * quantity is --k, the phone→video scale factor, which multiplies production
+ * point sizes so the film reads like the app held at hero scale.
+ *
+ *   --k = 2.5   (390pt iPhone width → 1080px frame is 2.77; 2.5 leaves margin
+ *               for the Reels safe zones)
+ *
+ * Nothing here is invented. If a value has no production source it is listed
+ * in ACTIQO_BRAND_MOTION_AUDIT.md §10 as an open item, not defined here.
+ */
+
+@font-face { font-family: 'Inter';    src: url('fonts/Inter[opsz,wght].ttf') format('truetype'); font-weight: 100 900; }
+@font-face { font-family: 'Fraunces'; src: url('fonts/Fraunces[SOFT,WONK,opsz,wght].ttf') format('truetype'); font-weight: 100 900; }
+
+:root {
+  --k: 2.5;
+
+  /* Canvas + surfaces: src/styles/tokens.ts:36-50, base-tokens.ts ACTI_COLOR */
+  --acti-app-canvas:   #FCFAF7;  /* founder ruling 2026-08-31, every non-Home screen */
+  --acti-home-canvas:  #FAF8F4;  /* Home only */
+  --acti-surface:      #FFFFFF;
+  --acti-surface-soft: #FBF9F5;
+  --acti-hairline:     rgba(11,31,59,0.08);
+  --acti-divider:      rgba(11,31,59,0.12);
+
+  /* Ink: tokens.ts:52-56 */
+  --acti-ink:          #0B1F3B;  /* navy: text + dominant action + premium emphasis */
+  --acti-ink-2:        #3F4C63;
+  --acti-ink-3:        #7A869A;
+  --acti-ink-muted:    #A8B0BE;
+  --acti-ink-tint:     rgba(11,31,59,0.06);
+
+  /* Semantic tint families: base-tokens.ts ACTI_TINT (ink / surface) */
+  --acti-green-ink:    #0F7A4B;  --acti-green-surface:  #DCEFE3;  /* ready, confirmed, leave-by */
+  --acti-orange-ink:   #C2410C;  --acti-orange-surface: #FBEAD9;  /* input required, unassigned ONLY */
+  --acti-blue-ink:     #1D4ED8;  --acti-blue-surface:   #E6EEFE;  /* informational; link/selection */
+  --acti-lilac-ink:    #5B4BB5;  --acti-lilac-surface:  #EFEBF8;  /* family / editorial accent */
+
+  /* Brand mark: public/assets/logo/icon-primary.svg fill */
+  --acti-teal:         #14B8A6;
+  --acti-danger:       #E11D48;  /* real risk only; not used in Film 01 S1–S5 */
+
+  /* Child identity palette: src/components/children/AddChildModal.tsx:40.
+     Film picks two that do not collide with semantic colours. */
+  --child-leo:         #0EA5E9;
+  --child-maya:        #7C3AED;
+
+  /* Type: src/app/layout.tsx (next/font/google), base-tokens.ts ACTI_TYPE_ROLE */
+  --acti-font-ui:        'Inter', system-ui, sans-serif;           /* all operational text */
+  --acti-font-editorial: 'Fraunces', Georgia, serif;               /* display / page / detail titles */
+
+  /* Radius: base-tokens.ts ACTI_RADIUS (×k) */
+  --acti-r-control: calc(10px * var(--k));
+  --acti-r-action:  calc(12px * var(--k));
+  --acti-r-surface: calc(16px * var(--k));
+  --acti-r-overlay: calc(20px * var(--k));
+
+  /* Shadow: tokens.ts shadows.soft / shadows.lift (offsets ×k) */
+  --acti-shadow-surface: 0 2.5px 5px rgba(11,31,59,0.04), 0 10px 30px rgba(11,31,59,0.04);
+  --acti-shadow-overlay: 0 5px 10px rgba(11,31,59,0.05), 0 30px 70px rgba(11,31,59,0.08);
+
+  /* Motion: globals.css + base-tokens.ts ACTI_MOTION + daily-snapshot ds-fadein */
+  --acti-ease-standard: cubic-bezier(0.2, 0, 0, 1);     /* view transitions, 300ms */
+  --acti-ease-enter:    cubic-bezier(0.2, 0.8, 0.2, 1); /* card entrance, 320ms, translateY 8px */
+  --acti-ease-breath:   cubic-bezier(0.4, 0, 0.2, 1);   /* editorial "breath" reveal, 600ms */
+}

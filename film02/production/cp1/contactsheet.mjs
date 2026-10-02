@@ -1,0 +1,20 @@
+// CP1 review contact sheet: all six views on one page (captions in Inter, images unmodified).
+import { renderStill } from '../lib/render.mjs';
+const R = new URL('./review/', import.meta.url).pathname;
+const W = 2900, H = 2200, ink = '#0B1F3B';
+const img = (f, x, y, w, h) => `<image href="file://${R}${f}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${ink}" stroke-opacity=".12"/>`;
+const cap = (t, x, y) => `<text x="${x}" y="${y}" font-family="Inter" font-weight="500" font-size="22" fill="${ink}" fill-opacity=".72">${t}</text>`;
+let s = `<rect width="${W}" height="${H}" fill="#FCFAF7"/>`;
+s += `<text x="60" y="78" font-family="Fraunces" font-weight="600" font-size="44" fill="${ink}">Film 02 · What You Carry — character review pack</text>`;
+s += cap('Final production rendering · character art unchanged from CP1 · 16:9 stills rendered at 3840×2160, 9:16 at 2160×3840', 60, 116);
+const tw = 800, th = 450, x0 = 60, y0 = 160, gx = 40, gy = 70;
+s += img('01_mom_loaded_16x9.png', x0, y0, tw, th) + cap('1 · Mom — loaded posture', x0, y0 + th + 34);
+s += img('02_mom_free_16x9.png', x0 + tw + gx, y0, tw, th) + cap('2 · Mom — free posture (same scale, same camera)', x0 + tw + gx, y0 + th + 34);
+s += img('04_dad_grandma_16x9.png', x0, y0 + th + gy, tw, th) + cap('4 · Dad + Grandma', x0, y0 + 2 * th + gy + 34);
+s += img('05_family_16x9.png', x0 + tw + gx, y0 + th + gy, tw, th) + cap('5 · Representative family frame (16:9)', x0 + tw + gx, y0 + 2 * th + gy + 34);
+const py = y0 + 2 * (th + gy) + 10, pw = 2 * tw + gx, ph = Math.round(pw * 1000 / 1920);
+s += img('03_face_hands_panel.png', x0, py, pw, ph) + cap('3 · Face + hands at the largest on-screen scale (9:16 foreground, 110 px head) — top row native 1:1 pixels, bottom row 2× render of the same crops', x0, py + ph + 34);
+const vx = x0 + pw + 60, vh = H - y0 - 90, vw = Math.round(vh * 9 / 16);
+s += img('06_family_9x16.png', vx, y0, vw, vh) + cap('6 · Representative family frame (9:16)', vx, y0 + vh + 34);
+await renderStill({ w: W, h: H, svg: s, out: R + '00_CP1_review_contact_sheet.png', scale: 1 });
+console.log('ok');

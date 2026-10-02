@@ -1,0 +1,43 @@
+# ── dependencies ──
+node_modules/
+
+# ── caches / build tooling ──
+.cache/
+.hyperframes/
+.next/
+.turbo/
+.parcel-cache/
+*.tsbuildinfo
+.eslintcache
+
+# ── temporary render output (frame dumps, scratch, intermediates) ──
+**/frames/
+**/tmp/
+**/.tmp/
+**/scratch/
+**/render-cache/
+**/*.tmp.png
+**/*.partial.mp4
+*.part
+
+# ── temporary audio ──
+**/audio-tmp/
+*.tmp.wav
+
+# ── logs ──
+*.log
+npm-debug.log*
+
+# ── env / secrets (none exist today; never commit them) ──
+.env
+.env.*
+*.pem
+*.key
+
+# ── OS / editor ──
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~

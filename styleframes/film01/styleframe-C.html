@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Film 01 · Styleframe C</title>
+<link rel="stylesheet" href="../../brand/actiqo-motion-tokens.css">
+<style>
+  html,body{margin:0;padding:0}
+  body{width:1080px;height:1920px;overflow:hidden;background:var(--acti-app-canvas);
+       font-family:var(--acti-font-ui);color:var(--acti-ink);-webkit-font-smoothing:antialiased;
+       position:relative}
+  .abs{position:absolute}
+  .fa{display:block}
+  /* Page title: ACTI_TYPE_ROLE.pageTitle, Fraunces 28/34 600 -0.5px, ×k=2.5 → 70/85 */
+  .page-title{font-family:var(--acti-font-editorial);font-weight:600;font-size:76px;line-height:84px;
+              letter-spacing:-1.4px;font-variation-settings:"opsz" 72, "SOFT" 0, "WONK" 0}
+  .page-sub{font-size:34px;line-height:44px;font-weight:400;color:var(--acti-ink-2)}
+  .hour{font-size:26px;font-weight:500;color:var(--acti-ink-3);text-align:right;width:92px;
+        transform:translateY(-50%)}
+  .hline{height:2px;background:var(--acti-hairline)}
+  .hline.half{background:rgba(11,31,59,0.045)}
+  /* Chip: ACTIQO Row / pill language (white surface, hairline, soft shadow, circular tint well) */
+  .chip{display:flex;align-items:center;gap:18px;background:var(--acti-surface);
+        border:2px solid var(--acti-hairline);border-radius:var(--acti-r-surface);
+        box-shadow:var(--acti-shadow-surface);padding:16px 26px 16px 16px;white-space:nowrap}
+  .well{flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .chip .t{font-size:32px;line-height:38px;font-weight:600;letter-spacing:-0.3px;color:var(--acti-ink)}
+  .chip .s{font-size:25px;line-height:31px;font-weight:500;color:var(--acti-ink-2)}
+  .chip.green{background:var(--acti-green-surface);border-color:transparent;box-shadow:none}
+  .chip.orange{background:var(--acti-orange-surface);border-color:transparent;box-shadow:none}
+  .w-green{background:var(--acti-green-surface);color:var(--acti-green-ink)}
+  .w-white-green{background:#fff;color:var(--acti-green-ink)}
+  .w-white-orange{background:#fff;color:var(--acti-orange-ink)}
+  .w-blue{background:var(--acti-blue-surface);color:var(--acti-blue-ink)}
+  .w-neutral{background:var(--acti-ink-tint);color:var(--acti-ink)}
+  .w-lilac{background:var(--acti-lilac-surface);color:var(--acti-lilac-ink)}
+  svg.threads{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+  
+  .dayhead{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .dl{font-size:26px;font-weight:600;color:var(--acti-ink-3)}
+  .dn{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:30px;font-weight:600;color:var(--acti-ink)}
+  .dn.sel{background:var(--acti-ink);color:#fff}
+  .cblock{box-sizing:border-box;border-radius:14px;padding:12px 4px 8px 9px;overflow:hidden}
+  .cl{font-size:22px;line-height:27px;font-weight:600;color:var(--acti-ink);letter-spacing:-0.4px}
+  .ct{font-size:21px;line-height:26px;font-weight:500;color:var(--acti-ink-2);margin-top:2px}
+  .hour-block{background:var(--acti-ink);color:#fff;border-radius:22px;
+              box-shadow:var(--acti-shadow-overlay);padding:16px 18px;box-sizing:border-box}
+  .chip .t{font-size:31px;line-height:37px}
+  .chip .s{font-size:25px;line-height:30px}
+
+</style></head>
+<body>
+
+  <div class="abs" style="left:84px;top:236px">
+    <div class="page-title">This week</div>
+    <div class="page-sub" style="margin-top:4px">Sep 28 – Oct 4</div>
+  </div>
+
+  
+    <div class="abs dayhead" style="left:168px;width:102px;top:452px">
+      <div class="dl" style="">Mon</div>
+      <div class="dn ">28</div>
+    </div>
+    <div class="abs" style="left:168px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+    <div class="abs dayhead" style="left:270px;width:102px;top:452px">
+      <div class="dl" style="">Tue</div>
+      <div class="dn ">29</div>
+    </div>
+    <div class="abs" style="left:270px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+    <div class="abs dayhead" style="left:372px;width:102px;top:452px">
+      <div class="dl" style="">Wed</div>
+      <div class="dn ">30</div>
+    </div>
+    <div class="abs" style="left:372px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+    <div class="abs dayhead" style="left:474px;width:296px;top:452px">
+      <div class="dl" style="color:var(--acti-ink)">Thu</div>
+      <div class="dn sel">1</div>
+    </div>
+    <div class="abs" style="left:474px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+    <div class="abs dayhead" style="left:770px;width:76px;top:452px">
+      <div class="dl" style="">Fri</div>
+      <div class="dn ">2</div>
+    </div>
+    <div class="abs" style="left:770px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+    <div class="abs dayhead" style="left:846px;width:76px;top:452px">
+      <div class="dl" style="">Sat</div>
+      <div class="dn ">3</div>
+    </div>
+    <div class="abs" style="left:846px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+    <div class="abs dayhead" style="left:922px;width:76px;top:452px">
+      <div class="dl" style="">Sun</div>
+      <div class="dn ">4</div>
+    </div>
+    <div class="abs" style="left:922px;top:596px;width:2px;height:880px;background:rgba(11,31,59,0.05)"></div>
+  
+  <div class="abs" style="left:474px;top:596px;width:296px;height:880px;background:rgba(11,31,59,0.025)"></div>
+
+  
+    <div class="abs hour" style="left:62px;top:610px;width:92px">3 PM</div>
+    <div class="abs hline" style="left:168px;width:912px;top:610px"></div>
+  
+    <div class="abs hour" style="left:62px;top:820px;width:92px">4 PM</div>
+    <div class="abs hline" style="left:168px;width:912px;top:820px"></div>
+  
+    <div class="abs hour" style="left:62px;top:1030px;width:92px">5 PM</div>
+    <div class="abs hline" style="left:168px;width:912px;top:1030px"></div>
+  
+    <div class="abs hour" style="left:62px;top:1240px;width:92px">6 PM</div>
+    <div class="abs hline" style="left:168px;width:912px;top:1240px"></div>
+  
+    <div class="abs hour" style="left:62px;top:1450px;width:92px">7 PM</div>
+    <div class="abs hline" style="left:168px;width:912px;top:1450px"></div>
+  
+
+  
+  <div class="abs cblock" id="mon" style="left:174px;top:1082.5px;width:90px;height:210px;
+       background:color-mix(in srgb, var(--child-maya) 10%, white);border-left:6px solid var(--child-maya)">
+    <div class="cl">Dance</div><div class="ct">5:15</div>
+  </div>
+  
+  <div class="abs cblock" id="tue" style="left:276px;top:1135px;width:90px;height:210px;
+       background:color-mix(in srgb, var(--child-leo) 10%, white);border-left:6px solid var(--child-leo)">
+    <div class="cl">Soccer</div><div class="ct">5:30</div>
+  </div>
+  
+  <div class="abs cblock" id="wed" style="left:378px;top:1082.5px;width:90px;height:210px;
+       background:color-mix(in srgb, var(--child-maya) 10%, white);border-left:6px solid var(--child-maya)">
+    <div class="cl">Dance</div><div class="ct">5:15</div>
+  </div>
+  
+  <div class="abs cblock" id="thudance" style="left:480px;top:1082.5px;width:105.60000000000001px;height:210px;
+       background:color-mix(in srgb, var(--child-maya) 10%, white);border-left:6px solid var(--child-maya)">
+    <div class="cl">Maya</div><div class="cl">Dance</div><div class="ct">5:15</div>
+  </div>
+
+  <!-- Thursday leave-by: bracket hangs from the leave card down to the practice it serves -->
+  
+  <div class="abs"  style="left:619.6px;top:1028px;width:6px;height:101px;background:var(--acti-green-ink);border-radius:3px"></div>
+  <div class="abs" style="left:613.6px;top:1025px;width:18px;height:6px;background:var(--acti-green-ink);border-radius:3px"></div>
+
+  <!-- Thursday soccer: the Hour Block, still navy at week scale -->
+  <div class="abs hour-block" id="thu" style="left:601.6px;top:1135px;width:162.4px;height:210px">
+    <div style="font-size:24px;line-height:28px;font-weight:600;color:rgba(255,255,255,0.72)">Leo</div>
+    <div style="font-size:31px;line-height:35px;font-weight:600;letter-spacing:-0.4px;margin-top:6px">Soccer<br>Practice</div>
+    <div style="font-size:23px;line-height:30px;font-weight:500;color:rgba(255,255,255,0.72);margin-top:6px">5:30 – 6:30</div>
+  </div>
+
+  <!-- ── Coordination elements: Thursday's chain, stacked in time order ── -->
+  <div class="abs chip" id="c-bring" style="left:480px;top:687px">
+    <div class="well w-blue" style="width:56px;height:56px"><svg class="fa" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M256 144C256 108.7 284.7 80 320 80C355.3 80 384 108.7 384 144L384 192L256 192L256 144zM208 192L144 192C117.5 192 96 213.5 96 240L96 448C96 501 139 544 192 544L448 544C501 544 544 501 544 448L544 240C544 213.5 522.5 192 496 192L432 192L432 144C432 82.1 381.9 32 320 32C258.1 32 208 82.1 208 144L208 192zM232 240C245.3 240 256 250.7 256 264C256 277.3 245.3 288 232 288C218.7 288 208 277.3 208 264C208 250.7 218.7 240 232 240zM384 264C384 250.7 394.7 240 408 240C421.3 240 432 250.7 432 264C432 277.3 421.3 288 408 288C394.7 288 384 277.3 384 264z"/></svg></div>
+    <div class="t">Cleats, shin guards</div>
+  </div>
+
+  <div class="abs chip" id="c-field" style="left:480px;top:827px">
+    <div class="well w-neutral" style="width:56px;height:56px"><svg class="fa" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/></svg></div>
+    <div class="t">Field 4 → 7</div>
+  </div>
+
+  <div class="abs chip green" id="c-leave" style="left:480px;top:948px;padding:10px 28px 10px 10px">
+    <div class="well w-white-green" style="width:60px;height:60px"><svg class="fa" width="26" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M147 170.7L117.2 256L240.1 256L240.1 160L162.2 160C155.4 160 149.3 164.3 147.1 170.7zM48.6 257.9L86.5 149.6C97.8 117.5 128.1 96 162.1 96L360 96C385.2 96 408.9 107.9 424 128L520.2 256.3C587.1 260.5 640 316.1 640 384L640 400C640 435.3 611.3 464 576 464L559.6 464C555.6 508.9 517.9 544 472 544C426.1 544 388.4 508.9 384.4 464L239.7 464C235.7 508.9 198 544 152.1 544C106.2 544 68.5 508.9 64.5 464L64.1 464C28.8 464 .1 435.3 .1 400L.1 320C.1 289.9 20.8 264.7 48.7 257.9zM440 256L372.8 166.4C369.8 162.4 365 160 360 160L288 160L288 256L440 256zM152 496C174.1 496 192 478.1 192 456C192 433.9 174.1 416 152 416C129.9 416 112 433.9 112 456C112 478.1 129.9 496 152 496zM512 456C512 433.9 494.1 416 472 416C449.9 416 432 433.9 432 456C432 478.1 449.9 496 472 496C494.1 496 512 478.1 512 456z"/></svg></div>
+    <div><div class="t" style="color:var(--acti-green-ink);font-weight:600">Leave by 4:48</div><div class="s">Dad driving</div></div>
+  </div>
+
+  <div class="abs chip" id="c-grandma" style="left:84px;top:1409px;padding:12px 28px 12px 12px">
+    <div class="well w-green" style="width:64px;height:64px"><svg class="fa" width="26" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M320 144C350.9 144 376 118.9 376 88C376 57.1 350.9 32 320 32C289.1 32 264 57.1 264 88C264 118.9 289.1 144 320 144zM233.4 291.9L256 269.3L256 338.6C256 366.6 268.2 393.3 289.5 411.5L360.9 472.7C366.8 477.8 370.7 484.8 371.8 492.5L384.4 580.6C386.9 598.1 403.1 610.3 420.6 607.8C438.1 605.3 450.3 589.1 447.8 571.6L435.2 483.5C431.9 460.4 420.3 439.4 402.6 424.2L368.1 394.6L368.1 279.4L371.9 284.1C390.1 306.9 417.7 320.1 446.9 320.1L480.1 320.1C497.8 320.1 512.1 305.8 512.1 288.1C512.1 270.4 497.8 256.1 480.1 256.1L446.9 256.1C437.2 256.1 428 251.7 421.9 244.1L404 221.7C381 192.9 346.1 176.1 309.2 176.1C277 176.1 246.1 188.9 223.4 211.7L188.1 246.6C170.1 264.6 160 289 160 314.5L160 352C160 369.7 174.3 384 192 384C209.7 384 224 369.7 224 352L224 314.5C224 306 227.4 297.9 233.4 291.9zM245.8 471.3C244.3 476.5 241.5 481.3 237.7 485.1L169.4 553.4C156.9 565.9 156.9 586.2 169.4 598.7C181.9 611.2 202.2 611.2 214.7 598.7L283 530.4C294.5 518.9 302.9 504.6 307.4 488.9L309.6 481.3L263.6 441.9C261.1 439.7 258.6 437.5 256.2 435.1L245.8 471.3z"/></svg></div>
+    <div><div class="t">Tue pickup</div><div class="s">Grandma</div></div>
+  </div>
+
+  <div class="abs chip orange" id="c-pickup" style="left:496px;top:1409px;padding:12px 28px 12px 12px">
+    <div class="well w-white-orange" style="width:64px;height:64px"><svg class="fa" width="26" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M320 144C350.9 144 376 118.9 376 88C376 57.1 350.9 32 320 32C289.1 32 264 57.1 264 88C264 118.9 289.1 144 320 144zM233.4 291.9L256 269.3L256 338.6C256 366.6 268.2 393.3 289.5 411.5L360.9 472.7C366.8 477.8 370.7 484.8 371.8 492.5L384.4 580.6C386.9 598.1 403.1 610.3 420.6 607.8C438.1 605.3 450.3 589.1 447.8 571.6L435.2 483.5C431.9 460.4 420.3 439.4 402.6 424.2L368.1 394.6L368.1 279.4L371.9 284.1C390.1 306.9 417.7 320.1 446.9 320.1L480.1 320.1C497.8 320.1 512.1 305.8 512.1 288.1C512.1 270.4 497.8 256.1 480.1 256.1L446.9 256.1C437.2 256.1 428 251.7 421.9 244.1L404 221.7C381 192.9 346.1 176.1 309.2 176.1C277 176.1 246.1 188.9 223.4 211.7L188.1 246.6C170.1 264.6 160 289 160 314.5L160 352C160 369.7 174.3 384 192 384C209.7 384 224 369.7 224 352L224 314.5C224 306 227.4 297.9 233.4 291.9zM245.8 471.3C244.3 476.5 241.5 481.3 237.7 485.1L169.4 553.4C156.9 565.9 156.9 586.2 169.4 598.7C181.9 611.2 202.2 611.2 214.7 598.7L283 530.4C294.5 518.9 302.9 504.6 307.4 488.9L309.6 481.3L263.6 441.9C261.1 439.7 258.6 437.5 256.2 435.1L245.8 471.3z"/></svg></div>
+    <div><div class="t">Thu pickup</div><div class="s" style="color:var(--acti-orange-ink);font-weight:600">No one yet</div></div>
+  </div>
+
+  <svg class="threads" id="threads"></svg>
+  <script>
+    const T = document.getElementById('threads');
+    const b = id => document.getElementById(id).getBoundingClientRect();
+    function curve(x1,y1,x2,y2,{color='rgba(11,31,59,0.30)',dash=false,dot=true,vert=false}={}){
+      const d = vert
+        ? 'M'+x1+' '+y1+' C'+x1+' '+((y1+y2)/2)+' '+x2+' '+((y1+y2)/2)+' '+x2+' '+y2
+        : 'M'+x1+' '+y1+' C'+((x1+x2)/2)+' '+y1+' '+((x1+x2)/2)+' '+y2+' '+x2+' '+y2;
+      T.insertAdjacentHTML('beforeend','<path d="'+d+'" fill="none" stroke="'+color+'" stroke-width="3" stroke-linecap="round"'+(dash?' stroke-dasharray="2 11"':'')+'/>'+
+        (dot?'<circle cx="'+x1+'" cy="'+y1+'" r="7" fill="'+color+'"/>':''));
+    }
+    const thu=b('thu'), tue=b('tue'), dance=b('thudance');
+    const br=b('c-bring'), fl=b('c-field'), pk=b('c-pickup'), gm=b('c-grandma');
+    // Chain spine: pack → field change → leave (each is a precondition of the next)
+    const lv=b('c-leave');
+    const sx = br.left+44;
+    T.insertAdjacentHTML('afterbegin','<line x1="'+sx+'" y1="'+br.bottom+'" x2="'+sx+'" y2="'+fl.top+'" stroke="rgba(11,31,59,0.30)" stroke-width="3" stroke-linecap="round"/>'+
+      '<line x1="'+sx+'" y1="'+fl.bottom+'" x2="'+sx+'" y2="'+lv.top+'" stroke="rgba(11,31,59,0.30)" stroke-width="3" stroke-linecap="round"/>');
+    // 6:30 practice end + 6:15 dance end → one open pickup (orange dashed = unresolved)
+    curve(thu.left+thu.width*0.5, thu.bottom, pk.left+pk.width*0.72, pk.top, {color:'#C2410C',dash:true,vert:true});
+    curve(dance.left+dance.width*0.5, dance.bottom, pk.left+pk.width*0.28, pk.top, {color:'#C2410C',dash:true,vert:true});
+    // Tue practice end → Grandma (resolved handoff)
+    curve(tue.left+tue.width*0.5, tue.bottom, gm.left+gm.width*0.62, gm.top, {vert:true});
+  </script>
+
+</body></html>
