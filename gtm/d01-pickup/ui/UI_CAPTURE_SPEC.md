@@ -1,6 +1,27 @@
 # D01 · Real UI: inventory and capture spec
 
-## ⛔ STATUS 2026-11-19: current-build capture is BLOCKED (nothing fabricated)
+## ⛔ STATUS 2026-11-19 17:40Z (Option C): BLOCKED by machine memory (nothing captured, nothing fabricated)
+**Done:**
+- The QA household exists (`QA_DEMO_HOUSEHOLD.md`).
+- The disposable `origin/main` 27a249258 copy in `/tmp` runs against QA. The service-role key and a fresh `LEGAL_RECEIPT_SECRET` were set **server-side only**; the client bundle was checked and is clean.
+- Sign-in as Jordan works.
+- The real consent gate ("Review and accept to continue") was accepted in the real UI. That writes 3 `legal_acceptances` rows in QA, which are immutable by design.
+
+**Blocker:** the codespace has 8 GB RAM with about 3 GB available. An external watchdog SIGTERMs or SIGKILLs processes when available memory drops to about 1 GB. Every route the flow touches must compile in this app before Chrome can record, and that blows past the line:
+- `next dev` (Turbopack, even with a 900 MB cache cap) was killed 9 times.
+- `next dev --webpack` dropped the request.
+- `next build` (Turbopack) was killed with SIGTERM.
+- `next build --webpack` (1 CPU, no type-check, memory optimisations) was killed with SIGKILL at 577 MB available.
+- Swap isn't permitted in this container. ptrace isn't permitted, so I couldn't trace the sender.
+
+**Not used:** the `actiqo-qa30` Vercel deployment points at QA, but it runs a 4.0 release candidate from about 2026-11-04, not current `main`.
+
+**Ways to unblock:**
+1. Move to a **16 GB codespace** (machine type change), then re-run. Everything is scripted (`with-server.sh` + capture).
+2. You record on a device or Simulator from the current build, signed in as **`d01-demo-jordan@example.com`** in QA. The password is in the scratchpad `d01-demo-creds.env`; I'll pass it to you out of band.
+3. A Vercel **preview** deploy of current `main` against QA (needs your approval: it's a deploy).
+
+## Earlier status (before Option C)
 I was allowed to *run* `/workspaces/actiqo` (`origin/main` 27a2492) without modifying it. A legitimate capture of the real app with the Alex/Jordan/Leo household is blocked by:
 1. **No app runtime credentials.** The app needs `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` (`env.example`). Neither exists in this environment. The only credentials present are DB URLs/passwords and a QA *service-role* key, which are not app-login credentials.
 2. **No demo household or login.** There's no Alex/Jordan/Leo account on any backend I can reach. Creating one means writing users and household rows into the QA or production database with the service-role key. That's an outward write to a shared database, and you haven't authorised it, so I did not do it.

@@ -27,7 +27,10 @@ const promptFile = readdirSync(join(P, 'generations/prompts')).find((f) => f.sta
 if (!promptFile) die(`no prompt file for ${shot} in ${prod}/generations/prompts/`);
 const spec = JSON.parse(readFileSync(join(P, 'generations/prompts', promptFile), 'utf8'));
 const ledger = existsSync(LEDGER) ? readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
-const prior = ledger.filter((e) => e.production === prod && e.shot === shot && e.status === 'submitted'); // one 'submitted' line per paid call
+// One 'submitted' line per call. A call the provider refused at submit (HTTP error, no job created, no charge) gets a
+// 'rejected' line with the same ts and does not count against caps. Anything that got past submit always counts.
+const rejected = new Set(ledger.filter((e) => e.status === 'rejected').map((e) => e.ts));
+const prior = ledger.filter((e) => e.production === prod && e.shot === shot && e.status === 'submitted' && !rejected.has(e.ts));
 
 const dataUri = (rel) => {
   const f = join(P, rel); if (!existsSync(f)) die(`missing input image ${rel} (approve the keyframe first)`);
@@ -71,7 +74,11 @@ const entry = { ts: new Date().toISOString(), production: prod, shot, kind, endp
 appendFileSync(LEDGER, JSON.stringify(entry) + '\n');
 const H = { Authorization: `Key ${KEY}`, 'Content-Type': 'application/json' };
 const sub = await fetch(`https://queue.fal.run/${endpoint}`, { method: 'POST', headers: H, body: JSON.stringify(input) });
-if (!sub.ok) die(`submit failed ${sub.status}: ${(await sub.text()).slice(0, 500)}`);
+if (!sub.ok) {
+  const body = (await sub.text()).slice(0, 500);
+  appendFileSync(LEDGER, JSON.stringify({ ...entry, status: 'rejected', http: sub.status, est_usd: 0, note: 'refused at submit; no job, no charge' }) + '\n');
+  die(`submit failed ${sub.status}: ${body}`);
+}
 const { request_id, status_url, response_url } = await sub.json();
 console.log('request', request_id);
 for (;;) {

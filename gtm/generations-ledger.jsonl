@@ -1,0 +1,2 @@
+{"ts":"2026-11-19T17:35:29.783Z","production":"d01-pickup","shot":"s1","kind":"keyframe","endpoint":"fal-ai/nano-banana-pro","est_usd":0.15,"prompt_sha":"fd018ec08f96","status":"submitted"}
+{"ts": "2026-11-19T17:35:29.783Z", "production": "d01-pickup", "shot": "s1", "kind": "keyframe", "endpoint": "fal-ai/nano-banana-pro", "est_usd": 0, "prompt_sha": "fd018ec08f96", "status": "rejected", "http": 403, "note": "refused at submit (fal: exhausted balance); no job, no charge"}
