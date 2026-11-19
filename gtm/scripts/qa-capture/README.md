@@ -1,5 +1,8 @@
 # qa-capture: real-UI capture of the current ACTIQO build against QA (D01)
 
+**Proven path (2026-11-19):** a temporary protected Vercel Preview of current `main` in an isolated, Git-less project with QA-only Preview env. `record.sh` (Xvfb 1280×1920, headed Chrome, emulated 432×768 @2.5, ffmpeg x11grab 30 fps lossless) runs `record-x11.mjs`. `reset.mjs` undoes the pickup through the real editor. `exposure.mjs` scans every request/response, the page HTML and storage for secrets and production refs. `explore.mjs` is read-only. Env: `D01_BASE`, `D01_BYPASS`, `D01_SCAN_SECRETS`, `D01_RUNTIME`. Full record: `gtm/d01-pickup/ui/CAPTURE_RECORD.md`. The localhost path below (`with-server.sh`) is parked.
+
+
 These are disposable tools. The runtime lives **outside** the repo in `$D01_RUNTIME` (default `/tmp/d01-runtime`) and is deleted after a successful capture. Credentials, `.env.local` and the app copy are **never committed**.
 
 | File | Role |

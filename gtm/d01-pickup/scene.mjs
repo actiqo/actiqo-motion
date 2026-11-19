@@ -46,7 +46,7 @@ export function productShots(beats, asset) {
 }
 
 /** Full timeline for a given beats manifest. */
-export const shotsFor = (beats, asset = 'ui/capture/d01_ui_source.mov') => {
+export const shotsFor = (beats, asset = 'ui/capture/d01_ui_flow_9x16.mp4') => {
   const p = productShots(beats, asset);
   return { mode: p.mode, shots: [...OPENING, ...p.shots, END] };
 };

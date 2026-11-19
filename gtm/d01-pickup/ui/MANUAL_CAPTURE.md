@@ -1,4 +1,4 @@
-# D01 · Manual product capture (current path, 2026-11-19)
+# D01 · Manual product capture (SUPERSEDED: automated capture succeeded, see `CAPTURE_RECORD.md`)
 
 Automated capture is **parked** (see `UI_CAPTURE_SPEC.md`). The product section uses a screen recording you make yourself in the real current app. Nothing is redrawn.
 

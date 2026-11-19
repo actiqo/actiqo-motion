@@ -1,6 +1,6 @@
 # D01 · Real UI: inventory and capture spec
 
-## ⏸ PARKED 2026-11-19: automated capture stopped by the user. Current path: `MANUAL_CAPTURE.md`.
+## ✅ CAPTURED 2026-11-19 (automated, temporary QA Vercel preview of current main). See `CAPTURE_RECORD.md`. The notes below are history.
 
 ## ⛔ STATUS 2026-11-19 17:40Z (Option C): BLOCKED by machine memory (nothing captured, nothing fabricated)
 **Done:**

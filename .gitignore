@@ -50,3 +50,5 @@ film02/production/audio/stems/
 gtm/*/generations/raw/
 gtm/*/ui/capture/
 gtm/*/audio/assets/
+# D01 final real-UI capture assets ARE kept (reviewed finals, not raw)
+!gtm/d01-pickup/ui/capture/
