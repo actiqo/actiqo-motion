@@ -1,5 +1,7 @@
 # D01 · Real UI: inventory and capture spec
 
+## ⏸ PARKED 2026-11-19: automated capture stopped by the user. Current path: `MANUAL_CAPTURE.md`.
+
 ## ⛔ STATUS 2026-11-19 17:40Z (Option C): BLOCKED by machine memory (nothing captured, nothing fabricated)
 **Done:**
 - The QA household exists (`QA_DEMO_HOUSEHOLD.md`).

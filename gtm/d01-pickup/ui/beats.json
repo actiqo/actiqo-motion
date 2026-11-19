@@ -1,0 +1,12 @@
+{
+  "_note": "Source timecodes in seconds into ui/capture/d01_ui_source.* (filled in after the footage arrives). null = not in the footage. See ui/MANUAL_CAPTURE.md.",
+  "source": null,
+  "unresolved": null,
+  "whoTap": null,
+  "assignments": null,
+  "assignTap": null,
+  "picker": null,
+  "alexTap": null,
+  "saveTap": null,
+  "saved": null
+}
