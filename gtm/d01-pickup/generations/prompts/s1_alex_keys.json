@@ -1,0 +1,37 @@
+{
+  "shot": "S1",
+  "character": "Alex (Adult A)",
+  "status": "v1 (decisions 2026-11-19)",
+  "use": "0.00-1.13 s (34 f) cut from a 4 s generation",
+  "keyframe": {
+    "endpoint": "fal-ai/nano-banana-pro",
+    "out": "references/casting/d01_alex_keyframe_v01.png",
+    "input": {
+      "aspect_ratio": "9:16",
+      "resolution": "2K",
+      "output_format": "png",
+      "num_images": 1,
+      "prompt": "Photorealistic vertical 9:16 photo, shot like a premium smartphone consumer ad: natural, unglamorous, true to life. A woman in her late 30s, a real-looking mom with natural proportions, not a model, not influencer-polished, minimal makeup, hair loosely tied back. She stands in the entryway of a comfortable, ordinary Midwestern suburban home, just inside the front door, with the kitchen visible softly behind her. She holds her car keys up at chest height in one hand, mid-gesture, plain metal keys on a simple ring with a small plain fob. She glances off camera to screen-right with a matter-of-fact, slightly distracted, questioning expression, mouth just opening to speak. Not angry, not smiling for the camera. Simple neutral everyday clothing: an oatmeal knit sweater over a plain white tee, no logos, no printed text. The home is lived-in but uncluttered: a wooden bench with a couple of pairs of shoes, a coat hook with a rain jacket, a small console table, warm beige walls. Late-afternoon natural daylight from a window on the left side of frame, warm color temperature around 4500K, soft realistic shadows. Camera at chest height, roughly 26mm smartphone-equivalent lens, moderate depth of field with the background readable and only gently soft, not a shallow-focus glamour look. Realistic skin texture, no retouching, no text anywhere.",
+      "negative_prompt_note": "nano-banana-pro has no negative_prompt field; exclusions are stated in the prompt"
+    }
+  },
+  "video": {
+    "draft_endpoint": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper_endpoint": "fal-ai/veo3.1/image-to-video",
+    "input": {
+      "aspect_ratio": "9:16",
+      "resolution": "1080p",
+      "duration": "4s",
+      "generate_audio": true,
+      "prompt": "Vertical 9:16, realistic smartphone-style consumer ad footage, natural handheld with only very subtle movement, no camera move, real-time speed. The woman holding up her car keys speaks to someone off camera to her left (screen-right), right away from the first moment, in a natural, matter-of-fact, slightly distracted conversational tone, like an ordinary family mix-up: \"I thought you had pickup.\" Her keys jingle slightly. After the line she keeps looking at the other person for a beat, eyebrows a little raised. Not angry, not acting for the camera. Quiet house room tone, the faint jingle of keys, no music.",
+      "negative_prompt": "text, subtitles, captions, logos, watermark, phone screen, user interface, music, announcer voice, exaggerated acting, anger, shouting, slow motion, camera zoom, dolly move, cut, second person entering frame"
+    }
+  },
+  "accept_if": [
+    "line starts within the first ~6 frames and is fully intelligible",
+    "lip-sync holds on 'pickup'",
+    "keys readable; hands anatomically correct through the gesture",
+    "no text, logo, screen or brand anywhere in frame",
+    "eyeline screen-right; reads matter-of-fact, not angry"
+  ]
+}

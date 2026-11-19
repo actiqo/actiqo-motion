@@ -1,0 +1,21 @@
+{
+  "production": "d01-pickup",
+  "note": "Hard guardrails enforced by gtm/scripts/generate.mjs against gtm/generations-ledger.jsonl. Raising a cap is a decision for the user, never the script.",
+  "max_paid_video_per_shot": 2,
+  "max_keyframes_per_character": 3,
+  "keeper_requires": "draft composition approved (pass --keeper only after that approval)",
+  "allow_4k": false,
+  "endpoints": {
+    "keyframe": "fal-ai/nano-banana-pro",
+    "keyframe_ref": "fal-ai/nano-banana-pro/edit",
+    "draft": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper": "fal-ai/veo3.1/image-to-video"
+  },
+  "price_usd": {
+    "_source": "fal.ai model pages, read 2026-11-19; re-check before spend",
+    "fal-ai/nano-banana-pro": { "per_image": 0.15 },
+    "fal-ai/nano-banana-pro/edit": { "per_image": 0.15 },
+    "fal-ai/veo3.1/fast/image-to-video": { "per_second_audio": 0.15, "per_second_silent": 0.10 },
+    "fal-ai/veo3.1/image-to-video": { "per_second_audio": 0.40, "per_second_silent": 0.20 }
+  }
+}
