@@ -6,7 +6,7 @@ export const FPS = 30;
 export const FORMAT = { W: 1080, H: 1920, duration: 15.0 };
 export const SAFE = { top: 220, bottom: 1540 }; // keep text and key UI rows inside this band (9:16 platform chrome)
 
-/** src: 'gen' = external video model · 'ui' = real ACTIQO capture (manually recorded, see ui/MANUAL_CAPTURE.md) · 'brand' = official brand assets */
+/** src: 'gen' = external video model · 'ui' = real ACTIQO capture (automated QA-preview recording of main 66ccdf6, see ui/CAPTURE_RECORD.md) · 'brand' = official brand assets */
 const OPENING = [
   { id: 'S1', t0: 0.0, t1: 34 / 30, src: 'gen', asset: 'generations/selects/s1.mp4', in: null, note: 'Alex (A), car keys' },
   { id: 'S2', t0: 34 / 30, t1: 2.0, src: 'gen', asset: 'generations/selects/s2.mp4', in: null, note: 'Jordan (B), youth soccer bag' },
@@ -27,9 +27,9 @@ export function productShots(beats, asset) {
   const has = (...k) => k.every((x) => typeof b[x] === 'number');
   if (has('unresolved', 'assignments', 'picker', 'saveTap', 'saved')) {
     return { mode: 'full', shots: [
-      { id: 'S3', t0: 2.0, t1: 4.0, src: 'ui', asset, in: b.unresolved, note: 'Game Plan: "No one on pickup" visible', push: [1.0, 1.06] },
+      { id: 'S3', t0: 2.0, t1: 4.0, src: 'ui', asset, in: b.unresolved, note: 'Game Plan: "Pickup · needs someone" visible', push: [1.0, 1.06] },
       { id: 'S4', t0: 4.0, t1: 6.2, src: 'ui', asset, in: b.whoTap ?? b.assignments, note: 'Who\'s doing what → Assignments' },
-      { id: 'S5', t0: 6.2, t1: 8.6, src: 'ui', asset, in: b.picker, note: 'Who will pick up Leo? → Alex' },
+      { id: 'S5', t0: 6.2, t1: 8.6, src: 'ui', asset, in: b.picker, note: '"Who brings them home?" → Alex' },
       { id: 'S6', t0: 8.6, t1: 11.0, src: 'ui', asset, in: b.saveTap, note: 'Save, on camera' },
       { id: 'S7', t0: 11.0, t1: 13.3, src: 'ui', asset, in: b.saved, note: 'Hold the real saved state', push: [1.0, 1.03], hold: true },
     ] };
@@ -37,7 +37,7 @@ export function productShots(beats, asset) {
   if (has('unresolved', 'saved')) {
     const cut = 6.6; // VO "…stay with the activity," lands on the cut once narration exists
     return { mode: 'beforeAfter', shots: [
-      { id: 'S3', t0: 2.0, t1: cut, src: 'ui', asset, in: b.unresolved, note: 'Real open pickup ("No one on pickup")', push: [1.0, 1.08], hold: true },
+      { id: 'S3', t0: 2.0, t1: cut, src: 'ui', asset, in: b.unresolved, note: 'Real open pickup ("Pickup · needs someone")', push: [1.0, 1.08], hold: true },
       ...(has('assignTap') ? [{ id: 'S3b', t0: cut - 0.5, t1: cut, src: 'ui', asset, in: b.assignTap, note: 'Real tap on Assign (0.5 s, 1×)' }] : []),
       { id: 'S7', t0: cut, t1: 13.3, src: 'ui', asset, in: b.saved, note: 'Real saved state: Jordan drop-off / Alex pickup', push: [1.03, 1.0], hold: true },
     ] };
