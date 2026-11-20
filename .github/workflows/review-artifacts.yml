@@ -1,5 +1,5 @@
 # Packages the current motion REVIEW materials (contact sheets, keyframes, checkpoint preview MP4s, full-film
-# review masters, REVIEW.md)
+# review masters, REVIEW.md, GTM review images)
 # as a downloadable workflow artifact for remote review. Read-only: it renders nothing, installs
 # nothing, and never modifies the repository.
 name: Review artifacts
@@ -15,6 +15,8 @@ on:
       - 'styleframes/film01/**'
       - 'videos/actiqo-the-hour/stills/**'
       - 'videos/actiqo-the-hour/renders/**'
+      # GTM short-form review images (keyframes, UI capture stills)
+      - 'gtm/**'
 
 permissions:
   contents: read
@@ -51,6 +53,7 @@ jobs:
             styleframes/film01/**/*.png styleframes/film01/**/*.jpg styleframes/film01/**/*.md
             videos/actiqo-the-hour/stills/**/*.png
             videos/actiqo-the-hour/renders/*.mp4
+            gtm/**/*.png
           )
           printf '%s\n' "${files[@]}" | sort -u | tee review-manifest.txt
           echo "files: $(sort -u review-manifest.txt | wc -l)"
@@ -80,6 +83,7 @@ jobs:
             styleframes/film01/**/*.md
             videos/actiqo-the-hour/stills/**/*.png
             videos/actiqo-the-hour/renders/*.mp4
+            gtm/**/*.png
             !**/node_modules/**
             !**/*.log
             !**/tmp/**
