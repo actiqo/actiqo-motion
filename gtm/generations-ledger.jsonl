@@ -4,3 +4,5 @@
 {"ts":"2026-11-20T19:18:43.564Z","production":"d01-pickup","shot":"s1","kind":"keyframe","endpoint":"fal-ai/nano-banana-pro","est_usd":0,"prompt_sha":"fd018ec08f96","status":"rejected","http":403,"note":"refused at submit; no job, no charge"}
 {"ts":"2026-11-20T19:20:17.415Z","production":"d01-pickup","shot":"s1","kind":"keyframe","endpoint":"fal-ai/nano-banana-pro","est_usd":0.15,"prompt_sha":"fd018ec08f96","status":"submitted"}
 {"ts":"2026-11-20T19:20:17.415Z","production":"d01-pickup","shot":"s1","kind":"keyframe","endpoint":"fal-ai/nano-banana-pro","est_usd":0,"prompt_sha":"fd018ec08f96","status":"rejected","http":403,"note":"refused at submit; no job, no charge"}
+{"ts":"2026-11-20T19:28:02.101Z","production":"d01-pickup","shot":"s1","kind":"keyframe","endpoint":"fal-ai/nano-banana-pro","est_usd":0.15,"prompt_sha":"fd018ec08f96","status":"submitted"}
+{"ts":"2026-11-20T19:28:02.101Z","production":"d01-pickup","shot":"s1","kind":"keyframe","endpoint":"fal-ai/nano-banana-pro","est_usd":0.15,"prompt_sha":"fd018ec08f96","status":"completed","request_id":"01a1fa6e-1bef-7860-a73c-9cdb24cbc931","output":"references/casting/d01_alex_keyframe_v01.png"}

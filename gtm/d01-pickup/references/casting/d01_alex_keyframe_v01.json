@@ -1,0 +1,22 @@
+{
+  "ts": "2026-11-20T19:28:02.101Z",
+  "production": "d01-pickup",
+  "shot": "s1",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "est_usd": 0.15,
+  "prompt_sha": "fd018ec08f96",
+  "status": "completed",
+  "request_id": "01a1fa6e-1bef-7860-a73c-9cdb24cbc931",
+  "prompt_file": "s1_alex_keys.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Photorealistic vertical 9:16 photo, shot like a premium smartphone consumer ad: natural, unglamorous, true to life. A woman in her late 30s, a real-looking mom with natural proportions, not a model, not influencer-polished, minimal makeup, hair loosely tied back. She stands in the entryway of a comfortable, ordinary Midwestern suburban home, just inside the front door, with the kitchen visible softly behind her. She holds her car keys up at chest height in one hand, mid-gesture, plain metal keys on a simple ring with a small plain fob. She glances off camera to screen-right with a matter-of-fact, slightly distracted, questioning expression, mouth just opening to speak. Not angry, not smiling for the camera. Simple neutral everyday clothing: an oatmeal knit sweater over a plain white tee, no logos, no printed text. The home is lived-in but uncluttered: a wooden bench with a couple of pairs of shoes, a coat hook with a rain jacket, a small console table, warm beige walls. Late-afternoon natural daylight from a window on the left side of frame, warm color temperature around 4500K, soft realistic shadows. Camera at chest height, roughly 26mm smartphone-equivalent lens, moderate depth of field with the background readable and only gently soft, not a shallow-focus glamour look. Realistic skin texture, no retouching, no text anywhere."
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/casting/d01_alex_keyframe_v01.png"
+}
