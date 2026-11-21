@@ -1,0 +1,8 @@
+{
+  "production": "d01-pickup",
+  "note": "D01 Narrated v2 narration. Approved 2026-11-21: ElevenLabs v4 via fal, hard cap $0.50 (all D01 TTS combined). Enforced by gtm/scripts/tts.mjs.",
+  "endpoint": "elevenlabs/tts/eleven-v4",
+  "usd_per_1k_chars": 0.08,
+  "cap_usd": 0.50,
+  "stability": 0.5
+}

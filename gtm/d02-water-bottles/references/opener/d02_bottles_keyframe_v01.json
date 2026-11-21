@@ -1,0 +1,22 @@
+{
+  "ts": "2026-11-21T01:52:48.990Z",
+  "production": "d02-water-bottles",
+  "shot": "s1",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "est_usd": 0.15,
+  "prompt_sha": "7d82aac6480e",
+  "status": "completed",
+  "request_id": "01a1fbce-61da-7fb1-b093-f48199a2caf9",
+  "prompt_file": "s1_bottles_object.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Photorealistic vertical 9:16 photo, shot like a premium smartphone consumer ad: natural, true to life, unglamorous. Late afternoon in an ordinary, comfortable Midwestern family home, on the kitchen counter by the back door. Exactly six reusable kids' water bottles stand in a loose, slightly messy cluster on the counter: mismatched colours (teal, coral, navy, lime, purple, white), different shapes and sizes, a couple with scuffs and old sticker residue, one lying on its side. Right beside them, a plain navy youth soccer duffel bag sits unzipped and open toward the camera; inside you can clearly see small cleats and a pair of shin guards, and the bottle pocket is visibly empty. The composition reads instantly: lots of bottles out here, none in the bag. Camera at counter height, slightly above, roughly 26mm smartphone-equivalent lens, the bottles and the open bag sharp in the middle of the frame, background kitchen softly readable. Warm late-afternoon window light from the left, around 4500K, soft realistic shadows. No people, no hands. Absolutely no text, no logos, no brand names, no labels, no stickers with writing, no team crest or numbers anywhere."
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/opener/d02_bottles_keyframe_v01.png"
+}
