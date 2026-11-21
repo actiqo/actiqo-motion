@@ -1,0 +1,24 @@
+{
+  "ts": "2026-11-21T19:38:06.246Z",
+  "production": "d04-tasting-notes",
+  "shot": "s2",
+  "kind": "draft",
+  "endpoint": "fal-ai/veo3.1/fast/image-to-video",
+  "est_usd": 0.6000000000000001,
+  "prompt_sha": "15c050ebc2a1",
+  "status": "completed",
+  "request_id": "01a1ff9d-b00f-70d1-bbe9-1d5b8cc5fd07",
+  "prompt_file": "s2_founder_side.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "duration": "6s",
+    "generate_audio": false,
+    "prompt": "Vertical 9:16, realistic cinematic footage, real-time speed. Same man, same outfit, same warm evening wine bar, exactly the same framing as the photo. He is already facing the camera and keeps calm, steady eye contact with the lens for most of the shot, with a subtle, self-aware, conversational founder expression, as if quietly introducing himself; lips moving slightly and naturally as if speaking a sentence or two. Small natural movement only: a gentle breath, a slight head tilt, one small relaxed hand movement on the table. The wine glass stays standing on the table, the phone stays on the table with a dark blank screen. Toward the end a soft, slight expression shift, still facing the camera. Camera locked off and steady, no reframing; the right side of the frame stays clean, calm, out-of-focus warm wall.",
+    "negative_prompt": "camera move, push-in, zoom, pan, reframing, cut, text, captions, subtitles, logos, labels, readable bottles, phone screen content, user interface, other people, face changing, identity drift, extra fingers, deformed hands, glass moving by itself, drinking, big gestures, pointing, laughing, exaggerated expressions, salesy, slow motion, lighting change",
+    "image_url": "<8174574 chars of image data>"
+  },
+  "seed": null,
+  "description": null,
+  "output": "generations/raw/s2/2026-11-21T19-38-06-238Z_draft.mp4"
+}

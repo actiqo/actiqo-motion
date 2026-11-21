@@ -1,15 +1,40 @@
 {
   "shot": "S2",
   "subject": "Founder-intro keyframe: Alec seated, glass set down, facing camera, slightly wider than the opener, with intentional clean space beside him for a large REAL ACTIQO recording composited later (6–16 s).",
-  "status": "Step 2: ONE keyframe approved (~$0.15). No motion yet.",
+  "status": "Keyframe v01 APPROVED + LOCKED (2026-11-21). ONE Veo Fast 6 s silent motion approved ($0.60).",
   "keyframe": {
     "endpoint": "fal-ai/nano-banana-pro/edit",
-    "reference": ["../../corkconnoisseur.png", "references/keyframes/d04_s1_open_keyframe_v01.png"],
+    "reference": [
+      "../../corkconnoisseur.png",
+      "references/keyframes/d04_s1_open_keyframe_v01.png"
+    ],
     "out": "references/keyframes/d04_s2_founder_keyframe_v01.png",
     "input": {
-      "aspect_ratio": "9:16", "resolution": "2K", "output_format": "png", "num_images": 1,
+      "aspect_ratio": "9:16",
+      "resolution": "2K",
+      "output_format": "png",
+      "num_images": 1,
       "prompt": "Create a new photorealistic vertical 9:16 photograph continuing the same scene. Image 1 is the identity reference; image 2 is the approved scene. THE SAME MAN: exact facial identity, face shape, eyes, swept-back brown hair, neatly trimmed full beard and natural proportions; the same burgundy corduroy blazer over the same plain white crew-neck T-shirt. The same warm evening wine bar, the same dark-wood table, the same amber pendant-light bokeh, the same warm side key and rim light and the same shallow-depth-of-field lens character as image 2. Composition: a slightly wider shot than image 2. He is seated at the table, framed from mid-thigh up, placed in the LEFT 55% of the frame, turned slightly toward the camera and looking straight into the lens with a small, warm, approachable, self-aware founder smile, as if about to introduce himself. His hands rest relaxed on the table. His red wine glass now stands SET DOWN on the table beside his right hand; the smartphone lies face-down on the table. The RIGHT 45% of the frame, from the top down to just above the table, is intentionally clean, calm negative space: a softly out-of-focus warm, dark wall with only gentle amber bokeh, no shelves, no bottles, no objects, no patterns. He remains large and visually dominant. Premium editorial lifestyle photography, natural skin texture, true to life. No text, no captions, no logos, no labels, no readable bottles, no app or phone interface, no screens showing content, no other people. Seated only; same wardrobe."
-    }
+    },
+    "locked": true
   },
-  "accept_if": ["same identity as reference and opener", "glass set down, facing camera, approachable smile", "right ~45% clean and uncluttered for the real ACTIQO composite", "no text/labels/logos/UI/other people"]
+  "accept_if": [
+    "identity matches throughout",
+    "eye contact most of the shot, restrained gestures",
+    "right side stays clean (no new objects)",
+    "a stable 3–4 s window"
+  ],
+  "use": "6–16 s: founder intro, then held beside the REAL ACTIQO composite (right side). Usable: a stable 3–4 s span.",
+  "video": {
+    "draft_endpoint": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper_endpoint": "fal-ai/veo3.1/image-to-video",
+    "input": {
+      "aspect_ratio": "9:16",
+      "resolution": "1080p",
+      "duration": "6s",
+      "generate_audio": false,
+      "prompt": "Vertical 9:16, realistic cinematic footage, real-time speed. Same man, same outfit, same warm evening wine bar, exactly the same framing as the photo. He is already facing the camera and keeps calm, steady eye contact with the lens for most of the shot, with a subtle, self-aware, conversational founder expression, as if quietly introducing himself; lips moving slightly and naturally as if speaking a sentence or two. Small natural movement only: a gentle breath, a slight head tilt, one small relaxed hand movement on the table. The wine glass stays standing on the table, the phone stays on the table with a dark blank screen. Toward the end a soft, slight expression shift, still facing the camera. Camera locked off and steady, no reframing; the right side of the frame stays clean, calm, out-of-focus warm wall.",
+      "negative_prompt": "camera move, push-in, zoom, pan, reframing, cut, text, captions, subtitles, logos, labels, readable bottles, phone screen content, user interface, other people, face changing, identity drift, extra fingers, deformed hands, glass moving by itself, drinking, big gestures, pointing, laughing, exaggerated expressions, salesy, slow motion, lighting change"
+    }
+  }
 }

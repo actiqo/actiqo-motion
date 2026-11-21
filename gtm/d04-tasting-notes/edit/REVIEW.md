@@ -75,3 +75,38 @@ All clips are generated **without embedded speech** (per your option B).
 **D04 spent:** $0.90 (keyframe $0.15 + opener motion $0.60 + this keyframe $0.15).
 
 **Next, after approval:** step 3, a founder-intro motion from this keyframe: Veo Fast, 6 s, silent, **$0.60**. QA capture, voice and the closing shot stay on hold until you say so.
+
+---
+# Step 3: founder-intro motion v01 (2026-11-21), for review
+**Founder keyframe locked:** `references/keyframes/d04_s2_founder_keyframe_v01.png` is approved; no regeneration.
+
+- **File:** `generations/review/s2/d04_s2_founder_fast_v01.mp4` (+ `_contact.png` at 4 fps, + `.json`). Raw copy in `generations/raw/s2/` (git-ignored).
+- **Generation:** `fal-ai/veo3.1/fast/image-to-video`, 9:16, 1080p, **6 s, silent**, start frame = locked founder keyframe. Request `01a1ff9d-b00f-70d1-bbe9-1d5b8cc5fd07`, **$0.60**.
+- **Output:** 1080×1920, 24 fps, 144 frames, no audio.
+
+| Source time | Action |
+|---|---|
+| 0.0–1.9 s | Facing camera, calm. Lips move naturally as if he's starting to introduce himself. One normal blink at ≈1.75 s. |
+| ≈2.0–2.5 s | One small, open, explanatory hand gesture (left hand, low over the table), then the hand returns to the glass base |
+| **≈2.6–5.2 s** | **Most stable window (≈2.6 s):** hands at rest, steady eye contact, small speaking mouth movement, minimal head motion. Normal blink at ≈4.0 s. |
+| ≈5.3–6.0 s | A soft glance down toward the table, a calm closing look |
+
+**Checks:**
+- **Frame 0:** identical to the locked keyframe; Veo didn't reframe. The camera stays locked off with no push or pan.
+- **Identity:** holds (face, swept-back hair, beard, burgundy corduroy blazer, white crew-neck).
+- **Table and set:** the glass stays set down and the phone stays dark and blank. No text, labels, logos, UI or other people.
+- **Clean zone:** the right side (about x 595–1080 × y 180–1010) stays clean for all 6 s. The gesture at 2.0–2.5 s stays left of it.
+
+**Notes for the edit (no action yet):**
+1. **Framing:** the clip keeps the locked keyframe's framing. Alec takes the left ~55%, and the clean zone is ~45% of the width (about 485 px). Your note asked for 40–45% / 55–60%. Getting there would need a new keyframe, which you've ruled out, so the ACTIQO panel will be sized to the clean zone. It's still large: at about 485 × 830 px it shows the Game Plan at roughly 45% scale.
+2. **Coverage:** 6–16 s is 10 s of script, but this clip is 6 s. Options for the edit:
+   a. Play it at real speed for 6–12 s, then hold the calmest frames under the app at a slightly reduced rate.
+   b. Slow the stable window a little (≈0.8×).
+   c. Play the founder line (6–10 s) on the clip, then let the real ACTIQO recording take more of the frame for 10–16 s, with a calm portion of the clip beside it.
+
+   I'll propose the exact choice once the capture and voice exist.
+3. Lip-sync to your real voice will replace the generic mouth movement in the final.
+
+**D04 spent:** $1.50 (opening keyframe $0.15 + opener motion $0.60 + founder keyframe $0.15 + founder motion $0.60).
+
+**Still on hold until you say so:** QA product capture, closing shot ($0.75 planned), voice (reference needed from you).
