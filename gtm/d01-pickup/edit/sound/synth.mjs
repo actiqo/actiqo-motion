@@ -1,4 +1,4 @@
-// D01 · original sound design + restrained rhythmic bed, synthesized from scratch (no samples, no third-party audio).
+// D01 · audio v02 (phone translation): original sound design + restrained rhythmic bed, synthesized from scratch (no samples, no third-party audio).
 // Deterministic: fixed PRNG seed. Output: 48 kHz stereo 24-bit WAVs in ./out (git-ignored; rebuilt by mix.sh).
 // Musical frame: D major, 104 BPM, downbeat grid anchored at the product entry (timeline 2.80 s).
 import { writeFileSync, mkdirSync } from 'node:fs';
@@ -39,7 +39,21 @@ function wav(name, b) { // 24-bit PCM, TPDF dither
 
 // ---------- UI sound design ----------
 // Tactile tap: a felt-tip click (band-limited noise, 4 ms) + a soft wooden body (pitch-dropping sine) + a low "seat".
-function tap(firm = 1, pitch = 1) {
+function tap(firm = 1, pitch = 1) { // v02: + a soft 2–4 kHz felt transient and a slightly longer upper-mid body
+  const b = tapV1(firm, pitch), n = b[0].length;
+  const tr = new Float32Array(n);
+  for (let i = 0; i < 0.007 * SR; i++) tr[i] = noise() * (1 - i / (0.007 * SR)) ** 2;
+  hp1(tr, 2000); hp1(tr, 2000); lp1(tr, 4200); lp1(tr, 4200);
+  let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i / SR; ph += TAU * 2600 * pitch / SR;
+    const knock = Math.sin(ph) * Math.exp(-t / 0.0045) * 0.10;
+    const v = tr[i] * 1.35 + knock * 1.4;
+    add(b, i, v, v * 0.97);
+  }
+  return b;
+}
+function tapV1(firm = 1, pitch = 1) {
   const b = buf(0.14), n = b[0].length;
   const click = new Float32Array(n);
   for (let i = 0; i < 0.004 * SR; i++) click[i] = noise() * (1 - i / (0.004 * SR));
@@ -69,7 +83,7 @@ function bell(b, t0, midi, amp, decay = 0.42, pan = 0) {
 
 function saved() { // two-note rising fifth in D (D5 → A5) with a felt "seat" underneath: the warmest moment, still small
   const b = buf(2.4);
-  const seat = tap(1.1, 0.8); for (let i = 0; i < seat[0].length; i++) add(b, i, seat[0][i] * 0.55, seat[1][i] * 0.55);
+  const seat = tapV1(1.1, 0.8); // unchanged from v01 for (let i = 0; i < seat[0].length; i++) add(b, i, seat[0][i] * 0.55, seat[1][i] * 0.55);
   bell(b, 0.000, 74, 0.20, 0.40, -0.4); // D5
   bell(b, 0.085, 81, 0.17, 0.55, 0.4);  // A5
   bell(b, 0.085, 69, 0.07, 0.65, 0.0);  // A4 underlay for warmth
@@ -121,38 +135,50 @@ function pad() {
       }
     }
   }
-  return stereoLp(b, 1700);
+  // v02: shelve the low end out of the pad (HP 200 Hz ×2), open the top slightly (LP 2.4 kHz)
+  for (const ch of b) { hp1(ch, 200); hp1(ch, 200); lp1(ch, 2400); }
+  // v02: faint midrange harmonic over the end card so the last 2.8 s survive a phone speaker (F#5 + A5, Dmaj9 tones)
+  for (const [m, pan] of [[78, -0.3], [81, 0.3]]) {
+    const f = hz(m), s0 = Math.round(12.03 * SR), e0 = Math.round(DUR * SR);
+    for (let i = s0; i < e0; i++) {
+      const t = (i - s0) / SR, env = Math.min(1, t / 0.6) * Math.min(1, (e0 - i) / (1.2 * SR));
+      const v = Math.sin(TAU * f * t + m) * (1 + 0.2 * Math.sin(TAU * 0.4 * t)) * env * 0.0085;
+      add(b, i, v * (1 - pan), v * (1 + pan));
+    }
+  }
+  return b;
 }
 
 function rhythm() {
   const b = buf(DUR);
-  const kick = (t0, amp) => { const s = Math.round(t0 * SR); let ph = 0; for (let i = 0; i < 0.35 * SR; i++) { const t = i / SR; ph += TAU * (46 + 34 * Math.exp(-t / 0.03)) / SR; const v = Math.sin(ph) * Math.exp(-t / 0.13) * Math.min(1, t / 0.002) * amp; add(b, s + i, v); } };
-  const shaker = (t0, amp, pan) => { const s = Math.round(t0 * SR), n = Math.round(0.07 * SR); const x = new Float32Array(n); for (let i = 0; i < n; i++) x[i] = noise(); hp1(x, 5500); lp1(x, 11000); for (let i = 0; i < n; i++) { const t = i / SR; const v = x[i] * Math.min(1, t / 0.008) * Math.exp(-t / 0.022) * amp; add(b, s + i, v * (1 - pan), v * (1 + pan)); } };
-  const bass = (t0, m, amp, len) => { const s = Math.round(t0 * SR), f = hz(m); for (let i = 0; i < len * SR; i++) { const t = i / SR; const v = (Math.sin(TAU * f * t) + 0.25 * Math.sin(TAU * 2 * f * t)) * Math.min(1, t / 0.01) * Math.exp(-t / (len * 0.6)) * amp; add(b, s + i, v); } };
-  const pluck = (t0, m, amp, pan) => { const s = Math.round(t0 * SR), f = hz(m); for (let i = 0; i < 0.5 * SR; i++) { const t = i / SR; const v = (Math.sin(TAU * f * t) + 0.35 * Math.sin(TAU * 2 * f * t) * Math.exp(-t / 0.05)) * Math.min(1, t / 0.003) * Math.exp(-t / 0.11) * amp; add(b, s + i, v * (1 - pan * 0.4), v * (1 + pan * 0.4)); } };
+  const kick = (t0, amp) => { const s = Math.round(t0 * SR); let ph = 0; for (let i = 0; i < 0.35 * SR; i++) { const t = i / SR; ph += TAU * (52 + 40 * Math.exp(-t / 0.03)) / SR; const body = Math.sin(ph) * Math.exp(-t / 0.10); const knock = Math.sin(ph * 9.5) * Math.exp(-t / 0.014) * 0.55; const v = (body + knock) * Math.min(1, t / 0.002) * amp; add(b, s + i, v); } }; // v02: shorter sub, soft ~900 Hz knock so the pulse reads on phones
+  const shaker = (t0, amp, pan) => { const s = Math.round(t0 * SR), n = Math.round(0.07 * SR); const x = new Float32Array(n); for (let i = 0; i < n; i++) x[i] = noise(); hp1(x, 2500); hp1(x, 2500); lp1(x, 7000); lp1(x, 7000); /* v02: presence band 2.5–7 kHz */ for (let i = 0; i < n; i++) { const t = i / SR; const v = x[i] * Math.min(1, t / 0.008) * Math.exp(-t / 0.022) * amp; add(b, s + i, v * (1 - pan), v * (1 + pan)); } };
+  const bass = (t0, m, amp, len) => { const s = Math.round(t0 * SR), f = hz(m); for (let i = 0; i < len * SR; i++) { const t = i / SR; const v = (0.8 * Math.sin(TAU * f * t) + 0.32 * Math.sin(TAU * 2 * f * t) + 0.16 * Math.sin(TAU * 3 * f * t) + 0.09 * Math.sin(TAU * 4 * f * t)) * Math.min(1, t / 0.01) * Math.exp(-t / (len * 0.6)) * amp; add(b, s + i, v); } }; // v02: harmonics carry the bass line above 180 Hz
+  const pluck = (t0, m, amp, pan) => { const s = Math.round(t0 * SR), f = hz(m); for (let i = 0; i < 0.5 * SR; i++) { const t = i / SR; const v = (Math.sin(TAU * f * t) + 0.45 * Math.sin(TAU * 2 * f * t) * Math.exp(-t / 0.06) + 0.22 * Math.sin(TAU * 3 * f * t) * Math.exp(-t / 0.035) + 0.10 * Math.sin(TAU * 4 * f * t) * Math.exp(-t / 0.02)) * Math.min(1, t / 0.003) * Math.exp(-t / 0.12) * amp; add(b, s + i, v * (1 - pan * 0.4), v * (1 + pan * 0.4)); } }; // v02: 3rd/4th partials → 0.7–4 kHz presence, still a soft muted pluck
   const END = 16; // groove runs beats 0–15 (2.80 → 12.03), then lands
   for (let k = 0; k < END; k++) {
     const t = beatT(k), c = chordAt(t + 0.01), released = k >= 12;
-    if (k % 2 === 0) kick(t, 0.30);
-    if (k % 4 === 0 || k % 4 === 2) bass(t, c.notes[0] - (c.notes[0] > 45 ? 12 : 0), 0.13, BEAT * 1.6);
+    if (k % 2 === 0) kick(t, 0.13);
+    if (k % 4 === 0 || k % 4 === 2) bass(t, c.notes[0] - (c.notes[0] > 45 ? 12 : 0), 0.085, BEAT * 1.6);
     // shaker: 8ths with a light swing while things are being sorted; quarters after the release
-    shaker(t, released ? 0.05 : 0.06, -0.3);
-    if (!released) shaker(t + BEAT * 0.54, 0.035, 0.3);
+    shaker(t, released ? 0.09 : 0.11, -0.3);
+    if (!released) shaker(t + BEAT * 0.54, 0.064, 0.3);
     // muted pluck on the off-beats, chord tones walking up; after the release a simpler, higher motif
     const tones = c.notes.slice(1);
-    if (!released) pluck(t + BEAT * 0.5, tones[k % tones.length] + 12, 0.045, (k % 2) ? 0.5 : -0.5);
-    else if (k % 2 === 0) pluck(t + BEAT * 0.5, [74, 76, 78, 81][(k / 2) % 4], 0.05, (k % 4) ? 0.5 : -0.5);
+    if (!released) pluck(t + BEAT * 0.5, tones[k % tones.length] + 12, 0.085, (k % 2) ? 0.5 : -0.5);
+    else if (k % 2 === 0) pluck(t + BEAT * 0.5, [74, 76, 78, 81][(k / 2) % 4], 0.088, (k % 4) ? 0.5 : -0.5);
   }
   // landing: one soft chord pluck on the downbeat at 12.03 (just before the end card), then space
-  for (const [m, p] of [[62, -0.4], [66, 0.0], [69, 0.4], [76, 0.1]]) pluck(beatT(END), m, 0.05, p);
-  bass(beatT(END), 38, 0.12, 1.4);
-  return stereoLp(b, 9000);
+  for (const [m, p] of [[62, -0.4], [66, 0.0], [69, 0.4], [76, 0.1]]) pluck(beatT(END), m, 0.065, p);
+  bass(beatT(END), 38, 0.08, 1.4);
+  return stereoLp(b, 8500);
 }
 
 wav('sfx_tap.wav', tap(1.0, 1.0));
 wav('sfx_tap_select.wav', tap(0.9, 1.12));
 wav('sfx_tap_save.wav', tap(1.15, 0.94));
-wav('sfx_saved.wav', saved());
+// Saved is LOCKED at v01: the mix uses sound/locked/sfx_saved_v01.wav (exact v01 render, from commit a624d04).
+// saved() is kept here for reference only.
 wav('sfx_enter.wav', enter());
 wav('bed_pad.wav', pad());
 wav('bed_rhythm.wav', rhythm());
