@@ -1,0 +1,8 @@
+{
+  "production": "d02-water-bottles",
+  "note": "D02 narration, approved 2026-11-21: Sarah via ElevenLabs v4 on fal, ACTIQO forced via IPA /ˈæktɛkoʊ/. Hard cap $0.20 (expected ≈ $0.02). Enforced by gtm/scripts/tts.mjs.",
+  "endpoint": "elevenlabs/tts/eleven-v4",
+  "usd_per_1k_chars": 0.08,
+  "cap_usd": 0.20,
+  "stability": 0.5
+}

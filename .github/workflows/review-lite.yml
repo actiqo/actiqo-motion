@@ -1,5 +1,5 @@
-# Lightweight review-only package: exactly the current D01 Narrated v2 master + D02 opener motion test, with their
-# contact sheets and review notes. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): the three D02 v02 full-sound review masters (A primary, B, D),
+# A's contact sheet and D02 REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -24,11 +24,10 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master.mp4
-            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master_contact.png
-            gtm/d01-pickup/v2/REVIEW_V2.md
-            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01.mp4
-            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01_contact.png
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles_contact.png
             gtm/d02-water-bottles/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
@@ -46,9 +45,8 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master.mp4
-            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master_contact.png
-            gtm/d01-pickup/v2/REVIEW_V2.md
-            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01.mp4
-            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01_contact.png
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
+            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles_contact.png
             gtm/d02-water-bottles/edit/REVIEW.md

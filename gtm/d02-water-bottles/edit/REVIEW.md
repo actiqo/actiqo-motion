@@ -53,3 +53,71 @@ Build: `node edit/build.mjs <hookId>` writes `edit/index.html` from `scene.mjs`,
 - **Planned use:** about 2 s, src ≈ 0.3–2.3 (hand in → open → rummage).
 - **Active hooks:** A `d02_waterbottles`, B `d02_20minutes`, D `d02_ownsix`. C `d02_alwaysforget` is parked (draft kept).
 - **Next, once you approve this motion:** swap the still for this clip, add the Sarah narration ("ACTIQO keeps the prep list with the activity, so you know what's packed before you leave." / "Try it with your next practice.", ACTIQO forced via IPA), then sound.
+
+---
+# D02 v02: narrated + sound FINAL CANDIDATES (2026-11-21), for final review
+**Active variants:** A (primary), B, D. C is parked (its v01 draft is kept).
+
+| Hook (`utm_content`) | Full-sound master | Music-free | Runtime | Hook narrated? |
+|---|---|---|---|---|
+| **`d02_waterbottles` (A, primary)** | `review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4` | `…_musicfree.mp4` | **10.00 s** | yes |
+| `d02_20minutes` (B) | `review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4` | `…_musicfree.mp4` | 9.80 s | no (text only) |
+| `d02_ownsix` (D) | `review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4` | `…_musicfree.mp4` | 9.80 s | yes |
+
+All are 1080×1920, 30 fps, H.264 + AAC 320k. The contact sheet is `review/v02/…_d02_waterbottles_contact.png`.
+
+## What's identical across A/B/D
+- **The same:** the opener footage, product body, body narration, sound design and end card.
+- **What differs:** only the hook text, its hold (A 2.70 s, B 2.50 s, D 2.50 s) and the hook VO.
+- **Body:** each variant's composition is generated from the same `scene.mjs` body by `build.mjs`. The audio comes from the same `sound/mix_d02.mjs` graph, offset by the hold.
+
+## Picture
+**Opener:** the **locked Veo Fast v01** clip, src 0.30 → 0.30 + hold (A uses 0.30–3.00, B/D 0.30–2.80). A hand checks the open bag; there's no bottle inside, and all six bottles stay in view.
+
+**Body (real capture, unchanged sequence):**
+1. What to bring · **0/3** → tap.
+2. **3 items to pack**.
+3. tap **Water bottle** → **1 of 3 packed**.
+4. **Prep complete**.
+
+Punch-ins stay ≤1.06× (no label or checkbox is cropped). There are no fake UI or overlays.
+
+**End card:** wordmark · **Try it with your next practice.** · getactiqo.com (2.0 s; the body hold and end card were trimmed 0.05 s / 0.15 s to fit the narration).
+
+## Narration
+Sarah, ElevenLabs v4 via fal, with ACTIQO forced via IPA **`/ˈæktɛkoʊ/`**:
+
+| Line | Source | Placement |
+|---|---|---|
+| Hook A "Six water bottles. None in the bag." | req `01a1fc04-43b3-…` | at 0.05. The pause after "bottles." is tightened 0.37 → 0.12 s by an edit cut (no time-stretch) |
+| Hook D "Somehow we own six of these." | req `01a1fc04-5f9e-…` | at 0.05 |
+| Hook B "Practice starts in twenty minutes. Guess what we forgot." | req `01a1fc04-5146-…` (generated) | **not used**: at 3.6 s spoken, B would run about 10.9 s. B keeps on-screen text. |
+| Body "ACTIQO keeps the prep list with the activity, so you know what's packed before you leave." | req `01a1fc04-6e9b-…` | H+0.05 → H+4.95. "…before you leave" lands on **Prep complete** (H+4.00) |
+| CTA "Try it with your next practice." | the **same approved D01 final Sarah take** (src 8.50–10.15) | H+5.45 |
+
+## Sound (the D01 language, original and synthesized)
+- **Bed:** the same D01 synth bed (104 BPM, D major), offset so its **release lands on Prep complete**. It's ducked to 0.30 under every narration line and sits at 0.75 between lines.
+- **Cues:**
+  - The felt "into the app" pluck on the cut.
+  - Real-action taps on the **What to bring** tap (H+1.22) and the **Water bottle checkbox** (H+2.80).
+  - **Payoff:** the locked D01 Saved chime on **Prep complete** (H+4.00), together with the bed release.
+- **Not used:** no licensed music, no whooshes or pings.
+- **Levels:**
+  - Narration −13.4 to −13.6 LUFS (the same with and without the bed); the bed is about 9 dB under it in gaps.
+  - Masters: A −13.8 / B −14.9 / D −13.8 LUFS integrated (B has no hook VO), **true peak −1.49 dBTP**. The master gain is the same 11.9 dB used for D01.
+
+## Cost (D02 total, fal usage API)
+| Item | Cost |
+|---|---|
+| Keyframe | $0.15 |
+| Veo Fast silent 4 s | $0.40 |
+| Narration (4 takes, 212 chars) | $0.017 |
+| CTA (reused from D01) | $0 |
+| **Total** | **≈ $0.567** |
+
+There's no more fal/Veo for D02.
+
+## Quality assessment
+- **Strong:** the opener now reads as real footage, with a real check of the bag. The narration bridges straight from the hook into the product. The "Prep complete" payoff gets the chime, the bed release and the end of the narration together.
+- **Watch:** the real Prep list is still small on screen (top third), so the narration and taps carry the explanation. B's hook isn't narrated (timing); if you want it spoken, B would need about 10.9 s or a shorter line.
+- **Please verify by ear:** ACTIQO = "Act-eh-co" (IPA forced; text ASR can't confirm the middle vowel).
