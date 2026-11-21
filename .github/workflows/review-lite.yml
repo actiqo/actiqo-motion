@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D04 founder-intro motion v01 + contact sheet + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D04 real ACTIQO product capture + stills/contact + layout tests + CAPTURE_RECORD.md + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,8 +23,13 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d04-tasting-notes/generations/review/s2/d04_s2_founder_fast_v01.mp4
-            gtm/d04-tasting-notes/generations/review/s2/d04_s2_founder_fast_v01_contact.png
+            gtm/d04-tasting-notes/ui/capture/d04_ui_flow_9x16.mp4
+            gtm/d04-tasting-notes/ui/capture/d04_ui_flow_contact.png
+            gtm/d04-tasting-notes/ui/capture/d04_gameplan_all_three.png
+            gtm/d04-tasting-notes/ui/capture/d04_prep_list.png
+            gtm/d04-tasting-notes/edit/layout_tests/d04_layout_A_full_app_right_zone.png
+            gtm/d04-tasting-notes/edit/layout_tests/d04_layout_B_row_crop_lower_safe.png
+            gtm/d04-tasting-notes/ui/CAPTURE_RECORD.md
             gtm/d04-tasting-notes/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
@@ -42,6 +47,11 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d04-tasting-notes/generations/review/s2/d04_s2_founder_fast_v01.mp4
-            gtm/d04-tasting-notes/generations/review/s2/d04_s2_founder_fast_v01_contact.png
+            gtm/d04-tasting-notes/ui/capture/d04_ui_flow_9x16.mp4
+            gtm/d04-tasting-notes/ui/capture/d04_ui_flow_contact.png
+            gtm/d04-tasting-notes/ui/capture/d04_gameplan_all_three.png
+            gtm/d04-tasting-notes/ui/capture/d04_prep_list.png
+            gtm/d04-tasting-notes/edit/layout_tests/d04_layout_A_full_app_right_zone.png
+            gtm/d04-tasting-notes/edit/layout_tests/d04_layout_B_row_crop_lower_safe.png
+            gtm/d04-tasting-notes/ui/CAPTURE_RECORD.md
             gtm/d04-tasting-notes/edit/REVIEW.md

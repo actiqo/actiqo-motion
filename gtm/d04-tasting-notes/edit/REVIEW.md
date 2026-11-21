@@ -110,3 +110,32 @@ All clips are generated **without embedded speech** (per your option B).
 **D04 spent:** $1.50 (opening keyframe $0.15 + opener motion $0.60 + founder keyframe $0.15 + founder motion $0.60).
 
 **Still on hold until you say so:** QA product capture, closing shot ($0.75 planned), voice (reference needed from you).
+
+---
+# Step 4: real ACTIQO product capture (2026-11-21), for review
+**Founder motion locked:** `generations/review/s2/d04_s2_founder_fast_v01.mp4`. Not slowed or regenerated. Preferred section: src ≈2.6–5.2 s.
+
+**Capture:** `ui/capture/d04_ui_flow_9x16.mp4` (16.5 s, real current UI, QA only). Full record: `ui/CAPTURE_RECORD.md`.
+- **All three ideas on ONE real Game Plan screen:**
+  - **Leave by 4:30 PM · Fixed leave time**
+  - **Pickup · You · Saved**
+  - **What to bring · Water bottle, Cleats, Shin guards · 0/3**
+- **The sequence:** settled Game Plan (6.1 s hold) → real tap on What to bring → **Prep list: 3 items to pack** (4.6 s) → back → Game Plan (4.6 s).
+- **Cost:** $0. The temporary preview is deleted; no production credentials or data were involved.
+
+## Composite layout tests (`edit/layout_tests/`, free; red tint = TikTok/Reels unsafe areas)
+| | Layout | Result |
+|---|---|---|
+| A | Whole app screen scaled into the right clean zone (485 px wide) | **Not recommended.** The UI drops to ~45% scale and the row text is very small on a phone. The right edge also overlaps the TikTok/Reels button rail from y 840 down. |
+| **B** | **Real rows region, full row width (labels, "Change", "0/3" and chevrons intact), 660 px wide inside the lower safe area (x 120–780), below Alec's face** | **Recommended.** About 66% scale, readable. Alec's face and shoulders stay fully visible above it. |
+
+**Refinement for B:** at 660 px wide, the whole rows region (leave card → What to bring) is ~490 px tall and would cross the bottom safe line (y 1260). So the composite should be a **real 660 × ~400 window that slowly pans down the genuine Game Plan**, following the line:
+- "pickup": the leave card and pickup row
+- "packing": the What to bring row (optionally a brief cut to the real Prep list, "3 items to pack")
+- "leave times": the leave card
+
+It's one continuous, uncropped-width piece of the real screen, not floating cards, with Alec on the left and above.
+
+**D04 spent so far:** $1.50 (unchanged).
+
+**Still on hold:** closing keyframe and motion (≈$0.75), voice (I need a reference recording from you), lip-sync.
