@@ -1,15 +1,37 @@
 {
   "shot": "S1",
   "subject": "Opening keyframe: Alec (the user, from his own reference photo) seated at the Cork Connoisseur table, wine glass raised, dry tasting expression; phone on the table. Organic Cork Connoisseur post.",
-  "status": "Checkpoint 1: ONE keyframe approved to run (~$0.15). No motion yet.",
+  "status": "Keyframe v01 APPROVED + LOCKED (2026-11-21). ONE Veo Fast 6 s silent motion approved ($0.60).",
   "keyframe": {
     "endpoint": "fal-ai/nano-banana-pro/edit",
     "reference": "../../corkconnoisseur.png",
     "out": "references/keyframes/d04_s1_open_keyframe_v01.png",
     "input": {
-      "aspect_ratio": "9:16", "resolution": "2K", "output_format": "png", "num_images": 1,
+      "aspect_ratio": "9:16",
+      "resolution": "2K",
+      "output_format": "png",
+      "num_images": 1,
       "prompt": "Create a new photorealistic vertical 9:16 photograph of THE SAME MAN as in the reference image. Preserve his exact facial identity: face shape, eyes, nose, skin texture, swept-back brown hair, neatly trimmed full beard and natural proportions. Same outfit: textured burgundy corduroy blazer over a plain white crew-neck T-shirt, with dark jeans. Scene: a warm, tasteful evening home wine bar / intimate restaurant corner. He sits at a rich dark-wood table, framed waist-up, centred, facing the camera, shot at eye level with a roughly 50mm lens and shallow depth of field. He holds a stemmed wine glass of deep red wine just below his nose, mid-swirl, and studies it with a serious, dry, connoisseur's tasting expression, eyes on the wine, eyebrows slightly raised. On the table in front of him: one smartphone lying face-down, and nothing else but a folded linen napkin. Background: softly blurred warm bokeh of amber pendant lights and a shelf of wine bottles turned so no labels are readable. Lighting: warm low evening key light from one side, gentle rim light, natural skin tones, premium editorial lifestyle photography, true to life, not glossy commercial stock and not an obvious AI render. Keep clean, uncluttered space in the top fifth of the frame and keep the lower quarter calm. No text, no captions, no logos, no labels, no brand marks, no watermark, no readable screen, no other people."
-    }
+    },
+    "locked": true
   },
-  "accept_if": ["clearly recognisable as the man in corkconnoisseur.png", "burgundy blazer + white crew-neck kept", "red wine glass + face-down phone, no readable text/labels/logos anywhere", "warm premium Cork look; headroom for the 'TASTING NOTES OF PARENTHOOD' title"]
+  "accept_if": [
+    "identity matches reference throughout",
+    "phone glow has no readable content",
+    "clear glance-down → deadpan to camera beat",
+    "no morphing of glass/hands"
+  ],
+  "use": "0–6 s of the sketch (opening line is added later as Alec's own voice; this clip has no speech)",
+  "video": {
+    "draft_endpoint": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper_endpoint": "fal-ai/veo3.1/image-to-video",
+    "input": {
+      "aspect_ratio": "9:16",
+      "resolution": "1080p",
+      "duration": "6s",
+      "generate_audio": false,
+      "prompt": "Vertical 9:16, realistic cinematic footage, real-time speed, warm evening wine bar, same man, same outfit and framing as the photo. He slowly swirls the red wine and inhales its aroma with a serious connoisseur's focus, lips moving slightly as if murmuring tasting notes. Then the smartphone lying on the table lights up briefly with a soft plain glow, twice, a moment apart. He lowers the glass a little, glances down at the phone, pauses, then lifts his eyes and looks straight into the camera with a dry, deadpan, knowing expression, holding the look. Small natural gestures, consistent face, hands and glass. Camera almost locked off, very slow subtle push-in only.",
+      "negative_prompt": "text on screen, readable phone screen, notification text, captions, subtitles, logos, labels, brand names, watermark, other people, face changing, identity drift, extra fingers, deformed hands, glass morphing, wine spilling, drinking, exaggerated expressions, laughing, fast camera move, cut, zoom, slow motion, dramatic lighting change"
+    }
+  }
 }

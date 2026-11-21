@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D04 opening keyframe v01 + the identity reference + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D04 opening motion v01 + contact sheet + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,8 +23,8 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d04-tasting-notes/references/keyframes/d04_s1_open_keyframe_v01.png
-            corkconnoisseur.png
+            gtm/d04-tasting-notes/generations/review/s1/d04_s1_open_fast_v01.mp4
+            gtm/d04-tasting-notes/generations/review/s1/d04_s1_open_fast_v01_contact.png
             gtm/d04-tasting-notes/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
@@ -42,6 +42,6 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d04-tasting-notes/references/keyframes/d04_s1_open_keyframe_v01.png
-            corkconnoisseur.png
+            gtm/d04-tasting-notes/generations/review/s1/d04_s1_open_fast_v01.mp4
+            gtm/d04-tasting-notes/generations/review/s1/d04_s1_open_fast_v01_contact.png
             gtm/d04-tasting-notes/edit/REVIEW.md
