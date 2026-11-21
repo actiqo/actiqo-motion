@@ -1,6 +1,7 @@
 // D01 · "Pickup was handled." The single timeline source (v1, data only, nothing renders yet).
 // A later gtm/scripts/build.mjs turns this into a HyperFrames composition (hyperframes@0.8.98, as Film 01).
 // Times are seconds at 30 fps. Mirrors brief/D01_SHOTLIST.md: change both together.
+// NOTE 2026-11-21: the built rough cut (edit/index.html, edit/TIMELINE.md) supersedes these v1 slots (live action 2.80 s, product 2.80–12.80, end card 12.80–15.00).
 
 export const FPS = 30;
 export const FORMAT = { W: 1080, H: 1920, duration: 15.0 };

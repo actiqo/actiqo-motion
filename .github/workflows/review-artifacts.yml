@@ -56,6 +56,8 @@ jobs:
             gtm/**/*.png
             gtm/*/generations/review/**/*.mp4
             gtm/*/generations/review/**/*.json
+            gtm/*/edit/review/*.mp4
+            gtm/*/edit/TIMELINE.md
           )
           printf '%s\n' "${files[@]}" | sort -u | tee review-manifest.txt
           echo "files: $(sort -u review-manifest.txt | wc -l)"
@@ -88,6 +90,8 @@ jobs:
             gtm/**/*.png
             gtm/*/generations/review/**/*.mp4
             gtm/*/generations/review/**/*.json
+            gtm/*/edit/review/*.mp4
+            gtm/*/edit/TIMELINE.md
             !**/node_modules/**
             !**/*.log
             !**/tmp/**
