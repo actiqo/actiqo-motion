@@ -1,0 +1,54 @@
+# Lightweight review-only package: exactly the current D01 Narrated v2 master + D02 opener motion test, with their
+# contact sheets and review notes. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+name: Review lite
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Package lightweight review artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out (with Git LFS, so MP4s are real files)
+        uses: actions/checkout@v7
+        with:
+          lfs: true
+          persist-credentials: false
+
+      - name: Verify files and list sizes
+        run: |
+          set -euo pipefail
+          files=(
+            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master.mp4
+            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master_contact.png
+            gtm/d01-pickup/v2/REVIEW_V2.md
+            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01.mp4
+            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01_contact.png
+            gtm/d02-water-bottles/edit/REVIEW.md
+          )
+          for f in "${files[@]}"; do
+            test -f "$f" || { echo "missing: $f"; exit 1; }
+            if head -c 100 "$f" | grep -q 'git-lfs.github.com/spec'; then echo "LFS pointer, not media: $f"; exit 1; fi
+          done
+          du -b "${files[@]}" | tee review-lite-manifest.txt
+          echo "total bytes: $(du -cb "${files[@]}" | tail -1 | cut -f1)" | tee -a review-lite-manifest.txt
+
+      - name: Upload review artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: actiqo-review-lite-${{ github.sha }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            review-lite-manifest.txt
+            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master.mp4
+            gtm/d01-pickup/v2/edit/review/d01_narrated_v2_master_contact.png
+            gtm/d01-pickup/v2/REVIEW_V2.md
+            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01.mp4
+            gtm/d02-water-bottles/generations/review/s1/d02_s1_bottles_fast_v01_contact.png
+            gtm/d02-water-bottles/edit/REVIEW.md
