@@ -1,6 +1,6 @@
 # D03 "Practice Starts at Five" (9:16, about 10.7 s, one primary version: `d03_leave430`)
 
-**Status 2026-11-21: checkpoint APPROVED. Opener still v02 (logo removed from v01 via one edit) waiting for review. Cap $0.75; spent $0.30** (`edit/REVIEW.md`). No motion, TTS, Vercel or capture work yet.
+**Status 2026-11-21: checkpoint APPROVED. Still v02 LOCKED. Fast motion v01 generated: a face enters from ≈1.0 s (fails brief); waiting for decision. Cap $0.75; spent $0.70** (`edit/REVIEW.md`). No motion, TTS, Vercel or capture work yet.
 Start here: `brief/D03_BRIEF.md`. Real leave-time flow and capture beats: `ui/UI_FLOW.md`.
 
 ## Decisions locked at checkpoint approval (2026-11-21)

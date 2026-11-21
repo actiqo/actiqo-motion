@@ -54,3 +54,35 @@ Both A and B need you to approve a retry. Both land $0.01 over the cap unless th
 **Remaining plan if approved:** one Veo Fast silent 4 s ($0.40) and Sarah narration (≈$0.01), for ≈ $0.71 in total.
 
 **Not done (by instruction):** motion, narration, deployment and capture.
+
+---
+## Opener motion v01 (Veo 3.1 Fast), for review, ⚠️ fails the "no face" rule
+- **File:** `generations/review/s1/d03_s1_cleats_fast_v01.mp4` (+ `_contact.png`, 4 fps; `.json`). Raw copy: `generations/raw/s1/` (git-ignored).
+- **Generation:** `fal-ai/veo3.1/fast/image-to-video`, 9:16, 1080p, 4 s, `generate_audio:false`, start frame = locked still v02, request `01a1ff29-bbea-77b1-9369-b2489dd99acb`, **$0.40**. It was the one allowed generation.
+- **Output:** 1080×1920, 24 fps, 96 frames, 4.00 s, video only.
+
+### What happens (checked frame by frame)
+| Source time | Frames | Content |
+|---|---|---|
+| 0.00–0.90 s | 0–21 | Near-still entryway, identical to v02, faint sway. **Clean.** |
+| 0.92 s | 22 | Forearm enters at the right edge. |
+| **≈1.00 s → ≈3.6 s** | **24 → ~86** | **An adult man's head and face lean into the top right of the frame**, in a black/white/blue sports top. He bends down, picks up the **right (sole-up) cleat** and drops it into the bag. Face clearly visible from about 1.13 s. |
+| ≈3.7–4.00 s | ~88–95 | He's out of frame. One cleat is on the rug, the other is in the bag. Scene clean. |
+
+### Integrity checks
+- **Text, clocks, numbers, logos:** none seen in any frame. The sports top has plain colour panels with no logo or lettering.
+- **Scene:** the room, door, jacket, bench, rug and lighting stay stable. The left cleat doesn't morph. The bag and shin guards stay put (the bag only receives the cleat).
+- **Brief violation:** a **person and face** enter (the prompt and negative prompt said forearm only). That's the same failure mode Veo shows when a hand reaches low into frame: it tends to bring the body with it.
+
+### What can be used
+The face-free part is only **src 0.00–0.95 s**, and it's essentially still. **The target section, 0.3–2.5 s, can't be used without the face.**
+
+**Options:**
+
+| Option | Cost | What it does |
+|---|---|---|
+| **A** | $0 | Opener = the locked v02 still, held for ~1.95 s, then **seamlessly into clip src 0.00–0.95**: the clip's first frame *is* v02. The forearm's first entry lands at the cut to the UI. Reads as "not ready yet", with a hint that someone is about to move. No face, no further spend. |
+| B | $0 | Still-only opener (v02 with a very gentle push), as in the D02 draft. |
+| C | +$0.40, needs a cap raise to about $1.15 | A second Fast generation with a reworked prompt (hand enters at mid-height reaching for the bag handle, "camera framing excludes everything above the bench"). Still a risk of the same failure. |
+
+**D03 spent:** $0.70 of $0.75 (still $0.15 + edit $0.15 + Fast $0.40). Narration (≈$0.01) still fits.

@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D03 opener still v02 (logo-removal edit) + v01 for comparison + cleat crops + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D03 opener Fast motion v01 + contact sheet + locked still v02 + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,10 +23,9 @@ jobs:
         run: |
           set -euo pipefail
           files=(
+            gtm/d03-practice-starts-at-five/generations/review/s1/d03_s1_cleats_fast_v01.mp4
+            gtm/d03-practice-starts-at-five/generations/review/s1/d03_s1_cleats_fast_v01_contact.png
             gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02.png
-            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02_cleat_crop.png
-            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_v01_vs_v02_crop.png
-            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v01.png
             gtm/d03-practice-starts-at-five/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
@@ -44,8 +43,7 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
+            gtm/d03-practice-starts-at-five/generations/review/s1/d03_s1_cleats_fast_v01.mp4
+            gtm/d03-practice-starts-at-five/generations/review/s1/d03_s1_cleats_fast_v01_contact.png
             gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02.png
-            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02_cleat_crop.png
-            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_v01_vs_v02_crop.png
-            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v01.png
             gtm/d03-practice-starts-at-five/edit/REVIEW.md

@@ -1,18 +1,19 @@
 {
   "shot": "S1",
   "subject": "Object opener: kid's soccer cleats still sitting by the front door, sports bag beside them. Not ready to leave. No people, no clock graphics.",
-  "status": "v02 = ONE approved logo-removal edit of v01 (2026-11-21, Option A, ~$0.15). Motion NOT approved yet.",
+  "status": "Keyframe v02 APPROVED + LOCKED (2026-11-21). ONE Veo Fast motion generation approved (~$0.40). Do not regenerate/edit the still.",
   "keyframe": {
     "endpoint": "fal-ai/nano-banana-pro/edit",
     "reference": "references/opener/d03_cleats_keyframe_v01.png",
-    "out": "references/opener/d03_cleats_keyframe_v01.png",
+    "out": "references/opener/d03_cleats_keyframe_v02.png",
     "input": {
       "aspect_ratio": "9:16",
       "resolution": "2K",
       "output_format": "png",
       "num_images": 1,
       "prompt": "Edit this exact photo. Change ONLY one thing: on the left soccer cleat (the upright black cleat on the rug, lower left), remove the white double-diamond logo on its side and replace it with plain unbranded black leather that matches the rest of the shoe, with the same scuffs, mud, creases, sheen and lighting. The result must have no logo, mark, lettering, symbol, stripe, badge or recognisable brand detail anywhere on either cleat. Keep everything else pixel-for-pixel identical: the exact composition and camera framing, the cleat positions and orientation, the mud and wear, the laces, the navy duffel bag, the shin guards, the bottle, the jacket, the rug, the door, the floor, the lighting, shadows and depth of field. Do not beautify, restyle, clean up, reposition, recolour or redesign anything else."
-    }
+    },
+    "locked": true
   },
   "video": {
     "draft_endpoint": "fal-ai/veo3.1/fast/image-to-video",
@@ -22,15 +23,16 @@
       "resolution": "1080p",
       "duration": "4s",
       "generate_audio": false,
-      "prompt": "Vertical 9:16, realistic smartphone-style footage, real-time speed. A slow, slight handheld push-in toward the untied kids' soccer cleats on the entryway mat by the front door, the duffel bag beside them. Late-afternoon light drifts very slightly. Nothing else moves. No people, no hands, objects stay exactly the same.",
-      "negative_prompt": "people, hands, faces, text, captions, logos, brand names, numbers, clock, phone, screen, user interface, objects moving by themselves, objects appearing or disappearing, fast camera move, zoom, cut, slow motion, dramatic lighting"
-    }
+      "prompt": "Vertical 9:16, realistic smartphone-style footage of an ordinary family moment, real-time speed, natural late-afternoon light. Same entryway as the photo, exact same framing. The shot begins almost completely still for a brief natural beat. Then a single adult hand and forearm (no face, no head, no body in frame) reaches in from the right edge, low near the floor, and starts to gather the upright black soccer cleat by its heel, beginning to lift it toward the open navy bag, like a parent finally starting to get everyone out the door: ordinary, a little hurried but not frantic. The other cleat, the bag, the shin guards, the bottle, the jacket and the rug stay exactly as they are. Camera locked off with only the faintest natural handheld sway.",
+      "negative_prompt": "face, head, second person, extra hands, deformed fingers, text, subtitles, captions, letters, numbers, logos, brand marks, watermark, clock, phone, screen, user interface, extra gear, new objects, objects appearing or disappearing, objects moving by themselves, cleat morphing, shoe changing shape, room changing, lighting change, fast camera move, zoom, pan, cut, slow motion, dramatic lighting"
+    },
+    "direction_note": "2026-11-21 user direction: almost still, then one adult hand/forearm enters and begins gathering a cleat or reaching for the bag; hurried-not-frantic; preserve everything; no face, text, clocks, logos, extra gear, morphing or dramatic camera."
   },
   "accept_if": [
-    "reads 'not ready to leave' in under ~1.5 s",
-    "no readable text, logo, number or clock anywhere",
-    "clean negative space top third for the hook line",
-    "cleats/bag clearly a kid's soccer gear"
+    "still reads 'not ready yet' through ~2.5 s",
+    "hand/forearm only, natural anatomy",
+    "no new logos, text, clocks or numbers in any frame",
+    "cleats/bag/room preserved, no morphing"
   ],
   "keyframe_v01": {
     "endpoint": "fal-ai/nano-banana-pro",
@@ -38,5 +40,6 @@
     "request_id": "01a1ff20-c109-7223-aff1-6d30d7823d8c",
     "prompt": "Photorealistic vertical 9:16 photograph, premium editorial lifestyle photography, true to life and unstaged, not commercial stock photography. Late afternoon inside an ordinary suburban Midwestern family home, the front-door entryway: painted wood door, a little worn trim, a runner rug, a low bench. On the floor just inside the closed front door: a small pair of kids' black soccer cleats, laces undone, one tipped on its side, clearly not on anyone's feet yet; a plain navy youth soccer duffel bag sits beside them on the floor, unzipped and half open, shin guards poking out, clearly not finished packing. A small kids' jacket hangs on a hook above. Natural warm late-afternoon window light from the side, about 4500K, soft realistic shadows, gentle film-like texture. Camera low, about knee height, roughly 26mm lens, the cleats sharp in the lower middle of the frame, the door and hallway softly readable, calm uncluttered space in the top third of the frame. The feeling: practice is coming soon, and we are clearly not out the door yet. No people, no faces, no hands, no pets. Absolutely no clocks, no phones, no screens, no text, no letters, no logos, no brand marks, no numbers anywhere.",
     "note": "v01 composition approved; real-brand logo on left cleat"
-  }
+  },
+  "use": "roughly src 0.3–2.5 s of a 4 s generation"
 }
