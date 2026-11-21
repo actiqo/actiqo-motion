@@ -52,3 +52,26 @@ All clips are generated **without embedded speech** (per your option B).
 **D04 spent:** $0.75 (keyframe $0.15 + motion $0.60).
 
 **Next, after approval:** step 2, the founder/product-side keyframe, **$0.15**.
+
+---
+# Step 2: founder-intro keyframe v01 (2026-11-21), for review
+**Opener locked:** `generations/review/s1/d04_s1_open_fast_v01.mp4` is approved. No regeneration and no editorial push-in.
+
+- **File:** `references/keyframes/d04_s2_founder_keyframe_v01.png` (1536×2752). Record: `…_v01.json`. Prompt: `generations/prompts/s2_founder_side.json`.
+- **Generation:** `fal-ai/nano-banana-pro/edit` with **two anchors**: `corkconnoisseur.png` (identity) and the locked opening keyframe (scene). 2K. Request `01a1ff92-b911-7861-8172-f6a72a1437e3`, **$0.15**.
+  - `gtm/scripts/generate.mjs` now accepts an array of reference images (backward-compatible).
+
+## Assessment
+- **Identity and wardrobe:** matches the reference and the opener: face, swept-back hair, trimmed beard, burgundy corduroy blazer, white crew-neck.
+- **Setting:** the same amber pendants, dark-wood table, warm side and rim light, and the same shallow lens character.
+- **Pose:** seated and slightly wider than the opener (waist-up). He faces the camera with a small, warm, self-aware founder smile. The glass is **set down** at his right hand; the phone lies on the table with a dark, blank screen.
+- **Space for the app:** a calm, softly lit warm wall on the right, roughly **x 595–1080 × y 180–1010** at 1080×1920 (about 485 × 830 px, close to a phone's aspect). There are no shelves, bottles or objects there, so it suits a large real ACTIQO recording beside him.
+- **Composition:** Alec takes the left ~55–60% and stays dominant. His face sits at about y 520–830, clear of the platform's top and bottom controls.
+- **Watch items:**
+  1. A pale counter edge runs across the right side at y ≈ 1050 (at 1080 scale), just below the clean zone. The app panel can sit above it or overlap it.
+  2. His left hand enters at the right edge, holding the glass base. It's anatomically fine.
+- **Clean:** no text, labels, logos, UI or other people.
+
+**D04 spent:** $0.90 (keyframe $0.15 + opener motion $0.60 + this keyframe $0.15).
+
+**Next, after approval:** step 3, a founder-intro motion from this keyframe: Veo Fast, 6 s, silent, **$0.60**. QA capture, voice and the closing shot stay on hold until you say so.

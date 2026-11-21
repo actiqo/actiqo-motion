@@ -1,7 +1,7 @@
 {
   "shot": "S1",
   "subject": "Opening keyframe: Alec (the user, from his own reference photo) seated at the Cork Connoisseur table, wine glass raised, dry tasting expression; phone on the table. Organic Cork Connoisseur post.",
-  "status": "Keyframe v01 APPROVED + LOCKED (2026-11-21). ONE Veo Fast 6 s silent motion approved ($0.60).",
+  "status": "Keyframe v01 + Veo Fast v01 (req 01a1ff8a) APPROVED + LOCKED 2026-11-21. No regeneration; no editorial push-in.",
   "keyframe": {
     "endpoint": "fal-ai/nano-banana-pro/edit",
     "reference": "../../corkconnoisseur.png",

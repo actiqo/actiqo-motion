@@ -1,0 +1,26 @@
+{
+  "ts": "2026-11-21T19:26:07.344Z",
+  "production": "d04-tasting-notes",
+  "shot": "s2",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "est_usd": 0.15,
+  "prompt_sha": "51c0e37adfca",
+  "status": "completed",
+  "request_id": "01a1ff92-b911-7861-8172-f6a72a1437e3",
+  "prompt_file": "s2_founder_side.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Create a new photorealistic vertical 9:16 photograph continuing the same scene. Image 1 is the identity reference; image 2 is the approved scene. THE SAME MAN: exact facial identity, face shape, eyes, swept-back brown hair, neatly trimmed full beard and natural proportions; the same burgundy corduroy blazer over the same plain white crew-neck T-shirt. The same warm evening wine bar, the same dark-wood table, the same amber pendant-light bokeh, the same warm side key and rim light and the same shallow-depth-of-field lens character as image 2. Composition: a slightly wider shot than image 2. He is seated at the table, framed from mid-thigh up, placed in the LEFT 55% of the frame, turned slightly toward the camera and looking straight into the lens with a small, warm, approachable, self-aware founder smile, as if about to introduce himself. His hands rest relaxed on the table. His red wine glass now stands SET DOWN on the table beside his right hand; the smartphone lies face-down on the table. The RIGHT 45% of the frame, from the top down to just above the table, is intentionally clean, calm negative space: a softly out-of-focus warm, dark wall with only gentle amber bokeh, no shelves, no bottles, no objects, no patterns. He remains large and visually dominant. Premium editorial lifestyle photography, natural skin texture, true to life. No text, no captions, no logos, no labels, no readable bottles, no app or phone interface, no screens showing content, no other people. Seated only; same wardrobe.",
+    "image_urls": [
+      "<2782838 chars of image data>",
+      "<8311182 chars of image data>"
+    ]
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/keyframes/d04_s2_founder_keyframe_v01.png"
+}

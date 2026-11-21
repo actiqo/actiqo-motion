@@ -48,7 +48,7 @@ if (kind === 'keyframe') {
   const n = prior.filter((e) => e.kind === 'keyframe').length;
   if (n >= budget.max_keyframes_per_character) die(`cap: ${n} keyframes already for ${shot} (max ${budget.max_keyframes_per_character}). Stop and report.`);
   input = { ...k.input }; delete input.negative_prompt_note;
-  if (k.reference) input.image_urls = [dataUri(k.reference)];
+  if (k.reference) input.image_urls = [].concat(k.reference).map(dataUri); // one path or an array of reference paths
   if (/4k/i.test(input.resolution)) die('4K is not allowed');
   est = budget.price_usd[endpoint].per_image * (input.num_images ?? 1);
   outRel = nextFree(k.out);
