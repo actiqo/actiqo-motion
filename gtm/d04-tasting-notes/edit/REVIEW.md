@@ -172,3 +172,32 @@ It's one continuous, uncropped-width piece of the real screen, not floating card
 **No-spend alternative** (weaker): cut from the product section straight to the end card. "Try it with your next practice." plays over the end card, and "Then we can get back to the tasting notes." is either dropped or played over the end card. That loses the Cork callback, which is the joke's payoff.
 
 **D04 spent:** $1.50 (unchanged). With the closing shot: ≈$2.25. Voice and lip-sync are priced after your reference recording.
+
+---
+# Step 6: closing keyframe v01 (2026-11-21), for review: ⚠️ too close to the founder frame
+- **File:** `references/keyframes/d04_s3_closing_keyframe_v01.png` (1536×2752). Comparison: `references/keyframes/d04_s3_closing_v01_vs_founder.jpg` (founder left, closing right). Prompt: `generations/prompts/s3_closing.json`.
+- **Generation:** `fal-ai/nano-banana-pro/edit` with anchors `corkconnoisseur.png` + opening keyframe + founder keyframe. 2K. Request `01a1ffe7-2d97-75e0-a847-b27f915260ea`, **$0.15**.
+
+## Assessment
+**Right:**
+- **Identity and look:** face, swept-back hair, beard, burgundy corduroy blazer, white crew-neck. The same set, light and lens.
+- **Expression:** looking straight into the camera with a dry, knowing half-smile, the "we survived that" look, restrained.
+- **Phone:** dark and inactive. No glow, sniff, text, logos, UI or other people.
+- **Bottles:** soft cream labels with no readable text.
+
+**Misses the brief:**
+1. **It repeats the founder pose** almost exactly: the same left-of-centre placement, the same arm across the table, the same hand at the glass base. Next to the founder frame it reads as **a repeat, not a callback** (see the comparison).
+2. **The glass is set down on the table** with his hand at the base. It isn't **held** low at chest height, so the planned motion ("attention drifts back to the wine") has less to work with.
+3. **It isn't closer or centred** as asked; the framing is about the same as the founder shot. Subtitle space is fine above and below.
+
+## Recommendation: ONE controlled retry (≈$0.15; the shot's keyframe cap allows a second)
+Re-run with stronger, explicit differences:
+- Centred and **chest-up, clearly closer** than the founder frame.
+- **The stem held in his hand, the glass lifted to mid-chest** (not on the table and not near his face). His other forearm rests on the table.
+- **A slight lean back**, the shoulders squared to the camera.
+- The same knowing half-smile, the phone dark at the table edge.
+- Add the founder frame to the prompt as "do NOT repeat this pose".
+
+If you'd rather not spend, v01 can still be animated. But the close would then look like a return to the founder shot.
+
+**D04 spent:** $1.65 (+ this $0.15). Motion is on hold.

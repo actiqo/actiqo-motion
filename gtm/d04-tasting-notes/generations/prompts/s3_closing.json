@@ -1,0 +1,15 @@
+{
+  "shot": "S3",
+  "subject": "Closing keyframe: the callback payoff. Same evening ~15 s later. Glass held low, looking at camera, knowing half-smile; phone dark. Supports 'Try it with your next practice. Then we can get back to the tasting notes.'",
+  "status": "Closing keyframe approved (~$0.15). No motion yet.",
+  "keyframe": {
+    "endpoint": "fal-ai/nano-banana-pro/edit",
+    "reference": ["../../corkconnoisseur.png", "references/keyframes/d04_s1_open_keyframe_v01.png", "references/keyframes/d04_s2_founder_keyframe_v01.png"],
+    "out": "references/keyframes/d04_s3_closing_keyframe_v01.png",
+    "input": {
+      "aspect_ratio": "9:16", "resolution": "2K", "output_format": "png", "num_images": 1,
+      "prompt": "Create a new photorealistic vertical 9:16 photograph of THE SAME MAN in THE SAME evening scene, about fifteen seconds later. Image 1 is the identity reference; images 2 and 3 are the approved scene. Preserve his exact facial identity: face shape, eyes, swept-back brown hair, neatly trimmed full beard, natural proportions. Same burgundy corduroy blazer over the same plain white crew-neck T-shirt. Same warm evening wine bar, same dark-wood table, same amber pendant-light bokeh, same warm side key and rim light, same shallow-depth-of-field lens character. Composition: seated at the table, framed waist-up, centred, large and recognisable, a touch closer than image 3. He holds the stemmed glass of red wine LOW, at chest/table height, relaxed in one hand, NOT near his face: no sniffing, no drinking. He looks directly into the camera with a slight, dry, knowing half-smile, the 'we survived that' look, relaxed shoulders, calm and understated, as if a joke has just landed. The smartphone lies on the table, screen dark and inactive. Keep calm, uncluttered space above his head and a calm area in the lower part of the frame below the glass for subtitles, without crowding his face or the glass. Background bottles soft and out of focus with no readable labels. Premium editorial lifestyle photography, natural skin texture, true to life. No text, no captions, no logos, no labels, no app or phone interface, no lit screen, no other people, no exaggerated expression."
+    }
+  },
+  "accept_if": ["same identity, wardrobe, set and light as images 1–3", "glass low (chest/table), not at the nose", "direct-to-camera knowing half-smile, restrained", "phone dark; no text/labels/logos/UI/people", "room for subtitles above/below without covering face or glass"]
+}
