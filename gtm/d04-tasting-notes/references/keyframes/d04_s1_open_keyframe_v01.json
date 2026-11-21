@@ -1,0 +1,25 @@
+{
+  "ts": "2026-11-21T19:12:52.645Z",
+  "production": "d04-tasting-notes",
+  "shot": "s1",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "est_usd": 0.15,
+  "prompt_sha": "e3ec5493ccce",
+  "status": "completed",
+  "request_id": "01a1ff86-975e-7231-a921-300ce5e461b0",
+  "prompt_file": "s1_tasting_open.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Create a new photorealistic vertical 9:16 photograph of THE SAME MAN as in the reference image. Preserve his exact facial identity: face shape, eyes, nose, skin texture, swept-back brown hair, neatly trimmed full beard and natural proportions. Same outfit: textured burgundy corduroy blazer over a plain white crew-neck T-shirt, with dark jeans. Scene: a warm, tasteful evening home wine bar / intimate restaurant corner. He sits at a rich dark-wood table, framed waist-up, centred, facing the camera, shot at eye level with a roughly 50mm lens and shallow depth of field. He holds a stemmed wine glass of deep red wine just below his nose, mid-swirl, and studies it with a serious, dry, connoisseur's tasting expression, eyes on the wine, eyebrows slightly raised. On the table in front of him: one smartphone lying face-down, and nothing else but a folded linen napkin. Background: softly blurred warm bokeh of amber pendant lights and a shelf of wine bottles turned so no labels are readable. Lighting: warm low evening key light from one side, gentle rim light, natural skin tones, premium editorial lifestyle photography, true to life, not glossy commercial stock and not an obvious AI render. Keep clean, uncluttered space in the top fifth of the frame and keep the lower quarter calm. No text, no captions, no logos, no labels, no brand marks, no watermark, no readable screen, no other people.",
+    "image_urls": [
+      "<2782838 chars of image data>"
+    ]
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/keyframes/d04_s1_open_keyframe_v01.png"
+}
