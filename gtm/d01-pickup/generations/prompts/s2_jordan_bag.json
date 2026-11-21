@@ -24,9 +24,10 @@
       "resolution": "1080p",
       "duration": "4s",
       "generate_audio": true,
-      "prompt": "Vertical 9:16, realistic smartphone-style consumer ad footage, natural handheld with only very subtle movement, no camera move, real-time speed. The man with the youth soccer bag on his shoulder answers someone off camera to his right (screen-left), right away from the first moment, in a natural, matter-of-fact conversational tone with a small shrug of the bag shoulder: \"I did drop-off.\" After the line he holds the look for a beat as the mix-up sinks in, a hint of dry humor. Not angry, not acting for the camera. Quiet house room tone, the soft rustle of the bag, no music.",
-      "negative_prompt": "text, subtitles, captions, logos, team crest, jersey numbers, watermark, phone screen, user interface, music, announcer voice, exaggerated acting, anger, shouting, slow motion, camera zoom, dolly move, cut, second person entering frame"
-    }
+      "prompt": "Vertical 9:16, realistic smartphone-style consumer ad footage, natural handheld with only very subtle movement, no camera move, real-time speed. The man with the youth soccer bag on his shoulder answers someone off camera to his right (screen-left), right away from the first moment, in a natural, matter-of-fact conversational tone with a small shrug of the bag shoulder: \"I did drop-off.\" After the line he holds the look for a beat as the mix-up sinks in, plain and matter-of-fact: that's the part he handled. Not defensive, not irritated, not comedic, not acting for the camera. His face, clothes and the bag strap stay exactly as in the photo. Quiet house room tone, the soft rustle of the bag, no music.",
+      "negative_prompt": "text, subtitles, captions, logos, team crest, jersey numbers, watermark, phone screen, user interface, music, announcer voice, exaggerated acting, anger, shouting, slow motion, camera zoom, dolly move, cut, second person entering frame, defensive, irritated, comedic mugging, exaggerated shrug, extra people"
+    },
+    "direction_note": "2026-11-20: 'hint of dry humor' replaced per user direction (not comedic, not defensive); negative prompt extended accordingly."
   },
   "accept_if": [
     "line starts within the first ~6 frames and is fully intelligible",

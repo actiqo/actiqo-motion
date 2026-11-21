@@ -1,0 +1,24 @@
+{
+  "ts": "2026-11-20T23:59:43.100Z",
+  "production": "d01-pickup",
+  "shot": "s2",
+  "kind": "draft",
+  "endpoint": "fal-ai/veo3.1/fast/image-to-video",
+  "est_usd": 0.6,
+  "prompt_sha": "3283fba11ead",
+  "status": "completed",
+  "request_id": "01a1fb66-d7e5-7a52-bdbf-77e4ee1a88c9",
+  "prompt_file": "s2_jordan_bag.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "duration": "4s",
+    "generate_audio": true,
+    "prompt": "Vertical 9:16, realistic smartphone-style consumer ad footage, natural handheld with only very subtle movement, no camera move, real-time speed. The man with the youth soccer bag on his shoulder answers someone off camera to his right (screen-left), right away from the first moment, in a natural, matter-of-fact conversational tone with a small shrug of the bag shoulder: \"I did drop-off.\" After the line he holds the look for a beat as the mix-up sinks in, plain and matter-of-fact: that's the part he handled. Not defensive, not irritated, not comedic, not acting for the camera. His face, clothes and the bag strap stay exactly as in the photo. Quiet house room tone, the soft rustle of the bag, no music.",
+    "negative_prompt": "text, subtitles, captions, logos, team crest, jersey numbers, watermark, phone screen, user interface, music, announcer voice, exaggerated acting, anger, shouting, slow motion, camera zoom, dolly move, cut, second person entering frame, defensive, irritated, comedic mugging, exaggerated shrug, extra people",
+    "image_url": "<7833102 chars of image data>"
+  },
+  "seed": null,
+  "description": null,
+  "output": "generations/raw/s2/2026-11-20T23-59-43-091Z_draft.mp4"
+}
