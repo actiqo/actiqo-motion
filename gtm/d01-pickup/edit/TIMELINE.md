@@ -1,10 +1,11 @@
-# D01 "Pickup was handled." Rough cut v01 timeline
+# D01 "Pickup was handled." Rough/picture-lock candidate v02 timeline
 
-Render: `review/d01_rough_v01.mp4`, 1080×1920, 30 fps, H.264 CRF 16 + AAC 48 kHz stereo, **15.00 s**.
+Current: **v02** `review/d01_rough_v02.mp4` (v01 `review/d01_rough_v01.mp4` kept for comparison; its points are under "v01 (superseded)").
+Render: `review/d01_rough_v02.mp4`, 1080×1920, 30 fps, H.264 CRF 16 + AAC 48 kHz stereo, **15.00 s**.
 Source: `index.html` (HyperFrames **0.9.72**; 0.8.98 rendered the right 8 px black in this environment, see below).
 Rebuild: `./link-assets.sh` (hard-links the locked sources into the git-ignored `assets/`), then `npx --yes hyperframes@0.9.72 render -f 30 --video-frame-format png`.
 
-**Not in this cut, by design:** music, SFX, captions, VO (still deferred), grade, and the product-section VO lines from `scene.mjs`.
+**Not in this cut, by design:** music, SFX, VO (still deferred), grade, and the product-section VO lines from `scene.mjs`. v02 adds the dialogue captions and the CTA end card.
 **Nothing new was generated.** Every frame comes from the locked Veo clips, the real ACTIQO capture, or the brand assets.
 
 ## Dialogue (Parakeet TDT 0.6B v3 word timestamps, checked against the speech-band energy envelope)
@@ -13,7 +14,43 @@ Rebuild: `./link-assets.sh` (hard-links the locked sources into the git-ignored 
 | Alex `d01_s1_alex_fast_v01.mp4` | "I thought you had pickup" | **0.16 → 1.20 s** (energy onset 0.24, dip at 1.20) | ✅ all 5 words, in order | 1.20–1.84 s (ASR: "not look at it", low-level) and 2.08–4.0 s (ASR: "Yeah, no, you still have a little bit of me, so") |
 | Jordan `d01_s2_jordan_fast_v01.mp4` | "I did drop off" | **0.40 → 1.60 s** (energy onset 0.40) | ✅ all 4 words, in order | 1.76–2.08 s "um", then 2.32–3.52 s (ASR: "a chin F."), plus energy after 3.84 s |
 
-## Picture
+## v02 picture (current)
+| Shot | Timeline in → out (dur) | Source | Source in → out | What's on screen |
+|---|---|---|---|---|
+| S1 | 0.00 → 1.30 (1.30) | Alex Fast v01 (locked) | 0.00 → 1.30 | "I thought you had pickup." + caption |
+| S2 | 1.30 → 2.80 (1.50) | Jordan Fast v01 (locked) | 0.25 → 1.75 | "I did drop-off." + caption |
+| S3 | 2.80 → 4.60 (1.80) | real UI capture | 2.20 → 4.00 | Game Plan: **Pickup · needs someone**; push 1.00 → 1.05 |
+| S4 | 4.60 → 6.80 (2.20) | real UI capture | 5.50 → 7.70 | Assignments tab → **Assign** → editor |
+| S5 | 6.80 → 8.90 (2.10) | real UI capture | 10.20 → 12.30 | **"Who brings them home?"** → **Alex** → Pickup · Alex |
+| S6 | 8.90 → 9.70 (**0.80**, was 1.90) | real UI capture | 13.35 → 14.15 | **Save assignments** (0.35 s) → **Saving…** (from src 13.70, 0.45 s) |
+| S7 | 9.70 → 12.20 (**2.50**, was 2.00) | real UI capture | 20.00 → 22.50 | **Pickup · Alex · Saved / Alex is picking up** · **Drop-off · You, Pickup · Alex**; push 1.00 → 1.03 |
+| S8 | 12.20 → 15.00 (**2.80**, was 2.20) | brand | n/a | see end card below |
+
+### v02 captions (scripted dialogue only; none on the product UI)
+| Caption | On → off (fade) | Spoken (timeline) | Placement |
+|---|---|---|---|
+| "I thought you had pickup." (2 lines) | 0.10 → 1.25 (in 0.12 s, out 1.15–1.25) | 0.16 → 1.20 | x 120–~450, y 600: left of her face over the window/background, clear of face, keys and hand |
+| "I did drop-off." | 1.40 → 2.70 (in 0.12 s, out 2.60–2.70) | 1.45 → 2.65 | same anchor: left of his face over the doorway, clear of face, strap, bag and gesturing hand |
+
+Style: Inter 600, 46 px, white on ACTIQO ink `#0B1F3B` at 82%, radius 25 px (`--acti-r-control`). Inside the TikTok, Reels and Shorts clear areas. Captions run with the voice, so they're on screen about as long as the line is spoken. The check flags Alex's caption (1.09 s on screen) as under a read-only floor, which is expected for synced dialogue captions.
+
+### v02 end card (12.20 → 15.00)
+| Element | In | Style | Box |
+|---|---|---|---|
+| Wordmark (raster, flat teal Q) | 12.20 (fade 0.30) | 560 px wide | y 400–521, centred |
+| **"Try it with your next practice."** (primary CTA) | 12.35 (fade + 14 px rise, 0.35) | Inter 650, 60 px, ink `#0B1F3B`, 2 balanced lines | y 588–722, x 200–880 |
+| "Complimentary Family access during Early Access" (secondary) | 12.65 (fade 0.30) | Inter 500, 32 px, ink-2 `#3F4C63` | y 770–855, x 300–780 |
+| "getactiqo.com" (discreet) | 12.75 (fade 0.30) | Inter 500, 30 px, ink-3 `#7A869A` | y 900, x 300–780 |
+
+CTA on screen 2.65 s. Every element sits inside the TikTok (y 240–840 → x 120–960; y 840–1260 → x 120–780), Reels and Shorts (y 288–1248, x 48–888) clear areas.
+
+### v02 audio
+Unchanged from v01 (see below): native dialogue only, Alex 0.00–1.26, Jordan 1.30–2.73, silence after.
+
+---
+## v01 (superseded)
+
+### v01 picture
 | Shot | Timeline in → out (dur) | Source | Source in → out | What's on screen |
 |---|---|---|---|---|
 | S1 | 0.00 → 1.30 (1.30) | Alex Fast v01 (locked) | 0.00 → 1.30 | "I thought you had pickup." |
