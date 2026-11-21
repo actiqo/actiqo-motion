@@ -1,7 +1,7 @@
 {
   "shot": "S3",
   "subject": "Closing keyframe: the callback payoff. Same evening ~15 s later. Glass held low, looking at camera, knowing half-smile; phone dark. Supports 'Try it with your next practice. Then we can get back to the tasting notes.'",
-  "status": "Keyframe v02 LOCKED; Veo Fast v01 (req 01a2000b) generated 2026-11-21, in review.",
+  "status": "Keyframe v02 + Veo Fast v01 (req 01a2000b) APPROVED + LOCKED 2026-11-21. Use src ≈0.0–4.9 s, then a clean cut to the end card. No regeneration.",
   "keyframe": {
     "endpoint": "fal-ai/nano-banana-pro/edit",
     "reference": [
