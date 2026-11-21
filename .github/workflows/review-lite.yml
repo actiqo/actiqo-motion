@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D03 first complete cut v01 (full sound + music-free) + contact sheet + REVIEW.md + CAPTURE_RECORD.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D03 FINAL masters (full sound + music-free) + contact sheet + QA images + FINAL.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,11 +23,12 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d03-practice-starts-at-five/edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01.mp4
-            gtm/d03-practice-starts-at-five/edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01_musicfree.mp4
-            gtm/d03-practice-starts-at-five/edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01_contact.png
-            gtm/d03-practice-starts-at-five/edit/REVIEW.md
-            gtm/d03-practice-starts-at-five/ui/CAPTURE_RECORD.md
+            gtm/d03-practice-starts-at-five/final/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430.mp4
+            gtm/d03-practice-starts-at-five/final/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_musicfree.mp4
+            gtm/d03-practice-starts-at-five/final/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_contact.png
+            gtm/d03-practice-starts-at-five/final/qa_phone_390pt_estimate_vs_fixed.png
+            gtm/d03-practice-starts-at-five/final/qa_platform_720p_1200k_estimate_vs_fixed.png
+            gtm/d03-practice-starts-at-five/FINAL.md
           )
           for f in "${files[@]}"; do
             test -f "$f" || { echo "missing: $f"; exit 1; }
@@ -44,8 +45,9 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d03-practice-starts-at-five/edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01.mp4
-            gtm/d03-practice-starts-at-five/edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01_musicfree.mp4
-            gtm/d03-practice-starts-at-five/edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01_contact.png
-            gtm/d03-practice-starts-at-five/edit/REVIEW.md
-            gtm/d03-practice-starts-at-five/ui/CAPTURE_RECORD.md
+            gtm/d03-practice-starts-at-five/final/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430.mp4
+            gtm/d03-practice-starts-at-five/final/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_musicfree.mp4
+            gtm/d03-practice-starts-at-five/final/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_contact.png
+            gtm/d03-practice-starts-at-five/final/qa_phone_390pt_estimate_vs_fixed.png
+            gtm/d03-practice-starts-at-five/final/qa_platform_720p_1200k_estimate_vs_fixed.png
+            gtm/d03-practice-starts-at-five/FINAL.md
