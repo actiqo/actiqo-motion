@@ -1,0 +1,12 @@
+{
+ "gameplan": 0.801,
+ "leaveTap": 3.728,
+ "sheetOpen": 4.574,
+ "saveTap": 8.296,
+ "saveResponse": 8.769,
+ "savedRowVisible": 8.789,
+ "toastOn": 8.767,
+ "end": 27.98,
+ "toastGone": 12.7,
+ "note": "seconds into d03_ui_flow_9x16.mp4; toastOn/toastGone measured from frames (toast region luma), the scripted toast detector did not fire"
+}

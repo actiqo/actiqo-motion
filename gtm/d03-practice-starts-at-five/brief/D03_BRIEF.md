@@ -1,3 +1,5 @@
+> **Capture correction (2026-11-21):** the real pre-save Game Plan row with a saved 20-min drive is "Leave by about 4:30 PM · Based on 20 min travel time · Change", not "Leave time not set". See `ui/CAPTURE_RECORD.md`.
+
 # D03 "Practice Starts at Five": checkpoint brief (2026-11-21, nothing generated, deployed or captured)
 
 **Idea:** practice starts at 5:00. We don't leave at 5:00.

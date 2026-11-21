@@ -2,6 +2,8 @@
 
 Read-only inspection of **`actiqo/actiqo@main` `dca1b87`** (fresh shallow clone in scratch; `/workspaces/actiqo` untouched). Quoted strings are verbatim UI copy, with file:line.
 
+> **Correction (capture, 2026-11-21):** with a saved drive time (D03: 20 min) and no saved leave time, the Game Plan row reads **"Leave by about 4:30 PM · Based on 20 min travel time"** with **"Change"**, not "Leave time not set" (that copy only appears with no drive time saved). See `CAPTURE_RECORD.md`. B1/B2 below were captured with the real estimate row.
+
 ## Entry point
 **Game Plan overview** (`GamePlanV3View`): row `GpV3Leave` (`v3views.tsx:137-166`, copy `:39-40`) reads **"Leave time not set"**, with a **"Set leave time"** button. Tapping it sets `editor='leave'` (`page.tsx:438-442`) and mounts **LeaveTimeSheet** (`page.tsx:661-698`), a bottom sheet at ≤768 px.
 

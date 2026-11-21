@@ -1,6 +1,6 @@
 # D03 "Practice Starts at Five" (9:16, about 10.7 s, one primary version: `d03_leave430`)
 
-**Status 2026-11-21: checkpoint APPROVED. Still v02 LOCKED. Fast motion v01 generated: a face enters from ≈1.0 s (fails brief); waiting for decision. Cap $0.75; spent $0.70** (`edit/REVIEW.md`). No motion, TTS, Vercel or capture work yet.
+**Status 2026-11-21: FIRST COMPLETE CUT v01 for review** (`edit/REVIEW.md`, bottom section). Still v02 locked; opener = still + Veo src 0.00–0.90 (Option A). Real capture done (`ui/CAPTURE_RECORD.md`); temp preview deleted. Spent ≈$0.710 of $0.75.
 Start here: `brief/D03_BRIEF.md`. Real leave-time flow and capture beats: `ui/UI_FLOW.md`.
 
 ## Decisions locked at checkpoint approval (2026-11-21)

@@ -1,0 +1,199 @@
+{
+  "ts": "2026-11-21T17:47:32.885Z",
+  "production": "d03-practice-starts-at-five",
+  "shot": "narration",
+  "kind": "tts",
+  "endpoint": "elevenlabs/tts/eleven-v4",
+  "voice": "Sarah",
+  "chars": 48,
+  "est_usd": 0.00384,
+  "status": "completed",
+  "request_id": "01a1ff38-7730-77e2-86db-0d13e99e2f51",
+  "input": {
+    "text": "Practice starts at five. We can’t leave at five.",
+    "voice": "Sarah",
+    "output_format": "pcm_48000",
+    "timestamps": true,
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "language_code": "en"
+  },
+  "timestamps": [
+    {
+      "characters": [
+        "P",
+        "r",
+        "a",
+        "c",
+        "t",
+        "i",
+        "c",
+        "e",
+        " ",
+        "s",
+        "t",
+        "a",
+        "r",
+        "t",
+        "s",
+        " ",
+        "a",
+        "t",
+        " "
+      ],
+      "character_start_times_seconds": [
+        0,
+        0.27,
+        0.3,
+        0.33,
+        0.36,
+        0.39,
+        0.42,
+        0.45,
+        0.48,
+        0.64,
+        0.667,
+        0.693,
+        0.72,
+        0.747,
+        0.773,
+        0.8,
+        0.88,
+        0.92,
+        0.96
+      ],
+      "character_end_times_seconds": [
+        0.27,
+        0.3,
+        0.33,
+        0.36,
+        0.39,
+        0.42,
+        0.45,
+        0.48,
+        0.64,
+        0.667,
+        0.693,
+        0.72,
+        0.747,
+        0.773,
+        0.8,
+        0.88,
+        0.92,
+        0.96,
+        1.04
+      ]
+    },
+    {
+      "characters": [
+        "f",
+        "i",
+        "v",
+        "e",
+        ".",
+        " ",
+        "W",
+        "e"
+      ],
+      "character_start_times_seconds": [
+        1.04,
+        1.1600000000000001,
+        1.28,
+        1.4,
+        1.52,
+        1.84,
+        1.96,
+        2.02
+      ],
+      "character_end_times_seconds": [
+        1.1600000000000001,
+        1.28,
+        1.4,
+        1.52,
+        1.84,
+        1.96,
+        2.02,
+        2.08
+      ]
+    },
+    {
+      "characters": [
+        " ",
+        "c",
+        "a",
+        "n",
+        "’",
+        "t",
+        " ",
+        "l",
+        "e",
+        "a",
+        "v",
+        "e",
+        " ",
+        "a",
+        "t"
+      ],
+      "character_start_times_seconds": [
+        2.08,
+        2.2,
+        2.24,
+        2.2800000000000002,
+        2.3200000000000003,
+        2.4,
+        2.48,
+        2.56,
+        2.608,
+        2.656,
+        2.704,
+        2.7520000000000002,
+        2.8,
+        2.92,
+        2.98
+      ],
+      "character_end_times_seconds": [
+        2.2,
+        2.24,
+        2.2800000000000002,
+        2.3200000000000003,
+        2.4,
+        2.48,
+        2.56,
+        2.608,
+        2.656,
+        2.704,
+        2.7520000000000002,
+        2.8,
+        2.92,
+        2.98,
+        3.04
+      ]
+    },
+    {
+      "characters": [
+        " ",
+        "f",
+        "i",
+        "v",
+        "e",
+        "."
+      ],
+      "character_start_times_seconds": [
+        3.04,
+        3.2800000000000002,
+        3.34,
+        3.4,
+        3.46,
+        3.52
+      ],
+      "character_end_times_seconds": [
+        3.2800000000000002,
+        3.34,
+        3.4,
+        3.46,
+        3.52,
+        3.84
+      ]
+    }
+  ]
+}

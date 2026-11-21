@@ -57,3 +57,4 @@ gtm/*/edit/renders/
 gtm/*/edit/sound/out/
 !gtm/d02-water-bottles/ui/capture/
 gtm/*/edit/assets/
+!gtm/d03-practice-starts-at-five/ui/capture/

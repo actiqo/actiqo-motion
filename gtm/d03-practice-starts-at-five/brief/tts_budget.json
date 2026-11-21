@@ -1,0 +1,8 @@
+{
+  "production": "d03-practice-starts-at-five",
+  "note": "D03 narration, approved 2026-11-21: Sarah via ElevenLabs v4 on fal (series narrator). ACTIQO isn't spoken. Hard cap $0.05 = what's left of the $0.75 D03 cap after $0.70 of visuals (expected ≈ $0.01). Enforced by gtm/scripts/tts.mjs.",
+  "endpoint": "elevenlabs/tts/eleven-v4",
+  "usd_per_1k_chars": 0.08,
+  "cap_usd": 0.05,
+  "stability": 0.5
+}

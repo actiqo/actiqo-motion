@@ -86,3 +86,51 @@ The face-free part is only **src 0.00–0.95 s**, and it's essentially still. **
 | C | +$0.40, needs a cap raise to about $1.15 | A second Fast generation with a reworked prompt (hand enters at mid-height reaching for the bag handle, "camera framing excludes everything above the bench"). Still a risk of the same failure. |
 
 **D03 spent:** $0.70 of $0.75 (still $0.15 + edit $0.15 + Fast $0.40). Narration (≈$0.01) still fits.
+
+---
+# D03 FIRST COMPLETE CUT v01, for review (2026-11-21)
+
+| | |
+|---|---|
+| **Full-sound master** | `edit/review/ACTIQO_D03_PracticeStartsAtFive_9x16_d03_leave430_v01.mp4` |
+| Music-free alternate | `…_v01_musicfree.mp4` |
+| Contact sheet | `…_v01_contact.png` |
+| Format | 1080×1920, 30 fps, H.264 + AAC 320k 48 kHz, **11.05 s** |
+| Loudness | −14.0 LUFS integrated (music-free −13.9), peak **−1.5 dBFS**. Narration lines: hook −13.9, body −13.5, CTA −13.6 LUFS. |
+
+## Timeline
+| t (s) | Picture | Sound |
+|---|---|---|
+| 0.00–1.95 | **Locked still v02**: untied cleats, half-open bag, entryway. Hook text: "Practice starts at five. / We can't leave at five." | Sarah hook from 0.05 |
+| 1.95–2.85 | 5-frame dissolve into **Veo Fast v01, src 0.00–0.90 only**. Near-still; a hand enters at the right edge in the last 2 frames. **No head or face in any frame** (checked frame by frame); nothing after src 0.90 is used. | Bed in; felt pluck at 2.55 |
+| 2.85–4.10 | Real Game Plan: **Leave by about 4:30 PM · Based on 20 min travel time** → real tap on **Change** (3.96) | "…We can't leave at five" ends over it (J-cut, 3.81); tap |
+| 4.10–7.40 | Real sheet slides up: **Manual · Leave at 4:30 PM · Preview: Leave by 4:30 PM · 30 min before start · Starting point: your saved 20 min drive + 10 min buffer** · fixed-time disclaimer → real tap **Save leave time** (6.96) → "Saving…" | "Twenty minutes to drive, ten to get inside." (4.15–7.27); tap |
+| 7.40–8.90 | **Cut past the toast** to the settled real Game Plan: **Leave by 4:30 PM · Fixed leave time**. Push 1.00 → 1.05×. | "We're leaving at four-thirty." lands on the cut (7.31–8.59); locked Saved chime + bed release at 7.40 |
+| 8.90–11.05 | End card: **ACTIQO** wordmark · **Try it with your next practice.** · **Free.** · getactiqo.com | "Try it with your next practice." (D01 take, 9.05–10.70) |
+
+**Edits to the real recording:** only static dwell is trimmed (sheet src 4.75 → 6.28: identical frames), plus the jump past the toast (src 8.70 → 12.75). Real speed throughout; no speed-ups, overlays or redrawn UI. Automatic stays visible in the sheet as real UI; it's never selected, pushed toward or narrated (no push on the sheet at all).
+
+## ⚠️ For your decision: the pre-save row
+The approved flow said "Game Plan / Leave time not set". The real app, with the saved 20-minute drive, shows **"Leave by about 4:30 PM · Based on 20 min travel time"** before the save (see `ui/CAPTURE_RECORD.md`). I kept the real state:
+- **Why:** removing the drive time would make the sheet say "a 10 min buffer. No drive time is included." and suggest 4:50, which contradicts "Twenty minutes to drive".
+- **Claims:** the row's basis line is the saved travel time, so it implies **no traffic, no automatic departure, no dynamic calculation, no reminders**. The before → after reads "about 4:30 (estimate)" → "4:30 · Fixed leave time" (saved).
+- **Alternative if you prefer:** start the UI on the sheet (drop the 1.25 s Game Plan pre-state), keeping the hook J-cut over the opener. That's an edit-only change.
+
+## Claims check
+- **Never shown or said:** traffic, live conditions, automatic departure, reminders. The sheet's own line "It won't adjust for traffic, location changes, or current conditions." is on screen during the body.
+- **The post-save reminder toast** is not shown. The reminder section of the sheet is below the fold (only the "Reminder (optional)" heading edge is visible).
+- **"Free."** is approved for D03. It reflects the current public pricing state and must be revisited if pricing changes (to be written into FINAL.md at closeout).
+
+## Spend (D03, cap $0.75)
+| Item | Request | Cost |
+|---|---|---|
+| Still v01 | `01a1ff20-…` | $0.15 |
+| Still v02 (logo edit, locked) | `01a1ff24-…` | $0.15 |
+| Veo Fast v01 (src 0.00–0.90 used) | `01a1ff29-…` | $0.40 |
+| Sarah hook (48 chars) | `01a1ff38-7730-…` | $0.0038 |
+| Sarah body (73 chars) | `01a1ff38-8c18-…` | $0.0058 |
+| CTA | reused D01 final take | $0 |
+| QA preview + capture | | $0 |
+| **Total** | | **≈ $0.710** |
+
+**Not done (by instruction):** no further paid visual generation, no FINAL promotion. Stopped for review.
