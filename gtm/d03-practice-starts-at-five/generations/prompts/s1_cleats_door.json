@@ -1,0 +1,23 @@
+{
+  "shot": "S1",
+  "subject": "Object opener: kid's soccer cleats still sitting by the front door, sports bag beside them. Not ready to leave. No people, no clock graphics.",
+  "status": "DRAFT for checkpoint review. Not run.",
+  "keyframe": {
+    "endpoint": "fal-ai/nano-banana-pro",
+    "out": "references/opener/d03_cleats_keyframe_v01.png",
+    "input": {
+      "aspect_ratio": "9:16", "resolution": "2K", "output_format": "png", "num_images": 1,
+      "prompt": "Photorealistic vertical 9:16 photo, premium smartphone consumer-ad look, natural and unglamorous. Late afternoon inside an ordinary Midwestern family home, at the front-door entryway. On the floor mat just inside the closed front door: a small pair of kids' black soccer cleats, laces undone, one tipped on its side, clearly still not on anyone's feet; a pair of kids' shin guards lying next to them; a plain navy youth soccer duffel bag, zipped, slumped against the wall. A coat hook with a small kids' jacket above. Warm late-afternoon window light from the side, about 4500K, soft realistic shadows. Camera low, about knee height, roughly 26mm smartphone-equivalent lens, the cleats sharp in the lower middle of the frame, the door and hallway softly readable, clean calmer space in the top third of the frame. The mood reads: it's almost time to go and nobody is ready. No people, no hands, no pets. Absolutely no clocks, no phones, no screens, no text, no logos, no brand marks, no numbers anywhere."
+    }
+  },
+  "video": {
+    "draft_endpoint": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper_endpoint": "fal-ai/veo3.1/image-to-video",
+    "input": {
+      "aspect_ratio": "9:16", "resolution": "1080p", "duration": "4s", "generate_audio": false,
+      "prompt": "Vertical 9:16, realistic smartphone-style footage, real-time speed. A slow, slight handheld push-in toward the untied kids' soccer cleats on the entryway mat by the front door, the duffel bag beside them. Late-afternoon light drifts very slightly. Nothing else moves. No people, no hands, objects stay exactly the same.",
+      "negative_prompt": "people, hands, faces, text, captions, logos, brand names, numbers, clock, phone, screen, user interface, objects moving by themselves, objects appearing or disappearing, fast camera move, zoom, cut, slow motion, dramatic lighting"
+    }
+  },
+  "accept_if": ["reads 'not ready to leave' in under ~1.5 s", "no readable text, logo, number or clock anywhere", "clean negative space top third for the hook line", "cleats/bag clearly a kid's soccer gear"]
+}
