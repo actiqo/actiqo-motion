@@ -58,6 +58,9 @@ jobs:
             gtm/*/generations/review/**/*.json
             gtm/*/edit/review/*.mp4
             gtm/*/edit/*.md
+            gtm/*/v2/edit/review/*.mp4
+            gtm/*/v2/*.md
+            gtm/*/v2/audio/auditions/*.wav
           )
           printf '%s\n' "${files[@]}" | sort -u | tee review-manifest.txt
           echo "files: $(sort -u review-manifest.txt | wc -l)"
@@ -92,6 +95,9 @@ jobs:
             gtm/*/generations/review/**/*.json
             gtm/*/edit/review/*.mp4
             gtm/*/edit/*.md
+            gtm/*/v2/edit/review/*.mp4
+            gtm/*/v2/*.md
+            gtm/*/v2/audio/auditions/*.wav
             !**/node_modules/**
             !**/*.log
             !**/tmp/**

@@ -56,3 +56,4 @@ gtm/d01-pickup/edit/assets/
 gtm/*/edit/renders/
 gtm/*/edit/sound/out/
 !gtm/d02-water-bottles/ui/capture/
+gtm/*/edit/assets/

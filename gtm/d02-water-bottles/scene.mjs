@@ -7,10 +7,10 @@ export const FORMAT = { W: 1080, H: 1920 };
 
 /** Hooks: same opener footage (S1), different on-screen line. `hold` = opener length; the body starts at `hold`. */
 export const HOOKS = {
-  d02_waterbottles: { variant: 'A', primary: true, line: 'Six water bottles. None in the bag.', hold: 1.75 },
-  d02_20minutes:    { variant: 'B', line: 'Practice starts in 20 minutes. Guess what we forgot.', hold: 2.25 }, // longer line needs ~0.5 s more to read
-  d02_alwaysforget: { variant: 'C', line: 'The one thing we always forget before practice.', hold: 1.75 },
-  d02_ownsix:       { variant: 'D', line: 'Somehow we own six of these.', hold: 1.75 },
+  d02_waterbottles: { variant: 'A', primary: true, line: 'Six water bottles. None in the bag.', hold: 2.0 },
+  d02_20minutes:    { variant: 'B', line: 'Practice starts in 20 minutes. Guess what we forgot.', hold: 2.5 }, // longer line needs ~0.5 s more to read
+  d02_alwaysforget: { variant: 'C', line: 'The one thing we always forget before practice.', hold: 2.0 },
+  d02_ownsix:       { variant: 'D', line: 'Somehow we own six of these.', hold: 2.0 },
 };
 
 /** Opener: object shot, AI-generated (people-free), shared by every hook. */
@@ -18,11 +18,11 @@ export const OPENER = { id: 'S1', src: 'gen', asset: 'generations/selects/s1_bot
 
 /** Body, in seconds relative to the hook end. REAL ACTIQO capture only (ui/capture/d02_ui_flow_9x16.mp4); `in` comes from ui/beats.json. */
 export const BODY = [
-  { id: 'S2', t0: 0.00, t1: 1.30, src: 'ui', beat: 'gameplan',     note: 'Game Plan: "What to bring · Water bottle, Cleats, Shin guards · 0/3"' },
-  { id: 'S3', t0: 1.30, t1: 2.50, src: 'ui', beat: 'prepOpen',     note: 'Prep list: "3 items to pack" · Water bottle "Not packed"' },
-  { id: 'S4', t0: 2.50, t1: 4.00, src: 'ui', beat: 'bottleTap',    note: 'tap Water bottle → "1 of 3 packed"' },
-  { id: 'S5', t0: 4.00, t1: 5.50, src: 'ui', beat: 'prepComplete', note: '"Prep complete" / "Everything on the prep list is packed"', hold: true },
-  { id: 'S6', t0: 5.50, t1: 7.75, src: 'brand', note: 'End card' },
+  { id: 'S2', t0: 0.00, t1: 1.30, src: 'ui', beat: 'gameplan',     note: 'Game Plan: "What to bring · Water bottle, Cleats, Shin guards · 0/3" → tap' },
+  { id: 'S3', t0: 1.30, t1: 2.60, src: 'ui', beat: 'prepOpen',     note: 'Prep list: "3 items to pack" · Water bottle "Not packed" (waiting ~1.9×)' },
+  { id: 'S4', t0: 2.60, t1: 4.00, src: 'ui', beat: 'bottleTap',    note: 'tap Water bottle → "1 of 3 packed" (real speed)' },
+  { id: 'S5', t0: 4.00, t1: 5.35, src: 'ui', beat: 'prepComplete', note: '"Prep complete" / "Everything on the prep list is packed"', hold: true },
+  { id: 'S6', t0: 5.35, t1: 7.50, src: 'brand', note: 'End card' },
 ];
 
 export const END_CARD = {
@@ -38,6 +38,6 @@ export function timelineFor(hookId) {
   const shots = [{ ...OPENER, t0: 0, t1: h.hold, hook: h.line }, ...BODY.map((s) => ({ ...s, t0: +(s.t0 + h.hold).toFixed(2), t1: +(s.t1 + h.hold).toFixed(2) }))];
   return { hookId, duration: +(h.hold + BODY.at(-1).t1).toFixed(2), shots };
 }
-// timelineFor('d02_waterbottles').duration === 9.50 · timelineFor('d02_20minutes').duration === 10.00
+// timelineFor('d02_waterbottles').duration === 9.50 · timelineFor('d02_20minutes').duration === 10.00 (hooks hold 2.0 / 2.5 s for readability)
 
 export const TOKENS = '../../brand/actiqo-motion-tokens.css'; // the only style source
