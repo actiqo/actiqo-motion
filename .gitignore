@@ -54,3 +54,4 @@ gtm/*/audio/assets/
 !gtm/d01-pickup/ui/capture/
 gtm/d01-pickup/edit/assets/
 gtm/*/edit/renders/
+gtm/*/edit/sound/out/
