@@ -139,3 +139,36 @@ It's one continuous, uncropped-width piece of the real screen, not floating card
 **D04 spent so far:** $1.50 (unchanged).
 
 **Still on hold:** closing keyframe and motion (≈$0.75), voice (I need a reference recording from you), lip-sync.
+
+---
+# Step 5: ROUGH visual assembly v01 (no new spend, 2026-11-21), for review
+- **File:** `edit/rough/review/d04_rough_v01_silent.mp4` (1080×1920, 30 fps, 18.9 s, **silent**). Also `…_contact.png` and `…_product_pan_states.png`.
+- **Build:** `edit/rough/build.mjs` → `index.html` → HyperFrames 0.9.72. Check passes: 0 errors, every caption inside the TikTok/Reels/Shorts safe areas. The red review overlays are **not** in the render.
+- **Voice:** the planned lines are **placeholder subtitles only** (Cork tan `#E9D6B4` panel, burgundy `#8B3E3D` text; the title uses inverted colours). No audio.
+- **Typography:** Inter is a placeholder. No Cork font is defined in the repo; supply one if Cork has a brand typeface.
+
+| t (s) | Picture | Placeholder line |
+|---|---|---|
+| 0.0–6.0 | **Locked opener**, full 6 s. Title "TASTING NOTES OF PARENTHOOD" 0–2.6. | "Notes of blackberry. Hints of oak." / "Twelve texts about tomorrow's soccer practice." (then the deadpan beat, 5.1–6.0) |
+| 6.0–12.0 | **Locked founder clip**, full 6 s, **real speed** (no slow-motion, no freeze) | "I'm Alec, the dad behind Cork Connoisseur." |
+| 8.45–12.0 | **Layout B:** ONE real Game Plan window (660 × 390, ≈0.66 scale, x 120–780, y 870–1260) over the founder's stable section. Alec's face and shoulders stay clear. | "I also built ACTIQO to keep pickup, packing and leave times together." (caption moves to the top zone) |
+| | Pan in spoken order (the whole window moves; no element animated on its own): **"pickup"** Pickup · You · Saved → **"packing"** (10.15) What to bring · Water bottle, Cleats, Shin guards · 0/3 → **"leave times together"** (10.75) Leave by 4:30 PM · Fixed leave time | |
+| 12.0–14.0 | **Closing test A:** reuse of opener src 4.0–6.0 | "Try it with your next practice." |
+| 14.0–16.4 | **Closing test B:** reuse of opener src 0.0–2.4 (callback to the sniff) | "Then we can get back to the tasting notes." |
+| 16.4–18.9 | End card: ACTIQO · Try it with your next practice. · Free. · getactiqo.com | — |
+
+## Findings
+1. **The founder and product section fits at real speed.** Both founder lines need ≈6 s spoken, the founder clip is 6 s, and the product window sits on its stable section. **No slow-motion, freeze or extra founder footage is needed.**
+2. **Layout B reads.** Each pan stop lands cleanly on a real row (see `…_product_pan_states.png`), and it stays recognisably one Game Plan.
+3. **The reused footage does NOT close the piece cleanly:**
+   - At 12–14 s Alec is still **looking down at the glowing phone**, so "Try it with your next practice." lands on a glance-down, not the knowing look the script needs.
+   - At 14–16.4 s the **opening sniff visibly repeats**, and the **phone jumps from lit back to dark**, a continuity break.
+   - On a second viewing it reads as recycled footage, not a callback.
+   - The founder clip can't close either: it's fully used under the founder and product lines.
+
+## Recommendation
+**Generate the separate closing shot: ≈$0.75** (one closing keyframe $0.15 + one Veo Fast 6 s silent $0.60). Seated, waist-up, same identity, outfit and set; the glass in hand, the phone dark. A knowing look to camera on "Try it with your next practice.", then a glance back at the glass on "Then we can get back to the tasting notes." That replaces 12.0–16.4 and finishes the bookend.
+
+**No-spend alternative** (weaker): cut from the product section straight to the end card. "Try it with your next practice." plays over the end card, and "Then we can get back to the tasting notes." is either dropped or played over the end card. That loses the Cork callback, which is the joke's payoff.
+
+**D04 spent:** $1.50 (unchanged). With the closing shot: ≈$2.25. Voice and lip-sync are priced after your reference recording.
