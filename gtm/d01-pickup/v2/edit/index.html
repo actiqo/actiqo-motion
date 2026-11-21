@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <title>ACTIQO D01 Narrated v2 draft</title>
+    <title>ACTIQO D01 Narrated v2</title>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <!--
       D01 NARRATED v2 (draft). v1 is untouched (../../final, ../../edit). Timing record: ../TIMELINE_V2.md.
@@ -33,8 +33,8 @@
         background: rgba(11,31,59,0.82); color: #fff; font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 46px; line-height: 1.18;
         letter-spacing: -0.015em; text-wrap: balance; opacity: 0; }
       /* narration captions: lower band, left-anchored inside every platform clear area (x 120–780 below y 840), clear of the key UI rows */
-      .capn { position: absolute; left: 120px; top: 1105px; max-width: 640px; padding: 14px 24px 16px; border-radius: var(--acti-r-control);
-        background: rgba(11,31,59,0.86); color: #fff; font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 40px; line-height: 1.2;
+      .capn { position: absolute; left: 120px; top: 1110px; max-width: 600px; padding: 12px 22px 14px; border-radius: var(--acti-r-control);
+        background: rgba(11,31,59,0.86); color: #fff; font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 38px; line-height: 1.18;
         letter-spacing: -0.01em; text-wrap: balance; opacity: 0; }
     </style>
   </head>
@@ -77,9 +77,9 @@
       <!-- Captions: dialogue (unchanged) + narration phrases (N3 is shown by the end card itself, not duplicated) -->
       <div id="cap-alex" class="cap clip" data-start="0.10" data-duration="1.15" data-track-index="3">I thought you had pickup.</div>
       <div id="cap-jordan" class="cap clip" data-start="1.40" data-duration="1.30" data-track-index="3">I did drop-off.</div>
-      <div id="capn-1" class="capn clip" data-start="2.85" data-duration="3.10" data-track-index="4">ACTIQO keeps pickup and drop-off with the activity,</div>
-      <div id="capn-2" class="capn clip" data-start="6.60" data-duration="2.40" data-track-index="4">so everyone sees who’s handling what.</div>
-      <div id="capn-3" class="capn clip" data-start="9.70" data-duration="2.66" data-track-index="4">No guessing. Everyone knows the plan.</div>
+      <div id="capn-1" class="capn clip" data-start="2.85" data-duration="3.00" data-track-index="4">ACTIQO keeps pickup and drop-off with the activity,</div>
+      <div id="capn-2" class="capn clip" data-start="6.55" data-duration="2.55" data-track-index="4">so everyone sees who’s handling what.</div>
+      <div id="capn-3" class="capn clip" data-start="9.70" data-duration="2.60" data-track-index="4">No guessing. Everyone knows the plan.</div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
@@ -93,7 +93,7 @@
       tl.to('#ec-url', { opacity: 1, duration: 0.30, ease: 'power2.out' }, 12.95);
       const capIn = (sel, t0, t1) => { tl.fromTo(sel, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.12, ease: 'power2.out' }, t0); tl.to(sel, { opacity: 0, duration: 0.10, ease: 'power1.in' }, t1 - 0.10); };
       capIn('#cap-alex', 0.10, 1.25); capIn('#cap-jordan', 1.40, 2.70);
-      capIn('#capn-1', 2.85, 5.95); capIn('#capn-2', 6.60, 9.00); capIn('#capn-3', 9.70, 12.36);
+      capIn('#capn-1', 2.85, 5.85); capIn('#capn-2', 6.55, 9.10); capIn('#capn-3', 9.70, 12.30);
       window.__timelines = window.__timelines || {}; window.__timelines['main'] = tl;
     </script>
   </body>

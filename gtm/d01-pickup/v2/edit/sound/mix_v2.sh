@@ -6,9 +6,9 @@ cd "$(dirname "$0")"
 PIC=$1; OUT=$2; MUSICFREE=${3:-}
 V1=../../../edit; SND=$V1/sound; A=../assets; W=/tmp/claude-1000/-workspaces-actiqo-motion/86b47b57-f058-4fdf-aa1c-0227865b12fc/scratchpad/d01v2/snd; mkdir -p $W
 node $SND/synth.mjs >/dev/null   # writes $SND/out (git-ignored build output)
-NARR_GAIN=${NARR_GAIN:-0.43}   # narration matched to the dialogue level (raw take ≈ −17.9 LUFS vs dialogue −25.3 premaster)
+NARR_GAIN=${NARR_GAIN:-1.0}   # per-phrase gains above do the level match
 # narration phrase placement: src_in src_out → timeline start (from the take's own timestamps / silences)
-declare -a N=("0.00 3.08 2.85 1" "3.10 5.45 6.60 1" "5.66 8.30 9.70 0.78" "8.58 10.24 12.60 1")   # src_in src_out tl_start phrase_gain
+declare -a N=("0.00 2.95 2.85 0.462" "3.00 5.55 6.55 0.525" "5.62 8.27 9.70 0.376" "8.50 10.15 12.60 0.484")   # FINAL take: src_in src_out tl_start phrase_gain (each phrase → dialogue level, −25.3 LUFS premaster)
 NF=""; NL=""
 for i in "${!N[@]}"; do set -- ${N[$i]}; d=$(awk "BEGIN{printf \"%d\", $3*1000}");
   NF="$NF[6:a]atrim=$1:$2,asetpts=N/SR/TB,aformat=sample_rates=48000:channel_layouts=stereo,afade=t=in:d=0.02,afade=t=out:st=$(awk "BEGIN{print $2-$1-0.04}"):d=0.04,volume=$4,adelay=$d|$d,apad=whole_dur=15[n$i];"; NL="$NL[n$i]"; done
@@ -19,7 +19,7 @@ ms() { awk "BEGIN{printf \"%d\", $1*1000}"; }
 SFX="[2:a]volume=0.22,adelay=$(ms 2.50)|$(ms 2.50),apad=whole_dur=15[enter];[3:a]volume=0.12,adelay=$(ms 6.29)|$(ms 6.29),apad=whole_dur=15[t1];[4:a]volume=0.12,adelay=$(ms 8.80)|$(ms 8.80),apad=whole_dur=15[t2];[5:a]volume=0.11,adelay=$(ms 9.80)|$(ms 9.80),apad=whole_dur=15[t3];[7:a]volume=0.21,adelay=$(ms 10.00)|$(ms 10.00),apad=whole_dur=15[saved]"
 # bed: delayed 0.277 s (release on the 10.00 resolved cut); 0.10 under dialogue, 0.30 under narration, 0.75 between, fade 13.9→15.0
 ENV=$(node -e '
-const iv=[[2.85,5.93],[6.60,8.95],[9.70,12.36],[12.60,14.26]]; const r=0.15;
+const iv=[[2.85,5.80],[6.55,9.10],[9.70,12.35],[12.60,14.25]]; const r=0.15;
 // piecewise: under dialogue 0.10 until 2.70 then ramps; build nested if() over time
 const pts=[[0,0.10],[2.70,0.10],[2.85,0.30]]; for (let k=0;k<iv.length;k++){ const [a,b]=iv[k]; if(k>0) pts.push([a-r,0.75],[a,0.30]); pts.push([b,0.30],[b+r,0.75]); }
 pts.push([13.9,Math.min(0.75,0.30)],[15.0,0.0]);

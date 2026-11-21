@@ -1,7 +1,7 @@
 {
   "shot": "S1",
   "subject": "Object opener: six kids' water bottles out on the counter, the sports bag open beside them with no bottle inside. No people.",
-  "status": "DRAFT for checkpoint review. Not run.",
+  "status": "keyframe v01 approved/locked; one Fast silent motion test approved ($0.40 cap)",
   "use": "0.00–1.75 s (hook A/C/D) or 0.00–2.25 s (hook B), cut from a 4 s generation; every hook uses the same footage",
   "keyframe": {
     "endpoint": "fal-ai/nano-banana-pro",
@@ -22,9 +22,10 @@
       "resolution": "1080p",
       "duration": "4s",
       "generate_audio": false,
-      "prompt": "Vertical 9:16, realistic smartphone-style footage, real-time speed. A slow, steady, very slight handheld push-in toward the open soccer bag and the cluster of six water bottles on the kitchen counter. Nothing else moves except a tiny natural sway of the camera and the late-afternoon light. No people, no hands, no objects added or removed, the bottles keep the same count, colours and positions.",
-      "negative_prompt": "people, hands, text, subtitles, captions, logos, brand names, labels, watermark, phone screen, user interface, extra bottles, bottles disappearing, objects moving by themselves, fast camera move, zoom, cut, slow motion"
-    }
+      "prompt": "Vertical 9:16, realistic smartphone-style footage of an ordinary family moment, real-time speed, natural light. Same kitchen counter as the photo: the six water bottles stay exactly where they are, same count, same colours, all clearly visible beside the open navy soccer bag. A single adult hand (forearm only, no face, no body in frame) comes in from the right edge, lifts the open bag's flap a little and briefly rummages, checking inside, making it obvious that there is no water bottle in the bag, only the cleats and shin guards, then the hand pauses. Very subtle natural handheld camera sway only. Calm, everyday, not dramatic.",
+      "negative_prompt": "text, subtitles, captions, logos, brand names, labels, watermark, numbers, phone screen, user interface, face, head, second person, extra hands, deformed fingers, bottles moving by themselves, bottles appearing or disappearing, bottle count changing, bottle put into the bag, objects morphing, fast camera move, zoom, cut, slow motion, dramatic lighting"
+    },
+    "direction_note": "2026-11-21 user direction: open bag, slight natural rummage/check, clearly no bottle inside, six bottles stay visible, subtle camera only, no text/logos/new faces. Hand = forearm only."
   },
   "accept_if": [
     "exactly six bottles, countable at a glance on a phone",

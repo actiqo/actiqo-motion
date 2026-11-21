@@ -8,4 +8,4 @@ ln -f $D/generations/review/s2/d01_s2_jordan_fast_v01.mp4 assets/s2_jordan_fast_
 ln -f $D/ui/capture/d01_ui_flow_9x16.mp4                  assets/ui_flow_9x16.mp4
 ln -f $B/logo/current/actiqo-wordmark-navy-teal_trimmed.png assets/actiqo-wordmark.png
 ln -f "$B/fonts/Inter[opsz,wght].ttf"                      assets/Inter.ttf
-ln -f ../audio/auditions/aud_sarah.wav                     assets/narration.wav   # DRAFT placeholder voice (audition); final take after pronunciation sign-off
+ln -f ../audio/final/d01_narration_sarah_final.wav        assets/narration.wav   # FINAL: Sarah, ElevenLabs v4, ACTIQO forced via IPA /ˈæktɛkoʊ/ (req 01a1fbfa)

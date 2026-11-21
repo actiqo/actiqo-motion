@@ -40,3 +40,16 @@ Build: `node edit/build.mjs <hookId>` writes `edit/index.html` from `scene.mjs`,
 - **The product body is accurate and clear.** But the real Prep list occupies only the top third of the screen, so the checklist is small on a phone and there's a lot of empty app background below. I tried larger punch-ins, but the UI is full-width and they crop labels and checkboxes, so pushes are capped at about 1.06×.
 - **Readability:** hook C (8 words) is on screen 1.96 s against a 2.17 s reading guideline. Shortening its line, or giving C a 2.3 s hold (runtime 9.8 s), would fix that.
 - **Not done yet (by design):** sound. Next is to adapt the D01 bed, taps and a soft "packed" confirmation.
+
+---
+# Opener motion test (2026-11-21), for review before sound
+- **File:** `generations/review/s1/d02_s1_bottles_fast_v01.mp4` (+ `_contact.png`, `.json`). Raw copy in `generations/raw/s1/` (git-ignored).
+- **Generation:** `fal-ai/veo3.1/fast/image-to-video`, 9:16, 1080p, 4 s, **audio off**, start frame = locked keyframe v01, request `01a1fbf8-bfce-74b1-bdbe-6f2ef8f3a866`, **$0.40** (the single allowed Fast generation; D02 cap now fully used: $0.15 + $0.40 = $0.55 of $0.70).
+- **Result:**
+  - **The check:** a hand (forearm only, no face; a second hand briefly steadies the flap) lifts the open bag, rummages past the cleats and orange shin guards, and makes it clear no bottle is inside.
+  - **The bottles:** all six stay in place and countable.
+  - **Clean:** no text, logos, morphing or new objects visible in the contact sheet.
+  - **Camera:** subtle drift only.
+- **Planned use:** about 2 s, src ≈ 0.3–2.3 (hand in → open → rummage).
+- **Active hooks:** A `d02_waterbottles`, B `d02_20minutes`, D `d02_ownsix`. C `d02_alwaysforget` is parked (draft kept).
+- **Next, once you approve this motion:** swap the still for this clip, add the Sarah narration ("ACTIQO keeps the prep list with the activity, so you know what's packed before you leave." / "Try it with your next practice.", ACTIQO forced via IPA), then sound.

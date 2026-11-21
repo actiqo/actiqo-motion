@@ -59,3 +59,30 @@ Build: `v2/edit/link-assets.sh` → HyperFrames 0.9.72 render of `v2/edit/index.
 - **Captions:** the narration captions sit over the Game Plan's less important "What to bring / Check-In" rows, never the pickup rows. It's slightly busy on the Game Plan screens. A smaller caption, or a caption-free variant for sound-on placements, is an easy follow-up.
 - **Live action:** next to the cleaner product section, the 2.8 s opener holds up in the contact sheet; it's natural, well lit and consistent with the stills. **I don't see a case for Standard Veo yet.** Please judge on a phone, with sound.
 - **Open:** the ACTIQO pronunciation, the voice choice, then one final narration take of about $0.013 and a re-mix (same timings, re-snapped to that take's timestamps).
+
+---
+# FINAL narrated-v2 review master (2026-11-21)
+| File | What |
+|---|---|
+| `v2/edit/review/d01_narrated_v2_master.mp4` | **Final review master**: 1080×1920, 30 fps, 15.00 s, H.264 + AAC 320k |
+| `v2/edit/review/d01_narrated_v2_master_musicfree.mp4` | the same, without the bed |
+| `v2/edit/review/d01_narrated_v2_master_contact.png` | contact sheet |
+| `v2/audio/final/d01_narration_sarah_final.wav` (+ `.json` with timestamps) | the one final Sarah take |
+
+The draft files above are superseded but kept.
+
+- **Narration:** **one** final take, Sarah, ElevenLabs Eleven v4 via fal, request `01a1fbfa-5c96-73d2-8d9b-aecc5cf798f2`, 163 chars, **$0.0130**. ACTIQO was forced with the provider's IPA control, **`/ˈæktɛkoʊ/` ("Act-eh-co")**, and the response timestamps confirm the IPA token was used. Speech recognition spells it "Actico" (as it did for the non-IPA auditions); text ASR can't distinguish /ɛ/ from /ɪ/ in an unstressed syllable, so **please confirm by ear**.
+- **Re-snapped to the final take** (src → timeline):
+
+| Phrase | Source (s) | Timeline (s) |
+|---|---|---|
+| N1a | 0.00–2.95 | 2.85 |
+| N1b | 3.00–5.55 | 6.55 ("what" ≈ 8.7, Alex tap 8.80) |
+| N2 | 5.62–8.27 | 9.70 (ends before the 12.45 end card) |
+| N3 | 8.50–10.15 | 12.60 |
+
+  The captions and the bed's ducking intervals follow the same points.
+- **Caption polish (minor only):** 40 → 38 px, tighter padding, max-width 640 → 600, same position and style. They stay clear of the Pickup / Alex / Saved rows, sitting over the Check-In row on the Game Plan and empty space elsewhere.
+- **Picture:** structure unchanged. No Alex, Jordan, Veo or UI regeneration.
+- **Levels:** dialogue −14.1, narration −13.6 / −13.7 / −13.7 / −13.7 LUFS (per-phrase matched). Whole mix **−14.1 LUFS integrated, −1.49 dBTP**.
+- **D01 TTS total:** $0.0509 (auditions) + $0.0130 (final) = **$0.0639** of the $0.50 cap.
