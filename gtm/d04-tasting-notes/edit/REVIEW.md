@@ -201,3 +201,29 @@ Re-run with stronger, explicit differences:
 If you'd rather not spend, v01 can still be animated. But the close would then look like a return to the founder shot.
 
 **D04 spent:** $1.65 (+ this $0.15). Motion is on hold.
+
+---
+# Step 6b: closing keyframe v02, the approved retry (2026-11-21), for review
+- **File:** `references/keyframes/d04_s3_closing_keyframe_v02.png` (1536×2752). Comparison: `references/keyframes/d04_keyframes_open_founder_closing_v02.jpg` (opening | founder | closing v02).
+- **Generation:** `fal-ai/nano-banana-pro/edit`, the same three anchors, with the founder frame named as "do NOT repeat this pose". 2K. Request `01a20006-8e6b-7c50-a659-a70b1af92b8d`, **$0.15**. This was the shot's 2nd and last keyframe under the cap.
+
+## Assessment
+**Distinct from both earlier shots:**
+- **Placement:** centred, shoulders square to the camera.
+- **Glass:** held by the stem at **mid-chest**, red wine visible, not at his face (unlike the opener) and not resting on the table (unlike the founder shot).
+- **Other arm:** his forearm rests on the table edge.
+
+**Matches the brief:**
+- **Expression:** direct to camera with a restrained, dry, knowing half-smile, "the joke landed".
+- **Continuity:** same identity, burgundy corduroy blazer, white crew-neck, dark-wood table, amber pendants, warm side and rim light. It reads as the same evening a few moments later.
+- **Clean:** the phone lies dark at the table edge (no glow). No text, logos, UI or other people. The background shelf bottles are soft, with no readable labels.
+- **Subtitle space:** calm space above his head (below the pendants) and on the lower table area. Subtitles won't cover the face or glass.
+- **Motion:** this frame gives the planned move room: from the look to camera on "Try it with your next practice." to his attention drifting down to the held glass on "Then we can get back to the tasting notes."
+
+**Notes:**
+1. The framing scale is only slightly closer than the founder shot. The difference comes mainly from centring and the raised glass, which is enough to read as a new shot.
+2. The background shows a little more of the bottle shelf on the right than the earlier shots. It's plausible within the same room.
+
+**D04 spent:** $1.80.
+
+**Next, after approval:** closing motion, Veo Fast 6 s silent, **$0.60**, giving ≈$2.40 for visuals.

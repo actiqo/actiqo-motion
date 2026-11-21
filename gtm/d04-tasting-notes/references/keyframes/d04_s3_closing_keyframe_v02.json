@@ -1,0 +1,27 @@
+{
+  "ts": "2026-11-21T21:32:38.701Z",
+  "production": "d04-tasting-notes",
+  "shot": "s3",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "est_usd": 0.15,
+  "prompt_sha": "aaa09b532d77",
+  "status": "completed",
+  "request_id": "01a20006-8e6b-7c50-a659-a70b1af92b8d",
+  "prompt_file": "s3_closing.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Create a new photorealistic vertical 9:16 photograph of THE SAME MAN in THE SAME evening scene, a few moments later. Image 1 is the identity reference; image 2 is the approved opening scene; image 3 is the founder shot, whose pose must NOT be repeated. Preserve his exact facial identity: face shape, eyes, swept-back brown hair, neatly trimmed full beard, natural proportions. Same burgundy corduroy blazer over the same plain white crew-neck T-shirt. Same warm evening wine bar, same dark-wood table, same amber pendant-light bokeh, same warm side key and rim light, same shallow-depth-of-field lens character. Composition, clearly different from image 3: he is CENTRED in the frame and noticeably CLOSER, framed from mid-chest up, shoulders squared to the camera, leaning back slightly in his chair, relaxed. He HOLDS the wine glass by its stem in one hand, lifted to mid-chest height in front of him, the red wine clearly visible, NOT resting on the table and NOT near his face: no sniffing, no drinking. His other forearm rests lightly on the table edge. He looks directly into the camera with a restrained, dry, knowing half-smile, the 'the joke landed, we survived that' look, calm and understated. The smartphone lies at the table edge, screen dark and inactive. Keep calm, uncluttered space above his head and in the lower part of the frame for subtitles, without crowding his face or the glass. Background softly out of focus: warm wall and amber bokeh, any bottles blurred with no readable labels. Premium editorial lifestyle photography, natural skin texture, true to life. No text, no captions, no logos, no labels, no app or phone interface, no lit screen, no other people, no exaggerated expression.",
+    "image_urls": [
+      "<2782838 chars of image data>",
+      "<8311182 chars of image data>",
+      "<8174574 chars of image data>"
+    ]
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/keyframes/d04_s3_closing_keyframe_v02.png"
+}
