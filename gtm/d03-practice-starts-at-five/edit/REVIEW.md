@@ -1,4 +1,8 @@
-# D03 opener still v01, for review (2026-11-21)
+# D03 opener still, for review (2026-11-21)
+
+**Current candidate: v02** (see the v02 section at the end). v01 below is kept for the record.
+
+## v01
 
 - **File:** `references/opener/d03_cleats_keyframe_v01.png` (1536×2752, 9:16). Generation record: `…_v01.json`.
 - **Generation:** `fal-ai/nano-banana-pro`, 2K, request `01a1ff20-c109-7223-aff1-6d30d7823d8c`, **$0.15**. Prompt: `generations/prompts/s1_cleats_door.json`.
@@ -24,3 +28,29 @@ Smaller notes: a sliver of a third shoe at the right edge, behind the bag (harml
 | C | $0 | Frame around it: a ≤1.06× push or a crop that keeps the cleat but loses the logo. Not workable here: the logo sits on the hero object at frame centre. | — |
 
 Both A and B need you to approve a retry. Both land $0.01 over the cap unless the cap is raised to $0.75 (or the narration takes go to ~$0.005).
+
+---
+## v02: logo-removal edit (Option A, approved 2026-11-21), for review
+- **File:** `references/opener/d03_cleats_keyframe_v02.png` (1536×2752, 9:16). Record: `…_v02.json`.
+- **Generation:** `fal-ai/nano-banana-pro/edit` with v01 as the only input, 2K, request `01a1ff24-a40a-77d1-bbcc-2c98e633a6c4`, **$0.15**. It was the one paid edit allowed.
+- **Edit prompt:** remove ONLY the left-cleat logo; plain black leather; everything else identical (`generations/prompts/s1_cleats_door.json`).
+- **Crops:** `references/opener/d03_cleats_keyframe_v02_cleat_crop.png` (edited cleat) and `d03_cleats_v01_vs_v02_crop.png` (v01 left | v02 right, same crop).
+
+### Checks
+| Check | Result |
+|---|---|
+| Logo fully gone | **Yes.** The side panel of the left cleat is plain scuffed black leather with continuous creases and mud. There's no residue or outline of the diamonds. |
+| New brand-like marks | **None found.** Checked both cleats, the bag, shin guards, bottle and jacket. The light edge at the left cleat's heel collar was already in v01: it's the inside lining catching light, not a stripe or badge. |
+| Cleat geometry | Same shoe, position, orientation, laces, mud and wear. The right cleat is unchanged. |
+| Rest of the scene | **Visually identical:** composition, framing, door, jacket, bench, rug, bag, shin guards, bottle, light, shadows and depth of field. A ×4-contrast difference map lights up **only the logo area**. (Whole-frame SSIM is 0.77 because the model regenerates fine grain everywhere; the change isn't visible at any viewing size.) |
+
+### Spend
+| Item | Cost |
+|---|---|
+| Still v01 | $0.15 |
+| Edit v02 | $0.15 |
+| **D03 spent so far** | **$0.30** of the $0.75 cap |
+
+**Remaining plan if approved:** one Veo Fast silent 4 s ($0.40) and Sarah narration (≈$0.01), for ≈ $0.71 in total.
+
+**Not done (by instruction):** motion, narration, deployment and capture.

@@ -1,16 +1,17 @@
 {
   "shot": "S1",
   "subject": "Object opener: kid's soccer cleats still sitting by the front door, sports bag beside them. Not ready to leave. No people, no clock graphics.",
-  "status": "Keyframe APPROVED to run (2026-11-21, one still, ~$0.15). Motion NOT approved yet.",
+  "status": "v02 = ONE approved logo-removal edit of v01 (2026-11-21, Option A, ~$0.15). Motion NOT approved yet.",
   "keyframe": {
-    "endpoint": "fal-ai/nano-banana-pro",
+    "endpoint": "fal-ai/nano-banana-pro/edit",
+    "reference": "references/opener/d03_cleats_keyframe_v01.png",
     "out": "references/opener/d03_cleats_keyframe_v01.png",
     "input": {
       "aspect_ratio": "9:16",
       "resolution": "2K",
       "output_format": "png",
       "num_images": 1,
-      "prompt": "Photorealistic vertical 9:16 photograph, premium editorial lifestyle photography, true to life and unstaged, not commercial stock photography. Late afternoon inside an ordinary suburban Midwestern family home, the front-door entryway: painted wood door, a little worn trim, a runner rug, a low bench. On the floor just inside the closed front door: a small pair of kids' black soccer cleats, laces undone, one tipped on its side, clearly not on anyone's feet yet; a plain navy youth soccer duffel bag sits beside them on the floor, unzipped and half open, shin guards poking out, clearly not finished packing. A small kids' jacket hangs on a hook above. Natural warm late-afternoon window light from the side, about 4500K, soft realistic shadows, gentle film-like texture. Camera low, about knee height, roughly 26mm lens, the cleats sharp in the lower middle of the frame, the door and hallway softly readable, calm uncluttered space in the top third of the frame. The feeling: practice is coming soon, and we are clearly not out the door yet. No people, no faces, no hands, no pets. Absolutely no clocks, no phones, no screens, no text, no letters, no logos, no brand marks, no numbers anywhere."
+      "prompt": "Edit this exact photo. Change ONLY one thing: on the left soccer cleat (the upright black cleat on the rug, lower left), remove the white double-diamond logo on its side and replace it with plain unbranded black leather that matches the rest of the shoe, with the same scuffs, mud, creases, sheen and lighting. The result must have no logo, mark, lettering, symbol, stripe, badge or recognisable brand detail anywhere on either cleat. Keep everything else pixel-for-pixel identical: the exact composition and camera framing, the cleat positions and orientation, the mud and wear, the laces, the navy duffel bag, the shin guards, the bottle, the jacket, the rug, the door, the floor, the lighting, shadows and depth of field. Do not beautify, restyle, clean up, reposition, recolour or redesign anything else."
     }
   },
   "video": {
@@ -30,5 +31,12 @@
     "no readable text, logo, number or clock anywhere",
     "clean negative space top third for the hook line",
     "cleats/bag clearly a kid's soccer gear"
-  ]
+  ],
+  "keyframe_v01": {
+    "endpoint": "fal-ai/nano-banana-pro",
+    "out": "references/opener/d03_cleats_keyframe_v01.png",
+    "request_id": "01a1ff20-c109-7223-aff1-6d30d7823d8c",
+    "prompt": "Photorealistic vertical 9:16 photograph, premium editorial lifestyle photography, true to life and unstaged, not commercial stock photography. Late afternoon inside an ordinary suburban Midwestern family home, the front-door entryway: painted wood door, a little worn trim, a runner rug, a low bench. On the floor just inside the closed front door: a small pair of kids' black soccer cleats, laces undone, one tipped on its side, clearly not on anyone's feet yet; a plain navy youth soccer duffel bag sits beside them on the floor, unzipped and half open, shin guards poking out, clearly not finished packing. A small kids' jacket hangs on a hook above. Natural warm late-afternoon window light from the side, about 4500K, soft realistic shadows, gentle film-like texture. Camera low, about knee height, roughly 26mm lens, the cleats sharp in the lower middle of the frame, the door and hallway softly readable, calm uncluttered space in the top third of the frame. The feeling: practice is coming soon, and we are clearly not out the door yet. No people, no faces, no hands, no pets. Absolutely no clocks, no phones, no screens, no text, no letters, no logos, no brand marks, no numbers anywhere.",
+    "note": "v01 composition approved; real-brand logo on left cleat"
+  }
 }

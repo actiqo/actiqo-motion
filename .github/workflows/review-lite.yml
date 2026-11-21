@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): the three D02 FINAL full-sound masters (A primary, B, D). Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D03 opener still v02 (logo-removal edit) + v01 for comparison + cleat crops + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out (with Git LFS, so MP4s are real files)
+      - name: Check out (with Git LFS, so any media are real files)
         uses: actions/checkout@v7
         with:
           lfs: true
@@ -23,9 +23,11 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
-            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
-            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02.png
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02_cleat_crop.png
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_v01_vs_v02_crop.png
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v01.png
+            gtm/d03-practice-starts-at-five/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
             test -f "$f" || { echo "missing: $f"; exit 1; }
@@ -42,6 +44,8 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
-            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
-            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02.png
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v02_cleat_crop.png
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_v01_vs_v02_crop.png
+            gtm/d03-practice-starts-at-five/references/opener/d03_cleats_keyframe_v01.png
+            gtm/d03-practice-starts-at-five/edit/REVIEW.md

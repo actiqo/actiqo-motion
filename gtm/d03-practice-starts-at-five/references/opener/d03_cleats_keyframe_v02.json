@@ -1,0 +1,25 @@
+{
+  "ts": "2026-11-21T17:25:53.202Z",
+  "production": "d03-practice-starts-at-five",
+  "shot": "s1",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "est_usd": 0.15,
+  "prompt_sha": "2f5f9ac6f621",
+  "status": "completed",
+  "request_id": "01a1ff24-a40a-77d1-bbcc-2c98e633a6c4",
+  "prompt_file": "s1_cleats_door.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Edit this exact photo. Change ONLY one thing: on the left soccer cleat (the upright black cleat on the rug, lower left), remove the white double-diamond logo on its side and replace it with plain unbranded black leather that matches the rest of the shoe, with the same scuffs, mud, creases, sheen and lighting. The result must have no logo, mark, lettering, symbol, stripe, badge or recognisable brand detail anywhere on either cleat. Keep everything else pixel-for-pixel identical: the exact composition and camera framing, the cleat positions and orientation, the mud and wear, the laces, the navy duffel bag, the shin guards, the bottle, the jacket, the rug, the door, the floor, the lighting, shadows and depth of field. Do not beautify, restyle, clean up, reposition, recolour or redesign anything else.",
+    "image_urls": [
+      "<9355246 chars of image data>"
+    ]
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/opener/d03_cleats_keyframe_v02.png"
+}
