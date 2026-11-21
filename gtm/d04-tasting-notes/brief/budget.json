@@ -5,12 +5,35 @@
   "max_keyframes_per_character": 2,
   "keeper_requires": "never (Standard Veo not planned)",
   "allow_4k": false,
-  "endpoints": { "keyframe": "fal-ai/nano-banana-pro", "keyframe_ref": "fal-ai/nano-banana-pro/edit", "draft": "fal-ai/veo3.1/fast/image-to-video", "keeper": "fal-ai/veo3.1/image-to-video" },
+  "endpoints": {
+    "keyframe": "fal-ai/nano-banana-pro",
+    "keyframe_ref": "fal-ai/nano-banana-pro/edit",
+    "draft": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper": "fal-ai/veo3.1/image-to-video"
+  },
   "price_usd": {
     "_source": "fal list prices; D01–D03 actuals matched ($0.15/image, Fast $0.10/s silent)",
-    "fal-ai/nano-banana-pro": { "per_image": 0.15 },
-    "fal-ai/nano-banana-pro/edit": { "per_image": 0.15 },
-    "fal-ai/veo3.1/fast/image-to-video": { "per_second_audio": 0.15, "per_second_silent": 0.10 },
-    "fal-ai/veo3.1/image-to-video": { "per_second_audio": 0.40, "per_second_silent": 0.20 }
+    "fal-ai/nano-banana-pro": {
+      "per_image": 0.15
+    },
+    "fal-ai/nano-banana-pro/edit": {
+      "per_image": 0.15
+    },
+    "fal-ai/veo3.1/fast/image-to-video": {
+      "per_second_audio": 0.15,
+      "per_second_silent": 0.1
+    },
+    "fal-ai/veo3.1/image-to-video": {
+      "per_second_audio": 0.4,
+      "per_second_silent": 0.2
+    },
+    "fal-ai/sync-lipsync/v2/pro": {
+      "per_minute": 5.0
+    }
+  },
+  "lipsync": {
+    "endpoint": "fal-ai/sync-lipsync/v2/pro",
+    "max_passes": 1,
+    "approved": "2026-11-21: ONE founder pass (6 s, ≈$0.50). No retry without approval."
   }
 }

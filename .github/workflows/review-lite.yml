@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D04 voiced rough v02 (real voice) + contact + VOICE_SELECTION.md + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D04 founder lip-sync (raw + side-by-side + mouth comparisons) + voiced rough v03 + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,9 +23,11 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_voiced.mp4
-            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_contact.png
-            gtm/d04-tasting-notes/audio/VOICE_SELECTION.md
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_pro_v01.mp4
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_sidebyside.mp4
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_mouth_compare.png
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_zoom_pause.png
+            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v03_founder_lipsync.mp4
             gtm/d04-tasting-notes/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
@@ -43,7 +45,9 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_voiced.mp4
-            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_contact.png
-            gtm/d04-tasting-notes/audio/VOICE_SELECTION.md
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_pro_v01.mp4
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_sidebyside.mp4
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_mouth_compare.png
+            gtm/d04-tasting-notes/generations/review/lipsync/d04_s2_founder_lipsync_zoom_pause.png
+            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v03_founder_lipsync.mp4
             gtm/d04-tasting-notes/edit/REVIEW.md

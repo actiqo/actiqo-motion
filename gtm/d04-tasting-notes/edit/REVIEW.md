@@ -298,3 +298,43 @@ If you'd rather not spend, v01 can still be animated. But the close would then l
 `latentsync` is cheap but lower-resolution around the mouth, with a higher risk of a soft or "synthetic" mouth on a large face. The recommended pass is **one `sync-lipsync/v2/pro` run on the locked founder clip (6 s) with the exact v02 founder audio (both lines, as placed), ≈$0.50**. Minimum-billing granularity per request isn't published in the pricing response; the actual charge is checked against fal usage afterwards.
 
 **D04 spent:** $2.40 (unchanged; this step was free). With the founder lip-sync: ≈$2.90 (+ ≈$0.15 if the closing line is also done).
+
+---
+# Step 9: founder lip-sync (ONE pass) + voiced rough v03 (2026-11-21), for review
+**Pass:**
+- **Model:** `fal-ai/sync-lipsync/v2/pro` (Sync Labs lipsync-2-pro), `sync_mode: cut_off`. Request `01a20087-1cdd-7cc0-856e-00d7a9ae51ca`.
+- **Cost:** **$0.50, confirmed by fal's usage API** (0.1 min × $5/min).
+- **Runner:** `gtm/scripts/lipsync.mjs` (dry-run by default, ledger before submit, 1-pass cap in `brief/budget.json`).
+
+**Inputs:**
+- **Video:** the **LOCKED clean founder clip** `generations/review/s2/d04_s2_founder_fast_v01.mp4`, with no ACTIQO overlay.
+- **Audio:** `audio/lipsync/d04_founder_audio_6s.wav`, **cut sample-exact from the approved v02 mix at 6.00–12.00 s**. Its pauses match the v02 MP4 exactly (2.316–2.467 s and 5.772–5.939 s). That's Take 2 "I'm Alec, the dad behind Cork Connoisseur." + Take 2 "I also built ACTIQO to keep pickup, packing and leave times together.", as placed. No re-synthesis, clone or time-stretch.
+
+**Outputs:**
+- **Raw lip-synced clip:** `generations/review/lipsync/d04_s2_founder_lipsync_pro_v01.mp4` (+ `.json`). 1080×1920, 24 fps, **144 frames, 6.00 s**, identical to the source.
+- **Comparison:**
+  - `…_sidebyside.mp4`: source | lip-sync, with the real audio
+  - `…_mouth_compare.png`: mouth at 10 moments, source above, lip-sync below
+  - `…_zoom_pause.png`: full-resolution mouth around the pause and at 3.0 s
+- **Updated cut:** `edit/rough/review/d04_rough_v03_founder_lipsync.mp4` (19.40 s) = v02 with **only** the founder clip swapped (`build_v03.mjs`).
+  - **The same everything else:** timing, the real ACTIQO overlay, opener, closing, subtitles, and the **byte-identical v02 audio**.
+  - **Check:** closing section SSIM 1.000 against v02. The opener differs only by re-encode (0.995).
+
+## Quality check (source vs lip-sync)
+| Check | Result |
+|---|---|
+| Area changed | **Only the mouth/lower-lip area.** The time-accumulated difference map lights up just the mouth. Below the face (blazer, hands, glass, table) the difference is re-encode noise only (mean 0.8/255). |
+| Identity, eyes, nose, skin, hair, blazer, shirt | Unchanged (they're outside the edited area) |
+| Head motion, hand gesture, glass, framing, background, camera | Unchanged; same frame count and timing |
+| Jaw shape / face flicker | None seen |
+| Beard around the lips and chin | Kept. A **slight smoothing** of the beard edge right at the lips and inside the mouth compared with the source. Mild, typical of lip-sync, not plastic at full resolution. |
+| Teeth | Natural-looking; no extra or stretched teeth |
+| Articulation | Shapes now follow the real words: lips closing on "I'm", "Alec", "behind", "built", "pickup", "packing", and open vowels on "Connoisseur", "together" |
+| Lips during real pauses | **The 0.15 s pause between the lines (2.32–2.47 s):** the mouth stays **open** through it, carrying from "Connoisseur" into the shape for "I also" (≈3–4 frames). It reads as natural co-articulation at phone size, but it is movement during a pause. **The end pause (5.77–5.94 s):** the mouth settles near-closed. |
+| Frame/timing changes | None (144 → 144 frames, 6.00 s) |
+
+**Verdict:** the founder section now reads as Alec actually saying the lines. The only artefacts are the mild lip-edge smoothing and the 3–4 frame open mouth in the inter-line pause. **Please review the side-by-side with sound.**
+
+**D04 spent:** **$2.90** (visuals $2.40 + lip-sync $0.50).
+
+**Not done (by instruction):** no opener or closing lip-sync and no retry. The closing ≈$0.15 pro pass is to be decided after you review this.

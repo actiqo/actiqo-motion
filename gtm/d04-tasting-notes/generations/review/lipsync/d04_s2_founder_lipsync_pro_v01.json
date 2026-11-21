@@ -1,0 +1,14 @@
+{
+  "ts": "2026-11-21T23:53:04.354Z",
+  "production": "d04-tasting-notes",
+  "shot": "s2",
+  "kind": "lipsync",
+  "endpoint": "fal-ai/sync-lipsync/v2/pro",
+  "est_usd": 0.5,
+  "video": "generations/review/s2/d04_s2_founder_fast_v01.mp4",
+  "audio": "audio/lipsync/d04_founder_audio_6s.wav",
+  "status": "completed",
+  "request_id": "01a20087-1cdd-7cc0-856e-00d7a9ae51ca",
+  "sync_mode": "cut_off",
+  "output": "generations/raw/lipsync/d04_s2_founder_lipsync_pro_v01.mp4"
+}
