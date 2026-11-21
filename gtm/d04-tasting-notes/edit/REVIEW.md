@@ -258,3 +258,43 @@ If you'd rather not spend, v01 can still be animated. But the close would then l
 **D04 spent:** **$2.40** (keyframes $0.15 + $0.15 + $0.15 + $0.15 retry; motions $0.60 × 3).
 
 **Next (on hold until you say so):** the voice. I need a reference recording from you (a phone voice memo, quiet room: the four lines read naturally, plus ≈30–60 s of normal talking). Then a voice clone and lip-sync, priced before any call. The rough cut v02 then swaps in the closing shot.
+
+---
+# Step 8: VOICED rough cut v02 (real voice, no lip-sync, no new spend; 2026-11-21), for review
+- **File:** `edit/rough/review/d04_rough_v02_voiced.mp4` (1080×1920, 30 fps, **19.40 s**, AAC 320k) + `…_v02_contact.png`.
+- **Build:** `edit/rough/voiced.mjs` (timeline) → `build_v02.mjs` (picture, HyperFrames check passes) + `sound/mix_v02.mjs` (sound).
+- **Visuals:** all LOCKED; no new generation.
+- **Voice:** Alec's REAL takes (trims in `audio/VOICE_SELECTION.md`).
+- **Mix:** −14.7 LUFS integrated, peak −1.4 dBFS.
+  - **Voice:** 80 Hz high-pass and level match only.
+  - **Notifications:** two quiet, originally synthesized blips (2.00 / 2.62 s).
+  - **End card:** soft chime (locked D01 cue).
+  - **Room tone:** faint. No music bed (placeholder mix).
+
+| t (s) | Picture | Real voice |
+|---|---|---|
+| 0.00–6.00 | Locked opener (title 0–2.6) | Take 1, **voice-over**: "Notes of blackberry. Hints of oak." (0.20–2.03, over the sniff) · natural 0.76 s pause · "Twelve texts about tomorrow's soccer practice." (2.78–5.14, phone glow → glance down) · **≈0.9 s of silence on the deadpan** before the cut |
+| 6.00–12.00 | Locked founder clip, real speed | Take 2: "I'm Alec, the dad behind Cork Connoisseur." (6.10–8.55) |
+| 8.65–12.00 | + Layout B real Game Plan window | Take 2: "I also built ACTIQO to keep pickup, packing and leave times together." (8.65–12.00). The pan lands on the words: pickup (shown from 8.65; spoken 10.03) → What to bring (10.42; "packing" 10.51) → Leave by 4:30 PM (10.92; "leave times" 10.99) |
+| 12.00–16.90 | Locked closing, src 0.0–4.9, clean cut | Take 2: "Try it with your next practice." (12.21–≈13.7, eye contact, mouth moving) · "Then we can get back to the tasting notes." (13.94–≈15.75, **voice-over** while his eyes go to the glass, mouth closed as generated) |
+| 16.90–19.40 | ACTIQO end card: Try it with your next practice. · Free. · getactiqo.com | chime |
+
+## Lip-sync: is it needed?
+| Section | Verdict |
+|---|---|
+| **Opening** | **Not needed.** The glass hides the mouth during the first sentence. The punchline plays as natural voice-over over the glance at the phone and the deadpan. |
+| **Founder (6.0–12.0)** | **Recommended.** It's the only sustained to-camera speech: ≈5.9 s of continuous real voice with his face large. The generated mouth "talks" in its own rhythm (open-mouth shapes and pauses that don't match the real phrasing), so the mismatch is likely visible on a phone. |
+| **Closing, first sentence (12.1–13.7)** | **Optional.** The generated mouth is already moving in the same window, so the mismatch is mild at about 1.5 s. Judge on the founder result first. |
+| **Closing, second sentence** | **Not needed.** Voice-over while he looks at the glass, as you wanted. |
+
+**Model and cost** (fal list prices, read-only pricing API, 2026-11-21):
+
+| Model | List price | Founder 6 s | Closing line ~1.8 s |
+|---|---|---|---|
+| **`fal-ai/sync-lipsync/v2/pro`** (Sync Labs lipsync-2-pro, highest quality) — recommended | $5 / min | **≈ $0.50** | ≈ $0.15 |
+| `fal-ai/sync-lipsync/v2` (lipsync-2) | $3 / min | ≈ $0.30 | — |
+| `fal-ai/latentsync` (open model) | $0.005 / s | ≈ $0.03 | — |
+
+`latentsync` is cheap but lower-resolution around the mouth, with a higher risk of a soft or "synthetic" mouth on a large face. The recommended pass is **one `sync-lipsync/v2/pro` run on the locked founder clip (6 s) with the exact v02 founder audio (both lines, as placed), ≈$0.50**. Minimum-billing granularity per request isn't published in the pricing response; the actual charge is checked against fal usage afterwards.
+
+**D04 spent:** $2.40 (unchanged; this step was free). With the founder lip-sync: ≈$2.90 (+ ≈$0.15 if the closing line is also done).

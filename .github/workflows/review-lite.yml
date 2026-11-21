@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D04 closing motion v01 + contact + detail + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D04 voiced rough v02 (real voice) + contact + VOICE_SELECTION.md + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,9 +23,9 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d04-tasting-notes/generations/review/s3/d04_s3_closing_fast_v01.mp4
-            gtm/d04-tasting-notes/generations/review/s3/d04_s3_closing_fast_v01_contact.png
-            gtm/d04-tasting-notes/generations/review/s3/d04_s3_closing_fast_v01_detail.png
+            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_voiced.mp4
+            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_contact.png
+            gtm/d04-tasting-notes/audio/VOICE_SELECTION.md
             gtm/d04-tasting-notes/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
@@ -43,7 +43,7 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d04-tasting-notes/generations/review/s3/d04_s3_closing_fast_v01.mp4
-            gtm/d04-tasting-notes/generations/review/s3/d04_s3_closing_fast_v01_contact.png
-            gtm/d04-tasting-notes/generations/review/s3/d04_s3_closing_fast_v01_detail.png
+            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_voiced.mp4
+            gtm/d04-tasting-notes/edit/rough/review/d04_rough_v02_contact.png
+            gtm/d04-tasting-notes/audio/VOICE_SELECTION.md
             gtm/d04-tasting-notes/edit/REVIEW.md

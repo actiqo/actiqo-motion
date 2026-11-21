@@ -56,3 +56,19 @@ Each clipped event is a single 10–20 ms transient. They're usually inaudible o
 - **Lines 2 + 3** (≈5.9 s with a short gap) sit on the founder clip. **Line 4** sits on the closing clip.
 
 **Privacy:** the uploaded filenames contain a street address. I'd suggest renaming them (for example `d04_voice_takeA.m4a` / `d04_voice_takeB.m4a`) and moving them into `audio/voice_memo/`. Not done without your OK.
+
+---
+## USER SELECTIONS (2026-11-21), used in voiced rough v02: real voice only, no clone
+| Line | Take | User approx. | **Exact trim (waveform + local ASR)** | Why it differs |
+|---|---|---|---|---|
+| Opening | **1 (A)** | 4.60–9.30 | **4.56–9.56** (5.00 s) | "practice." ends at 9.50; a 9.30 out would cut the word. Keeps the natural 0.76 s pause after "oak". |
+| Founder | **2 (B)** | 8.58–10.74 | **8.55–11.00** (2.45 s) | "Connoisseur." ends at 10.95 |
+| Product | **2 (B)** | 11.22–14.48 | **11.18–14.54** (3.36 s) | cut inside the pauses either side |
+| Closing | **2 (B)** | 15.02–18.22 | **14.97–18.34** (3.37 s) | "Try" starts at 15.08 (confirmed by re-transcribing from 15.0 s). A stray "yeah" at 14.62–14.85 is excluded. "notes." ends at 18.28. |
+
+**Treatment:**
+- **Applied:** slate removed by the trims, 80 Hz high-pass, per-line level match (+2.5 / +0.2 / +1.0 / +0.2 dB to ≈ −16 LUFS), 15 ms / 40 ms edge fades.
+- **Not applied:**
+  - **No noise reduction:** the noise floor is already ≈ −71 to −74 dB.
+  - **No pitch change, time-stretch, EQ colouring, clone or TTS.**
+- **Clipped transients:** left as recorded (the master limiter catches peaks). Confirm by ear; declip only on request.
