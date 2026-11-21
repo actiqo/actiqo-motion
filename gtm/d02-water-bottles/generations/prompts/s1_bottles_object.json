@@ -1,0 +1,35 @@
+{
+  "shot": "S1",
+  "subject": "Object opener: six kids' water bottles out on the counter, the sports bag open beside them with no bottle inside. No people.",
+  "status": "DRAFT for checkpoint review. Not run.",
+  "use": "0.00–1.75 s (hook A/C/D) or 0.00–2.25 s (hook B), cut from a 4 s generation; every hook uses the same footage",
+  "keyframe": {
+    "endpoint": "fal-ai/nano-banana-pro",
+    "out": "references/opener/d02_bottles_keyframe_v01.png",
+    "input": {
+      "aspect_ratio": "9:16",
+      "resolution": "2K",
+      "output_format": "png",
+      "num_images": 1,
+      "prompt": "Photorealistic vertical 9:16 photo, shot like a premium smartphone consumer ad: natural, true to life, unglamorous. Late afternoon in an ordinary, comfortable Midwestern family home, on the kitchen counter by the back door. Exactly six reusable kids' water bottles stand in a loose, slightly messy cluster on the counter: mismatched colours (teal, coral, navy, lime, purple, white), different shapes and sizes, a couple with scuffs and old sticker residue, one lying on its side. Right beside them, a plain navy youth soccer duffel bag sits unzipped and open toward the camera; inside you can clearly see small cleats and a pair of shin guards, and the bottle pocket is visibly empty. The composition reads instantly: lots of bottles out here, none in the bag. Camera at counter height, slightly above, roughly 26mm smartphone-equivalent lens, the bottles and the open bag sharp in the middle of the frame, background kitchen softly readable. Warm late-afternoon window light from the left, around 4500K, soft realistic shadows. No people, no hands. Absolutely no text, no logos, no brand names, no labels, no stickers with writing, no team crest or numbers anywhere."
+    }
+  },
+  "video": {
+    "draft_endpoint": "fal-ai/veo3.1/fast/image-to-video",
+    "keeper_endpoint": "fal-ai/veo3.1/image-to-video",
+    "input": {
+      "aspect_ratio": "9:16",
+      "resolution": "1080p",
+      "duration": "4s",
+      "generate_audio": false,
+      "prompt": "Vertical 9:16, realistic smartphone-style footage, real-time speed. A slow, steady, very slight handheld push-in toward the open soccer bag and the cluster of six water bottles on the kitchen counter. Nothing else moves except a tiny natural sway of the camera and the late-afternoon light. No people, no hands, no objects added or removed, the bottles keep the same count, colours and positions.",
+      "negative_prompt": "people, hands, text, subtitles, captions, logos, brand names, labels, watermark, phone screen, user interface, extra bottles, bottles disappearing, objects moving by themselves, fast camera move, zoom, cut, slow motion"
+    }
+  },
+  "accept_if": [
+    "exactly six bottles, countable at a glance on a phone",
+    "the bag is clearly open and clearly has no bottle in it",
+    "no readable text, logo, brand, label or number anywhere",
+    "reads in under ~1.5 s, with clean negative space for the hook line in the top third"
+  ]
+}
