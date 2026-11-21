@@ -1,5 +1,4 @@
-# Lightweight review-only package (current set): the three D02 v02 full-sound review masters (A primary, B, D),
-# A's contact sheet and D02 REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): the three D02 FINAL full-sound masters (A primary, B, D). Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -24,11 +23,9 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles_contact.png
-            gtm/d02-water-bottles/edit/REVIEW.md
+            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
+            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
+            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
           )
           for f in "${files[@]}"; do
             test -f "$f" || { echo "missing: $f"; exit 1; }
@@ -45,8 +42,6 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4
-            gtm/d02-water-bottles/edit/review/v02/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles_contact.png
-            gtm/d02-water-bottles/edit/REVIEW.md
+            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_waterbottles.mp4
+            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_20minutes.mp4
+            gtm/d02-water-bottles/final/ACTIQO_D02_SixWaterBottles_9x16_d02_ownsix.mp4

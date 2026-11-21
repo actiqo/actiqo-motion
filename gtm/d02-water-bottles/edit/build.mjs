@@ -54,7 +54,7 @@ const html = `<!doctype html>
     <div id="root" data-composition-id="main" data-start="0" data-duration="${DUR}" data-width="1080" data-height="1920">
       <!-- S1 opener: LOCKED Veo Fast v01 (hand checks the open bag; no bottle inside), src 0.30 → 0.30 + hold -->
       <div class="frame"><video id="opener" class="clip" src="assets/opener.mp4" data-start="0" data-duration="${H}" data-media-start="0.30" data-track-index="1" muted playsinline></video></div>
-      <div id="hook" class="clip" data-start="0" data-duration="${H}" data-track-index="3"><span>${h.line}</span></div>
+      <div id="hook" class="clip" data-start="0" data-duration="${H}" data-track-index="3"><span>${h.lineHtml ?? h.line}</span></div>
 
       <!-- Body: real ACTIQO capture -->
 ${CLIPS.map(video).join('\n')}

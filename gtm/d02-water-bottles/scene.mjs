@@ -8,7 +8,7 @@ export const FORMAT = { W: 1080, H: 1920 };
 /** Hooks: same opener footage (S1), different on-screen line. `hold` = opener length; the body starts at `hold`. */
 export const HOOKS = {
   d02_waterbottles: { variant: 'A', primary: true, line: 'Six water bottles. None in the bag.', hold: 2.70, vo: { file: 'd02_vo_hook_waterbottles.wav', segs: [[0.00, 1.45], [1.70, 2.82]], gain: 0.417 } }, // narrated; pause after "bottles." tightened 0.37→0.12 s
-  d02_20minutes:    { variant: 'B', line: 'Practice starts in 20 minutes. Guess what we forgot.', hold: 2.50, vo: null }, // text only: spoken (3.6 s) would push B to ~10.9 s
+  d02_20minutes:    { variant: 'B', line: 'Practice in 20. Guess what we forgot.', lineHtml: 'Practice in 20.<br>Guess what we forgot.', hold: 2.80, vo: { file: 'd02_vo_hook_20minutes_v2.wav', segs: [[0.00, 1.30], [1.74, 3.16]], gain: 0.531 } }, // FINAL 2026-11-21: shortened line, narrated; pause after "twenty." tightened 0.52→0.10 s
   d02_alwaysforget: { variant: 'C', line: 'The one thing we always forget before practice.', hold: 2.0, parked: true }, // PARKED 2026-11-21 (draft kept, not advanced)
   d02_ownsix:       { variant: 'D', line: 'Somehow we own six of these.', hold: 2.50, vo: { file: 'd02_vo_hook_ownsix.wav', segs: [[0.00, 2.40]], gain: 0.569 } },
 };
