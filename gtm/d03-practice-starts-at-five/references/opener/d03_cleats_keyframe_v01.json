@@ -1,0 +1,22 @@
+{
+  "ts": "2026-11-21T17:21:38.853Z",
+  "production": "d03-practice-starts-at-five",
+  "shot": "s1",
+  "kind": "keyframe",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "est_usd": 0.15,
+  "prompt_sha": "adeec2960e73",
+  "status": "completed",
+  "request_id": "01a1ff20-c109-7223-aff1-6d30d7823d8c",
+  "prompt_file": "s1_cleats_door.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "2K",
+    "output_format": "png",
+    "num_images": 1,
+    "prompt": "Photorealistic vertical 9:16 photograph, premium editorial lifestyle photography, true to life and unstaged, not commercial stock photography. Late afternoon inside an ordinary suburban Midwestern family home, the front-door entryway: painted wood door, a little worn trim, a runner rug, a low bench. On the floor just inside the closed front door: a small pair of kids' black soccer cleats, laces undone, one tipped on its side, clearly not on anyone's feet yet; a plain navy youth soccer duffel bag sits beside them on the floor, unzipped and half open, shin guards poking out, clearly not finished packing. A small kids' jacket hangs on a hook above. Natural warm late-afternoon window light from the side, about 4500K, soft realistic shadows, gentle film-like texture. Camera low, about knee height, roughly 26mm lens, the cleats sharp in the lower middle of the frame, the door and hallway softly readable, calm uncluttered space in the top third of the frame. The feeling: practice is coming soon, and we are clearly not out the door yet. No people, no faces, no hands, no pets. Absolutely no clocks, no phones, no screens, no text, no letters, no logos, no brand marks, no numbers anywhere."
+  },
+  "seed": null,
+  "description": "",
+  "output": "references/opener/d03_cleats_keyframe_v01.png"
+}
