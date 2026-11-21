@@ -227,3 +227,34 @@ If you'd rather not spend, v01 can still be animated. But the close would then l
 **D04 spent:** $1.80.
 
 **Next, after approval:** closing motion, Veo Fast 6 s silent, **$0.60**, giving ≈$2.40 for visuals.
+
+---
+# Step 7: closing motion v01 (2026-11-21), for review
+**Closing keyframe locked:** `references/keyframes/d04_s3_closing_keyframe_v02.png`.
+
+- **File:** `generations/review/s3/d04_s3_closing_fast_v01.mp4` (+ `_contact.png` at 4 fps, `_detail.png` at 1.2 / 2.6 / 4.6 / 5.8 s, `.json`). Raw copy in `generations/raw/s3/` (git-ignored).
+- **Generation:** `fal-ai/veo3.1/fast/image-to-video`, 9:16, 1080p, **6 s, silent**, start frame = locked keyframe v02. Request `01a2000b-dce7-7d42-b88f-571dc1d87470`, **$0.60**.
+- **Output:** 1080×1920, 24 fps, 144 frames, no audio.
+
+| Source time | Action |
+|---|---|
+| 0.0–2.0 s | Direct eye contact with a half-smile. Lips move as if saying one short line, for **"Try it with your next practice."** |
+| ≈2.0–3.6 s | His attention drifts down to the wine. He lowers the glass to rest on the table, with a quiet, satisfied, closed-mouth look. |
+| ≈3.8–4.9 s | He lifts the glass to mid-chest and gives it a small swirl while looking at the wine (**not** sniffing, not drinking) |
+| ≈5.0–6.0 s | The glass settles back to the table. He keeps looking at it with a contented half-smile, a calm ending hold. |
+
+**Checks:**
+- **Continuity:** identity holds in every checked frame (face, hair, beard, burgundy corduroy blazer, white crew-neck), with the same set, light and lens.
+- **Clean:** **the phone stays dark** the whole time. No text, logos, UI or other people. The background bottles stay soft and unreadable.
+- **Stable:** no hand or glass morphing.
+
+**Notes:**
+1. **Delivery:** at ≈1.0–1.5 s the talking beat is a little more animated than "restrained" (brows up, a broad mouth shape). Lip-sync to your voice will re-drive the mouth, and the knowing half-smile is clear at 0.0 and 1.8–2.0 s.
+2. **"Then we can get back to the tasting notes."** plays over 2.0–4.9 s, while his eyes are on the glass and his mouth is mostly closed. In the edit it can work as an **off-mouth line** (natural for a glance away), or lip-sync can animate it. I'll judge on the rough cut with your voice.
+3. **Edit window:** about 0.0–5.0 s covers both lines. 5.0–6.0 s is a clean ending hold before the end card.
+
+**D04 visuals complete:** opener + founder + closing, all locked/approved pending this review.
+
+**D04 spent:** **$2.40** (keyframes $0.15 + $0.15 + $0.15 + $0.15 retry; motions $0.60 × 3).
+
+**Next (on hold until you say so):** the voice. I need a reference recording from you (a phone voice memo, quiet room: the four lines read naturally, plus ≈30–60 s of normal talking). Then a voice clone and lip-sync, priced before any call. The rough cut v02 then swaps in the closing shot.

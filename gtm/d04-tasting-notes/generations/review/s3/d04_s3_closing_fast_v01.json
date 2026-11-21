@@ -1,0 +1,24 @@
+{
+  "ts": "2026-11-21T21:38:26.676Z",
+  "production": "d04-tasting-notes",
+  "shot": "s3",
+  "kind": "draft",
+  "endpoint": "fal-ai/veo3.1/fast/image-to-video",
+  "est_usd": 0.6000000000000001,
+  "prompt_sha": "9bf432d2dd92",
+  "status": "completed",
+  "request_id": "01a2000b-dce7-7d42-b88f-571dc1d87470",
+  "prompt_file": "s3_closing.json",
+  "input": {
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "duration": "6s",
+    "generate_audio": false,
+    "prompt": "Vertical 9:16, realistic cinematic footage, real-time speed. Same man, same outfit, same warm evening wine bar, exactly the same framing as the photo. For the first half he holds direct, steady eye contact with the camera with a restrained, dry, knowing half-smile, lips moving slightly and naturally as if saying one short sentence. Then, calmly and naturally, his attention drifts down from the camera to the wine glass he is holding at chest height; he gives the glass a small, gentle swirl and looks at the wine with quiet satisfaction, the half-smile remaining, as if returning to the tasting. Subtle, premium, natural movement only. The phone stays on the table with a dark screen. Camera locked off and steady, no reframing.",
+    "negative_prompt": "phone screen lighting up, notification, glowing screen, text, captions, subtitles, logos, labels, readable bottles, user interface, other people, face changing, identity drift, extra fingers, deformed hands, glass morphing, wine spilling, drinking, sniffing, exaggerated gestures, laughing, winking, comedy mugging, camera move, zoom, pan, cut, slow motion, lighting change",
+    "image_url": "<8530334 chars of image data>"
+  },
+  "seed": null,
+  "description": null,
+  "output": "generations/raw/s3/2026-11-21T21-38-26-667Z_draft.mp4"
+}
