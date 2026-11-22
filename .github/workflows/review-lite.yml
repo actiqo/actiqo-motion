@@ -1,4 +1,4 @@
-# Lightweight review-only package (current set): D04 FINAL full-sound master + contact + FINAL.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
+# Lightweight review-only package (current set): D04 founder timing test A (current) vs B (+0.22 s founder audio/captions/cues) + REVIEW.md. Manual trigger only. Read-only: renders nothing, installs nothing, modifies nothing.
 name: Review lite
 
 on:
@@ -23,9 +23,9 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-            gtm/d04-tasting-notes/final/ACTIQO_CorkConnoisseur_D04_TastingNotesOfParenthood_9x16.mp4
-            gtm/d04-tasting-notes/final/ACTIQO_CorkConnoisseur_D04_TastingNotesOfParenthood_9x16_contact.png
-            gtm/d04-tasting-notes/FINAL.md
+            gtm/d04-tasting-notes/edit/rough/review/timing_test/d04_timing_A_current.mp4
+            gtm/d04-tasting-notes/edit/rough/review/timing_test/d04_timing_B_founder_audio_plus022.mp4
+            gtm/d04-tasting-notes/edit/REVIEW.md
           )
           for f in "${files[@]}"; do
             test -f "$f" || { echo "missing: $f"; exit 1; }
@@ -42,6 +42,6 @@ jobs:
           if-no-files-found: error
           path: |
             review-lite-manifest.txt
-            gtm/d04-tasting-notes/final/ACTIQO_CorkConnoisseur_D04_TastingNotesOfParenthood_9x16.mp4
-            gtm/d04-tasting-notes/final/ACTIQO_CorkConnoisseur_D04_TastingNotesOfParenthood_9x16_contact.png
-            gtm/d04-tasting-notes/FINAL.md
+            gtm/d04-tasting-notes/edit/rough/review/timing_test/d04_timing_A_current.mp4
+            gtm/d04-tasting-notes/edit/rough/review/timing_test/d04_timing_B_founder_audio_plus022.mp4
+            gtm/d04-tasting-notes/edit/REVIEW.md

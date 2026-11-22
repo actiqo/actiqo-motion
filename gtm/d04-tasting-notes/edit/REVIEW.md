@@ -338,3 +338,31 @@ If you'd rather not spend, v01 can still be animated. But the close would then l
 **D04 spent:** **$2.90** (visuals $2.40 + lip-sync $0.50).
 
 **Not done (by instruction):** no opener or closing lip-sync and no retry. The closing ≈$0.15 pro pass is to be decided after you review this.
+
+---
+# Post-final timing test: founder lip-sync feels late (2026-11-22). NO SPEND, NO AI media re-run; the final master is unchanged
+**Files** (`edit/rough/review/timing_test/`):
+
+| Version | File | What |
+|---|---|---|
+| A | `d04_timing_A_current.mp4` | Byte copy of the approved final master |
+| B | `d04_timing_B_founder_audio_plus022.mp4` | **+0.22 s** on the founder-section audio, its two captions and the product cues |
+
+- **B's shifts:** founder line 6.10 → 6.32, product line 8.65 → 8.87, product window in 8.65 → 8.87, pan to "packing" 10.42 → 10.64, pan to "leave times" 10.92 → 11.14, captions 6.10/8.65 → 6.32/8.87.
+- **Not shifted:** the lip-synced founder video, opener, closing, end card, every visual clip timing, the voice takes and the bed placement.
+- **Built from:** `D04_FOUNDER_DELAY=0.22` in `edit/rough/voiced.mjs` (default 0 reproduces the approved final exactly), `build_v03.mjs` + `sound/mix_final.mjs`.
+- **Both:** 19.40 s, −14.3 LUFS, −1.8 dBTP.
+
+## Measured (music-free audio, −30 dB)
+| | A (current) | B (+0.22 s) |
+|---|---|---|
+| "I'm" onset | **5.93 s**, 0.07 s *before* the cut to the founder clip | **6.15 s**, after the cut |
+| Gap between "together." and the closing take's lead-in (breath, then "Try" ≈12.02 s) | 11.75–11.95 s (**0.21 s**) | **none**: "together." now ends ≈11.97 s and runs straight into the closing breath; "Try" follows ≈0.05 s later |
+
+**Findings:**
+1. **Systematic offset:** every real-voice line plays ≈0.17 s earlier than its nominal timeline placement. That's the phone memos' AAC decode/priming on the trims. So the founder audio already sat early; +0.22 s puts it ≈0.05 s after its nominal spot.
+2. **The trailing room is ≈0.18–0.21 s, not 0.22 s.** In B the product line butts against the closing line at the cut. Listen at 11.8–12.1 s for a run-on.
+3. **If B's sync is preferred but the handover feels rushed:**
+   - **+0.15 to +0.18 s** keeps a small breath (≈0.03–0.06 s) without touching the closing.
+   - Or keep +0.22 s and trim ≈0.04 s of the closing take's lead-in breath (an audio-only trim; the closing visual is unchanged).
+   - Both are free.
