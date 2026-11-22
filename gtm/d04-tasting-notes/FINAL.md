@@ -1,13 +1,13 @@
-# D04 "Tasting Notes of Parenthood": Cork Connoisseur × ACTIQO · FINAL (closed 2026-11-22, NOT published)
+# D04 "Tasting Notes of Parenthood": Cork Connoisseur × ACTIQO · FINAL (closed 2026-11-22, founder timing +0.17 s LOCKED; NOT published)
 
 **Use:** **organic Cork Connoisseur posting first** (the user's decision). The wine-tasting setup is intentional. It isn't optimised for paid ads; a paid ACTIQO version would be a separate, alcohol-free cut. **Publishing requires separate approval from the owner.**
 
 ## Deliverables (`final/`)
 | File | What | SHA-256 |
 |---|---|---|
-| `ACTIQO_CorkConnoisseur_D04_TastingNotesOfParenthood_9x16.mp4` | **Full-sound final master** (Cork title + subtitles, real ACTIQO, end card) | `0098be2d739846daeb2756f1ee0cba59a86c212e026ffb6a02bff0965da1b5af` |
-| `…_9x16_musicfree.mp4` | Music-free master (voice, notification blips, room tone, end chime; no bed) | `53014151c15b31c7e5511a785d4c4f342f35340a3512fa0f63e6e3c0037b5c58` |
-| `…_9x16_clean_picture.mp4` | Clean picture master: **no title or subtitles** (the real ACTIQO window and the end card stay), full-sound audio | `f762ff03e27cf4784d28cf6d96a60bb08650398c2659515fcef7ff5fba4db693` |
+| `ACTIQO_CorkConnoisseur_D04_TastingNotesOfParenthood_9x16.mp4` | **Canonical full-sound final master** (Cork title + subtitles, real ACTIQO, end card; founder timing +0.17 s) | `e8aac74c85e86cf3cb688cb9c18361a23f5fb02967a3e071a9fcdd0581acf66a` |
+| `…_9x16_musicfree.mp4` | Music-free master (voice, notification blips, room tone, end chime; no bed; same +0.17 s timing; the same picture stream as the canonical master) | `72240256e75561acd90f7d04a46dfca0d0b334febe7a83308f4f90b153838617` |
+| `…_9x16_clean_picture.mp4` | Clean picture master: **no title or subtitles** (the real ACTIQO window and the end card stay). Product pans at +0.17 s; **audio stream byte-copied from the canonical master** | `08713acad3b13e0363485b7565813ae04f2e04049c5da779cc06f8dd5626ce7f` |
 | `…_contact.png`, `…_clean_picture_contact.png` | Contact sheets | |
 
 **Format:** 1080×1920 (9:16), 30 fps, H.264 High (CRF 17), AAC-LC 320 kb/s 48 kHz.
@@ -17,9 +17,11 @@
 
 | Master | Integrated | True peak |
 |---|---|---|
-| Full | −14.3 LUFS | −1.8 dBTP |
-| Music-free | −14.2 LUFS | −1.9 dBTP |
+| Full (canonical) | −14.3 LUFS | −1.8 dBTP |
+| Music-free | −14.2 LUFS | −1.8 dBTP |
 | Clean picture | −14.3 LUFS | −1.8 dBTP |
+
+Video and audio streams all start at 0.000 and run 19.40 s.
 
 **Captions:** every caption sits inside the TikTok/Reels/Shorts safe areas (HyperFrames check passes).
 
@@ -27,10 +29,28 @@
 | t (s) | Picture | Voice (Alec's REAL recording) |
 |---|---|---|
 | 0.00–6.00 | **Locked opener** (Veo Fast v01, full 6 s). Title "TASTING NOTES OF PARENTHOOD" 0–2.6 (Cork burgundy `#8B3E3D` / tan `#E9D6B4`). | Take 1, **voice-over**: "Notes of blackberry. Hints of oak." (over the sniff) · natural 0.76 s pause · "Twelve texts about tomorrow's soccer practice." (phone glow → glance → deadpan) |
-| 6.00–12.00 | **Locked founder clip, lip-synced** (real speed, 6 s) | Take 2: "I'm Alec, the dad behind Cork Connoisseur." |
-| 8.65–12.00 | + **real ACTIQO Layout B**: one real Game Plan window (660 px, lower safe area) panned in spoken order: **Pickup · You · Saved → What to bring · Water bottle, Cleats, Shin guards · 0/3 → Leave by 4:30 PM · Fixed leave time** | Take 2: "I also built ACTIQO to keep pickup, packing and leave times together." |
+| 6.00–12.00 | **Locked founder clip, lip-synced** (real speed, 6 s). Founder caption 6.27–8.77. | Take 2: "I'm Alec, the dad behind Cork Connoisseur." (placed 6.27; audible onset **6.10**) |
+| 8.82–12.00 | + **real ACTIQO Layout B**: one real Game Plan window (660 px, lower safe area), in at 8.82, panned in spoken order: **Pickup · You · Saved → What to bring · Water bottle, Cleats, Shin guards · 0/3** (pan 10.59) **→ Leave by 4:30 PM · Fixed leave time** (pan 11.09). Product caption 8.82–12.00. | Take 2: "I also built ACTIQO to keep pickup, packing and leave times together." (placed 8.82; ends ≈11.90, ≈50 ms clean gap before the closing "Try") |
 | 12.00–16.90 | **Locked closing** (Veo Fast v01, src 0.0–4.9, clean cut) | Take 2: "Try it with your next practice." (to camera, natural mouth movement) · "Then we can get back to the tasting notes." (**voice-over** while his eyes return to the wine) |
 | 16.90–19.40 | **ACTIQO end card:** ACTIQO · Try it with your next practice. · **Free.** · getactiqo.com | soft chime |
+
+## Founder timing correction: +0.17 s (LOCKED 2026-11-22, no spend)
+**Shifted:** the founder-section audio (both founder/product lines), the founder and product captions, and the ACTIQO window entry and pans, all by **+0.17 s**.
+
+**Why:** the real voice lines play **≈0.17 s earlier** than their nominal placement, because of the AAC decode/priming of the phone memos at the trim points. Before the fix, "I'm" started at 5.93 s, before the cut to the founder shot, and the lip-synced mouth read as trailing the voice. +0.17 s directly compensates that offset ("I'm" now at 6.10 s). +0.22 s was tested and rejected: "together." collided with the closing "Try".
+
+**Not changed:** the founder video (no lip-sync re-run), opener, closing picture and voice, end card, voice recordings, script, all clip timings.
+
+**Verified against the pre-correction master:**
+- **Pictures:** opener SSIM 0.996 (re-encode only), closing **1.000**, end card **1.000**. The founder section differs only in caption and pan timing (0.97–0.98).
+- **Closing words:** identical onsets/pauses to 10 ms; closing level −14.6 LUFS both.
+- **No closing trim needed:** the closing take has no leading breath; its first sound is the "T" of "Try".
+- **Music-free master:** its AAC stream (19.20 s, also present in the earlier music-free master) is padded with 0.2 s of silence to 19.40 s; the content is unchanged.
+- **Clean master:** closing SSIM 0.992 against the previous clean master. That's uniform re-encode noise from the fresh textless render; the clip and timing are unchanged.
+
+**Source:** `edit/rough/voiced.mjs` (`D04_FOUNDER_DELAY` defaults to 0.17; set it to 0 to reproduce the pre-correction master).
+
+**Superseded masters (pre-correction):** full `0098be2d…b5af`, music-free `53014151…5c58`, clean `f762ff03…b693`. They're in git history (`847431e`) and the review-lite comparison file `edit/rough/review/timing_test/d04_timing_A_current.mp4`.
 
 ## Voice: real recording only (no clone, no TTS)
 Source: two phone voice memos recorded by Alec (moved to `audio/source/` on 2026-11-22; bytes unchanged): Take 1 = `gtm/d04-tasting-notes/audio/source/d04_alec_voice_take1.m4a`, Take 2 = `gtm/d04-tasting-notes/audio/source/d04_alec_voice_take2.m4a`.

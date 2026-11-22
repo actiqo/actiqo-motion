@@ -1,8 +1,9 @@
 // D04 VOICED rough cut v02: timeline data shared by build_v02.mjs (picture) and sound/mix_v02.mjs (sound).
 // All visuals LOCKED. Voice = Alec's REAL recorded takes (no clone, no TTS, no lip-sync yet).
 export const DUR = 19.40;
-// Timing test (2026-11-22): D04_FOUNDER_DELAY delays the founder-section audio + its captions + product cues; default 0 = approved final.
-const FD = +(process.env.D04_FOUNDER_DELAY ?? 0);
+// Founder timing correction, LOCKED 2026-11-22: +0.17 s on the founder-section audio + its captions + product cues. It compensates the
+// ≈0.17 s early AAC source-trim/decode offset of the phone memos. D04_FOUNDER_DELAY overrides it (0 reproduces the pre-correction master).
+const FD = +(process.env.D04_FOUNDER_DELAY ?? 0.17);
 const d = (x) => +(x + FD).toFixed(3);
 
 // Real voice trims (seconds in the original memos), cut inside real pauses (silencedetect −40 dB) + local ASR word timings.
