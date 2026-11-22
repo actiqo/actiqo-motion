@@ -1,6 +1,6 @@
 # D04 "Tasting Notes of Parenthood": Cork Connoisseur × ACTIQO (organic, ~22 s, 9:16)
 
-**Status 2026-11-21: VISUAL SET COMPLETE + LOCKED. Waiting for Alec's real voice memo.** No more Nano Banana or Veo. Visuals spent: $2.40.
+**Status 2026-11-22: FINAL** (`FINAL.md`, masters in `final/`). **Not published**: publishing needs separate owner approval. D04 total $2.90.
 
 **User decisions (2026-11-21):**
 - **Use:** ORGANIC Cork Connoisseur posting first. The wine setup is intentional. A paid ACTIQO cut would be a separate alcohol-free version.

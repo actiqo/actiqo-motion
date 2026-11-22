@@ -2,6 +2,7 @@
 // All visuals LOCKED (opener, founder, real ACTIQO capture in Layout B, closing). Voice = Alec's real takes (mixed by sound/mix_v02.mjs).
 import { writeFileSync } from 'node:fs';
 import { DUR, SHOTS as SHOTS0, CAP, PROD, END } from './voiced.mjs';
+const CLEAN = process.env.D04_CLEAN === '1'; // textless picture master: no title, no subtitles (end card kept)
 const SHOTS = SHOTS0.map((s) => (s.id === 'found' ? { ...s, src: 'founder_ls.mp4' } : s)); // v03: founder = lip-synced (sync lipsync-2-pro) version of the LOCKED clip
 const BURG = '#8B3E3D', TAN = '#E9D6B4';
 // Layout B window: x 120–780 (660 wide), y 870–1260 (390 tall). Source at 0.66 scale; source x 40 at the window's left edge.
@@ -48,8 +49,8 @@ const html = `<!doctype html>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="${DUR}" data-width="1080" data-height="1920">
 ${SHOTS.map(vid).join('\n')}
-      <div id="title" class="clip" data-start="0" data-duration="2.6" data-track-index="4"><span>TASTING NOTES<br>OF PARENTHOOD</span></div>
-${caps}
+${CLEAN ? '' : '      <div id="title" class="clip" data-start="0" data-duration="2.6" data-track-index="4"><span>TASTING NOTES<br>OF PARENTHOOD</span></div>'}
+${CLEAN ? '' : caps}
       <!-- Layout B: ONE real Game Plan (capture src 1.2 → settled state), window panned pickup → What to bring → leave time -->
       <div id="prod" data-layout-allow-overflow><div id="pan">
         <video id="ui" class="clip" src="assets/ui.mp4" data-start="${P0}" data-duration="${f(P1 - P0)}" data-media-start="1.20" data-track-index="2" muted playsinline></video>
@@ -63,8 +64,8 @@ ${caps}
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo('#title', { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0);
-      ${CAP.map((c, i) => `tl.fromTo('#cap${i}', { opacity: 0 }, { opacity: 1, duration: 0.10 }, ${c.t0});`).join('\n      ')}
+      ${CLEAN ? '' : "tl.fromTo('#title', { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0);"}
+      ${CLEAN ? '' : CAP.map((c, i) => `tl.fromTo('#cap${i}', { opacity: 0 }, { opacity: 1, duration: 0.10 }, ${c.t0});`).join('\n      ')}
       tl.set('#pan', { y: ${-TOP.pickup} }, 0);
       tl.fromTo('#prod', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.30, ease: 'power2.out' }, ${P0});
       tl.set('#prod', { opacity: 0 }, ${P1});
@@ -80,4 +81,4 @@ ${caps}
 </html>
 `;
 writeFileSync(new URL('./index.html', import.meta.url), html);
-console.log(`voiced rough v03: ${DUR}s written`);
+console.log(`d04 ${CLEAN ? 'CLEAN (textless)' : 'final'}: ${DUR}s written`);
