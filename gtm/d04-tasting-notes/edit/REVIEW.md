@@ -366,3 +366,33 @@ If you'd rather not spend, v01 can still be animated. But the close would then l
    - **+0.15 to +0.18 s** keeps a small breath (≈0.03–0.06 s) without touching the closing.
    - Or keep +0.22 s and trim ≈0.04 s of the closing take's lead-in breath (an audio-only trim; the closing visual is unchanged).
    - Both are free.
+
+---
+# Founder timing candidate: +0.17 s (2026-11-22). NO SPEND; the canonical final is NOT replaced
+**File:** `edit/rough/review/timing_test/d04_candidate_founder_plus017.mp4`
+- **Format:** 1080×1920, 19.40 s, H.264/AAC, −14.3 LUFS, −1.8 dBTP.
+- **Built from:** `D04_FOUNDER_DELAY=0.17` (`voiced.mjs` → `build_v03.mjs` + `sound/mix_final.mjs`).
+
+**Shifted +0.17 s:**
+- founder audio (both lines): 6.10 → 6.27 and 8.65 → 8.82
+- founder captions: 6.10/8.65 → 6.27/8.82
+- product window in: 8.65 → 8.82
+- pan to "packing": 10.42 → 10.59
+- pan to "leave times": 10.92 → 11.09
+
+**Not shifted:** the lip-synced founder video, opener, closing picture and audio, end card, all clip timings. No lip-sync re-run.
+
+## Verification against the approved final (A)
+| Check | Result |
+|---|---|
+| Founder "I'm" onset | **6.10 s** (A: 5.93 s, before the cut). It now lands on its intended mark, compensating the ≈0.17 s early decode offset. |
+| Opener / closing / end-card picture | SSIM 0.996 (re-encode only) / **1.000** / **1.000** |
+| Founder section picture | SSIM 0.980: only the caption and pan timing differ |
+| Closing words | **Identical timing**: every −30 dB onset/pause matches to 10 ms (12.60 … 16.00). Closing level −14.6 LUFS in both. |
+| Handover "together." → "Try" | "together." decays ≈11.90 s; the "T" of "Try" starts ≈11.95 s, a **short clean gap (≈50 ms), no overlap**. At +0.22 s they collided. A had ≈0.2 s. |
+
+**No closing trim:** I checked the closing take for a leading breath. Its first ≈30 ms are near-silent (≈−72 dB), and the next sound is the **"T" of "Try" itself**. There's no breath to trim, and trimming further would clip the word, so the closing take is untouched (a 0.03 s test trim was confirmed as a no-op and removed).
+
+**Byte differences in the closing audio:** these come only from the loudness pass (≈0.1–0.2 dB master gain) and the bed's ducking envelope following the shifted founder lines. The closing voice placement is unchanged.
+
+**If approved:** promote the candidate to `final/` (it replaces the canonical master), then update the FINAL.md checksums and timeline.
