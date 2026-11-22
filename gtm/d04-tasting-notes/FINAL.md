@@ -33,7 +33,7 @@
 | 16.90–19.40 | **ACTIQO end card:** ACTIQO · Try it with your next practice. · **Free.** · getactiqo.com | soft chime |
 
 ## Voice: real recording only (no clone, no TTS)
-Source: two phone voice memos uploaded by Alec (repo root): Take 1 = `gtm/d04-tasting-notes/audio/source/d04_alec_voice_take1.m4a`, Take 2 = `gtm/d04-tasting-notes/audio/source/d04_alec_voice_take2.m4a`.
+Source: two phone voice memos recorded by Alec (moved to `audio/source/` on 2026-11-22; bytes unchanged): Take 1 = `gtm/d04-tasting-notes/audio/source/d04_alec_voice_take1.m4a`, Take 2 = `gtm/d04-tasting-notes/audio/source/d04_alec_voice_take2.m4a`.
 
 | Line | Take | Source trim (s) |
 |---|---|---|

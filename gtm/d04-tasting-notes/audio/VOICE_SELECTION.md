@@ -55,7 +55,7 @@ Each clipped event is a single 10–20 ms transient. They're usually inaudible o
 - **Simpler alternative:** if Take A's "Twelve" sounds fine to you, use **Take A for all of Line 1** (4.55–9.58), avoiding the cross-take join.
 - **Lines 2 + 3** (≈5.9 s with a short gap) sit on the founder clip. **Line 4** sits on the closing clip.
 
-**Privacy:** the uploaded filenames contain a street address. I'd suggest renaming them (for example `d04_voice_takeA.m4a` / `d04_voice_takeB.m4a`) and moving them into `audio/voice_memo/`. Not done without your OK.
+**Privacy (done 2026-11-22):** the memos were moved/renamed to `audio/source/d04_alec_voice_take1.m4a` / `…take2.m4a` (audio bytes unchanged), and the original upload paths were purged from the repository history.
 
 ---
 ## USER SELECTIONS (2026-11-21), used in voiced rough v02: real voice only, no clone

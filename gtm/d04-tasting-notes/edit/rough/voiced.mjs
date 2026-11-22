@@ -3,7 +3,7 @@
 export const DUR = 19.40;
 
 // Real voice trims (seconds in the original memos), cut inside real pauses (silencedetect −40 dB) + local ASR word timings.
-// takeA = "gtm/d04-tasting-notes/audio/source/d04_alec_voice_take1.m4a" (slate "take one"), takeB = "… Dr 2.m4a" (slate "take two").
+// takeA = "gtm/d04-tasting-notes/audio/source/d04_alec_voice_take1.m4a" (slate "take one"), takeB = "gtm/d04-tasting-notes/audio/source/d04_alec_voice_take2.m4a" (slate "take two").
 export const VO = [
   { id: 'open',    take: 'A', src: [4.56, 9.56],   at: 0.20, gainDb: 2.5, note: '"Notes of blackberry. Hints of oak." (0.76 s natural pause) "Twelve texts about tomorrow\'s soccer practice." Voice-over on the tasting' },
   { id: 'founder', take: 'B', src: [8.55, 11.00],  at: 6.10, gainDb: 0.2, note: '"I\'m Alec, the dad behind Cork Connoisseur."' },
