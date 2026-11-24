@@ -1,1 +1,0 @@
-{ "name": "actiqo-d02-edit", "private": true, "type": "module", "scripts": { "build": "node build.mjs", "check": "npx --yes hyperframes@0.9.72 check", "render": "npx --yes hyperframes@0.9.72 render" } }
